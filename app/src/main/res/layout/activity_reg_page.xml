@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="20dp"
+    tools:context=".regPage">
+
+    <EditText
+        android:id="@+id/tunnusreg"
+        android:inputType="textEmailAddress"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="100dp"
+        android:hint="@string/tunnus" />
+
+    <EditText
+        android:id="@+id/salasanareg1"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/tunnusreg"
+        android:layout_marginTop="20dp"
+        android:hint="@string/salasana"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/salasanareg2"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/salasanareg1"
+        android:layout_marginTop="20dp"
+        android:hint="@string/salasana2"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/buttonreg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/salasanareg2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="15dp"
+        android:text="@string/luotunnus"
+        android:textSize="15sp" />
+
+</RelativeLayout>

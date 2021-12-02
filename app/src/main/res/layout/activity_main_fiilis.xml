@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="10dp"
+    tools:context=".MainFiilis">
+
+    <TextView
+        android:id="@+id/otsikkoFiilis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/otsikkoFiilis"
+        android:textSize="15sp" />
+
+    <ImageView
+        android:layout_width="220dp"
+        android:layout_height="189dp"
+        android:id="@+id/fiilisKuva"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/otsikkoFiilis"
+        android:layout_marginTop="20dp"/>
+
+
+    <!-- Tähän kohti hymynaama ja vaihda seekbar kiinni naamaan -->
+
+    <TextView
+        android:id="@+id/fiilisArvo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fiilisAsteikko"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="400dp"
+        android:text="0"
+        android:textSize="15sp" />
+
+    <SeekBar
+        android:id="@+id/fiilisAsteikko"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fiilisKuva"
+        android:layout_marginTop="20dp"
+        android:max="100"
+        android:min="-100"
+        android:progress="0" />
+
+    <TextView
+        android:id="@+id/fiilisOhje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fiilisAsteikko"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/fiilisOhje"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/tallennaFiilis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fiilisOhje"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="15dp"
+        android:text="@string/tallenna1"
+        android:textSize="20sp" />
+
+</RelativeLayout>

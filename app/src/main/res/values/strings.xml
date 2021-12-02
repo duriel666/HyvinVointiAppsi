@@ -1,0 +1,47 @@
+<resources>
+
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <!-- Otsikot -->
+    <string name="app_name">MobiiliProjekti</string>
+    <string name="otsikkoPaasivu">HyvinVointia paskoihin päiviin!</string>
+    <string name="otsikkoEtusivu">Tervetuloa!\nHyvinVointi Appsi v0.1</string>
+    <string name="otsikkoAsetukset">Asetukset</string>
+    <string name="otsikkoVesi">Veden juominen</string>
+    <string name="otsikkoFiilis">Fiilis tänään</string>
+    <string name="otsikkoUni">Kuinka nukuin</string>
+
+    <!-- Muita -->
+    <string name="kirjaudu">Kirjaudu</string>
+    <string name="luotunnus">Luo\n\nkäyttäjätunnus</string>
+    <string name="salasana">Salasana</string>
+    <string name="salasana2">Salasana uudestaan</string>
+    <string name="salasanatext">Salasana:</string>
+    <string name="tunnustext">Tunnus:</string>
+    <string name="tunnus">Tunnus</string>
+    <string name="tallenna1">Tallenna</string>
+    <string name="vesi">Veden juonti</string>
+    <string name="vesimaara">Vettä juotu tänään:</string>
+    <string name="vesitavoite">Tavoite:</string>
+    <string name="vesilisa">join vettä</string>
+    <string name="asetukset">Asetukset</string>
+    <string name="fiilisOhje">Mikä fiilis tänään?</string>
+    <string name="progohje">Tänään juotu</string>
+    <string name="vesimaaraohje">Paljonko joit?</string>
+    <string name="vesitavoiteohje">Päivittäinen tavoite</string>
+    <string name="ml">ml</string>
+    <string name="uniohje">Kauanko nukuit?</string>
+
+</resources>
