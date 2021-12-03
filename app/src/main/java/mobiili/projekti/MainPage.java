@@ -37,8 +37,10 @@ public class MainPage extends AppCompatActivity {
 
         final DataBase DB = new DataBase(this);
         final ArrayList<String> quotelista = DB.randomquotelista();
+        final ArrayList<String> vesiToday = DB.getVesiToday(tunnus);
         final ArrayList<String> fiilisToday = DB.getFiilisToday(tunnus);
         final ArrayList<String> sivuAsetukset = DB.getAsetukset(tunnus);
+        final ArrayList<String> vesiMuisti = DB.getVesiMuisti(tunnus);
 
         LinearLayout etuSivu = (LinearLayout) findViewById(R.id.etuLayout);
         LinearLayout layout = new LinearLayout(this);
@@ -51,11 +53,8 @@ public class MainPage extends AppCompatActivity {
 
         inspiroivaQuote = findViewById(R.id.otsikkoPaasivu);
 
-        fiilisToday.clear();
-        fiilisToday.addAll(DB.getFiilisToday(tunnus));
-
         sivuAsetukset.clear();
-        sivuAsetukset.addAll((DB.getAsetukset(tunnus)));
+        sivuAsetukset.addAll(DB.getAsetukset(tunnus));
         int vesiAsetus = Integer.parseInt(sivuAsetukset.get(0)), uniAsetus = Integer.parseInt(sivuAsetukset.get(1)),
                 fiilisAsetus = Integer.parseInt(sivuAsetukset.get(2));
 
@@ -67,6 +66,24 @@ public class MainPage extends AppCompatActivity {
             vesi.setTextSize((TypedValue.COMPLEX_UNIT_SP), 20);
             vesi.setGravity(Gravity.CENTER_VERTICAL);
             etuSivu.addView(vesi);
+
+            vesiToday.clear();
+            vesiToday.addAll(DB.getVesiToday(tunnus));
+            int index2 = vesiToday.size(), num2 = 0, num3 = 0;
+            for (int i = 0; i < index2; i++) {
+                int num1 = Integer.parseInt(vesiToday.get(i));
+                num2 += num1;
+            }
+
+            vesiMuisti.clear();
+            vesiMuisti.addAll(DB.getVesiMuisti(tunnus));
+            int vesitavoitemaaranum = Integer.parseInt(vesiMuisti.get(0));
+
+            if (vesitavoitemaaranum > 0 && num2 > 0) {
+                num3 = ((num2 * 100) / vesitavoitemaaranum);
+            }
+            vesi.setText("Vesi\n\nValmiina päivän tavoitteesta: " + num3 + "%\n" +
+                    "Tänään juotu: " + num2 + "ml / " + vesitavoitemaaranum + "ml");
 
             vesi.setOnClickListener(v -> {
                 Intent intent = new Intent(MainPage.this, MainVesi.class);
@@ -83,6 +100,14 @@ public class MainPage extends AppCompatActivity {
             uni.setTextSize((TypedValue.COMPLEX_UNIT_SP), 20);
             uni.setGravity(Gravity.CENTER_VERTICAL);
             etuSivu.addView(uni);
+
+            uni.setText("Uni\n\nValmiina päivän tavoitteesta: \nTänään nukuttu: ");
+
+            uni.setOnClickListener(v -> {
+                Intent intent = new Intent(MainPage.this, MainUni.class);
+                intent.putExtra("tunnus", tunnus);
+                startActivity(intent);
+            });
         }
 
         if (fiilisAsetus == 1) {
@@ -104,8 +129,12 @@ public class MainPage extends AppCompatActivity {
             if (index2 > 0) {
                 num3 = num2 / index2;
             }
-            String fiilisT = Integer.toString(num3), fiilisNyt = fiilisToday.get(index2 - 1);
-            fiilis.setText("Fiilis nyt: " + fiilisNyt + "\nPäivän fiilis: " + fiilisT);
+            String fiilisT = Integer.toString(num3);
+            if (index2 > 0) {
+                String fiilisNyt = fiilisToday.get(index2 - 1);
+                fiilis.setText("Fiilis\n\nFiilis nyt: " + fiilisNyt + "\nPäivän fiilis: " + fiilisT);
+            } else
+                fiilis.setText("Fiilis\nFiilis nyt: \nPäivän fiilis: ");
 
             fiilis.setOnClickListener(v -> {
                 Intent intent = new Intent(MainPage.this, MainFiilis.class);
@@ -131,7 +160,7 @@ public class MainPage extends AppCompatActivity {
         asetukset = (ImageButton) findViewById(R.id.asetukset);
 
         asetukset.setOnClickListener(v -> {
-            Intent intent = new Intent(MainPage.this, SettingsActivity.class);
+            Intent intent = new Intent(MainPage.this, MainAsetukset.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
         });

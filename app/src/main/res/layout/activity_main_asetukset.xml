@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".MainAsetukset">
+
+    <TextView
+        android:id="@+id/otsikkoAsetukset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/otsikkoAsetukset"
+        android:textAlignment="center"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/asetuksetOhje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/otsikkoAsetukset"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="@string/asetuksetohje"
+        android:textSize="20sp" />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@id/asetuksetOhje"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="50dp"
+        android:paddingHorizontal="50dp"
+        android:text="Vesi:"
+        android:textSize="20sp"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+    <Switch
+        android:id="@+id/switch2"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@id/switch1"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="30dp"
+        android:paddingHorizontal="50dp"
+        android:text="Uni:"
+        android:textSize="20sp"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+    <Switch
+        android:id="@+id/switch3"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@id/switch2"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="30dp"
+        android:paddingHorizontal="50dp"
+        android:text="Fiilis:"
+        android:textSize="20sp"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+
+    <Button
+        android:id="@+id/tallenna1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/switch3"
+        android:textSize="20sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="15dp"
+        android:text="@string/tallenna1" />
+
+    <Button
+        android:id="@+id/tallenna2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tallenna1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:textSize="15sp"
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="15dp"
+        android:text="@string/logout" />
+
+</RelativeLayout>

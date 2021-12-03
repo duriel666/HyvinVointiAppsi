@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class MainVesi extends AppCompatActivity {
 
     Button tallenna;
-    EditText juo;
+    EditText juo, vesimaara, vesitavoitemaara;
     DataBase DB;
     TextView juotu;
 
@@ -28,8 +28,17 @@ public class MainVesi extends AppCompatActivity {
         String tunnus = siirto.getExtras().getString("tunnus");
 
         final DataBase DB = new DataBase(this);
-        final ArrayList<String>vesiToday=DB.getVesiToday(tunnus);
+        final ArrayList<String> vesiToday = DB.getVesiToday(tunnus);
+        final ArrayList<String> vesiMuisti = DB.getVesiMuisti(tunnus);
 
+        vesiMuisti.clear();
+        vesiMuisti.addAll(DB.getVesiMuisti(tunnus));
+        int vesitavoitemaaranum = Integer.parseInt(vesiMuisti.get(0)), vesimaaranum = Integer.parseInt(vesiMuisti.get(1));
+
+        vesimaara = findViewById(R.id.vesiMaara);
+        vesimaara.setText(Integer.toString(vesimaaranum));
+        vesitavoitemaara = findViewById(R.id.vesiTavoiteMaara);
+        vesitavoitemaara.setText(Integer.toString(vesitavoitemaaranum));
 
         vesiToday.clear();
         vesiToday.addAll(DB.getVesiToday(tunnus));
@@ -39,8 +48,8 @@ public class MainVesi extends AppCompatActivity {
             int num1 = Integer.parseInt(vesiToday.get(i));
             num2 += num1;
         }
-        juotu= findViewById(R.id.vesiJuotu);
-        String num3=Integer.toString(num2);
+        juotu = findViewById(R.id.vesiJuotu);
+        String num3 = Integer.toString(num2);
         juotu.setText(num3);
 
         tallenna = findViewById(R.id.tallennaVesi);
@@ -49,7 +58,10 @@ public class MainVesi extends AppCompatActivity {
         {
             Intent intent = new Intent(MainVesi.this, MainPage.class);
             int juo2 = Integer.parseInt(juo.getText().toString());
+            int maara = Integer.parseInt(vesimaara.getText().toString());
+            int tavoite = Integer.parseInt(vesitavoitemaara.getText().toString());
             DB.addVesi(tunnus, juo2);
+            DB.setVesiMuisti(tunnus, tavoite, maara);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
         });
