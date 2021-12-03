@@ -3,10 +3,15 @@ package mobiili.projekti;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.app.ActionBar;
 import android.content.ClipData;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -19,7 +24,7 @@ import java.util.Random;
 public class MainPage extends AppCompatActivity {
 
     SwipeRefreshLayout swipeRefresh;
-    TextView inspiroivaQuote,fiilis,uni,vesi;
+    TextView inspiroivaQuote;
     ImageButton asetukset;
 
     @Override
@@ -33,29 +38,81 @@ public class MainPage extends AppCompatActivity {
         final DataBase DB = new DataBase(this);
         final ArrayList<String> quotelista = DB.randomquotelista();
         final ArrayList<String> fiilisToday = DB.getFiilisToday(tunnus);
+        final ArrayList<String> sivuAsetukset = DB.getAsetukset(tunnus);
 
         LinearLayout etuSivu = (LinearLayout) findViewById(R.id.etuLayout);
-        LinearLayout a = new LinearLayout(this);
-        a.setOrientation(LinearLayout.VERTICAL);
+        LinearLayout layout = new LinearLayout(this);
+        layout.setOrientation(LinearLayout.VERTICAL);
+
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, dp(200));
+        params.topMargin = dp(10);
 
         inspiroivaQuote = findViewById(R.id.otsikkoPaasivu);
-        fiilis = findViewById(R.id.view2);
-        vesi = findViewById(R.id.view1);
 
         fiilisToday.clear();
         fiilisToday.addAll(DB.getFiilisToday(tunnus));
-        int index2 = fiilisToday.size();
-        int num2 = 0;
-        int num3 = 0;
-        for (int i = 0; i < index2; i++) {
-            int num1 = Integer.parseInt(fiilisToday.get(i));
-            num2 += num1;
+
+        sivuAsetukset.clear();
+        sivuAsetukset.addAll((DB.getAsetukset(tunnus)));
+        int vesiAsetus = Integer.parseInt(sivuAsetukset.get(0)), uniAsetus = Integer.parseInt(sivuAsetukset.get(1)),
+                fiilisAsetus = Integer.parseInt(sivuAsetukset.get(2));
+
+        if (vesiAsetus == 1) {
+            TextView vesi = new TextView(this);
+            vesi.setLayoutParams(params);
+            vesi.setPadding(dp(10), 0, dp(10), 0);
+            vesi.setBackgroundColor(Color.LTGRAY);
+            vesi.setTextSize((TypedValue.COMPLEX_UNIT_SP), 20);
+            vesi.setGravity(Gravity.CENTER_VERTICAL);
+            etuSivu.addView(vesi);
+
+            vesi.setOnClickListener(v -> {
+                Intent intent = new Intent(MainPage.this, MainVesi.class);
+                intent.putExtra("tunnus", tunnus);
+                startActivity(intent);
+            });
         }
-        if (index2 > 0) {
-            num3 = num2 / index2;
+
+        if (uniAsetus == 1) {
+            TextView uni = new TextView(this);
+            uni.setLayoutParams(params);
+            uni.setPadding(dp(10), 0, dp(10), 0);
+            uni.setBackgroundColor(Color.LTGRAY);
+            uni.setTextSize((TypedValue.COMPLEX_UNIT_SP), 20);
+            uni.setGravity(Gravity.CENTER_VERTICAL);
+            etuSivu.addView(uni);
         }
-        String fiilisT = Integer.toString(num3);
-        fiilis.setText(fiilisT);
+
+        if (fiilisAsetus == 1) {
+            TextView fiilis = new TextView(this);
+            fiilis.setLayoutParams(params);
+            fiilis.setPadding(dp(10), 0, dp(10), 0);
+            fiilis.setBackgroundColor(Color.LTGRAY);
+            fiilis.setTextSize((TypedValue.COMPLEX_UNIT_SP), 20);
+            fiilis.setGravity(Gravity.CENTER_VERTICAL);
+            etuSivu.addView(fiilis);
+
+            fiilisToday.clear();
+            fiilisToday.addAll(DB.getFiilisToday(tunnus));
+            int index2 = fiilisToday.size(), num2 = 0, num3 = 0;
+            for (int i = 0; i < index2; i++) {
+                int num1 = Integer.parseInt(fiilisToday.get(i));
+                num2 += num1;
+            }
+            if (index2 > 0) {
+                num3 = num2 / index2;
+            }
+            String fiilisT = Integer.toString(num3), fiilisNyt = fiilisToday.get(index2 - 1);
+            fiilis.setText("Fiilis nyt: " + fiilisNyt + "\nPäivän fiilis: " + fiilisT);
+
+            fiilis.setOnClickListener(v -> {
+                Intent intent = new Intent(MainPage.this, MainFiilis.class);
+                intent.putExtra("tunnus", tunnus);
+                startActivity(intent);
+            });
+        }
 
         swipeRefresh = findViewById(R.id.swipeRefresh);
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -71,18 +128,6 @@ public class MainPage extends AppCompatActivity {
             }
         });
 
-        /*
-        TextView vesi = new TextView(this);
-        TextView uni = new TextView(this);
-        TextView joku = new TextView(this);
-        TextView joku2 = new TextView(this);
-
-        a.addView(vesi);
-        a.addView(uni);
-        a.addView(joku);
-        a.addView(joku2);
-        etuSivu.addView(a);*/
-
         asetukset = (ImageButton) findViewById(R.id.asetukset);
 
         asetukset.setOnClickListener(v -> {
@@ -90,17 +135,11 @@ public class MainPage extends AppCompatActivity {
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
         });
+    }
 
-        fiilis.setOnClickListener(v -> {
-            Intent intent = new Intent(MainPage.this, MainFiilis.class);
-            intent.putExtra("tunnus", tunnus);
-            startActivity(intent);
-        });
-
-        vesi.setOnClickListener(v -> {
-            Intent intent = new Intent(MainPage.this, MainVesi.class);
-            intent.putExtra("tunnus", tunnus);
-            startActivity(intent);
-        });
+    public int dp(float num) {
+        float num1 = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, num, getResources().getDisplayMetrics());
+        int num2 = Math.round(num1);
+        return num2;
     }
 }

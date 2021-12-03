@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="teksti1">20dp</dimen>
+    <dimen name="korkeus1">200dp</dimen>
+    <dimen name="pad1">10dp</dimen>
+</resources>

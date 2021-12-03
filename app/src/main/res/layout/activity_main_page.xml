@@ -18,19 +18,29 @@
 
             <TextView
                 android:id="@+id/otsikkoPaasivu"
-                android:layout_width="wrap_content"
+                android:layout_width="360dp"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
+                android:gravity="center_horizontal"
+                android:layout_centerHorizontal="false"
                 android:text="@string/otsikkoPaasivu"
                 android:textSize="15sp"
                 android:translationZ="15dp" />
-
+            <TextView
+                android:id="@+id/otsikkoPaasivu2"
+                android:layout_width="360dp"
+                android:layout_below="@id/otsikkoPaasivu"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_centerHorizontal="false"
+                android:text=""
+                android:textSize="15sp"
+                android:translationZ="15dp" />
             <ImageButton
                 android:id="@+id/asetukset"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignParentEnd="true"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="0dp"
                 android:background="@null"
                 android:contentDescription="@string/asetukset"
                 android:scaleType="fitCenter"
@@ -41,10 +51,10 @@
                 android:id="@+id/etuLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/otsikkoPaasivu"
-                android:layout_marginTop="10dp"
+                android:layout_below="@id/otsikkoPaasivu2"
+                android:layout_marginTop="-20dp"
                 android:orientation="vertical">
-
+<!--
                 <TextView
                     android:id="@+id/view1"
                     android:layout_width="match_parent"
@@ -76,7 +86,7 @@
                     android:padding="10dp"
                     android:text="Uni"
                     android:textColor="@color/white" />
-
+-->
             </LinearLayout>
         </RelativeLayout>
     </ScrollView>
