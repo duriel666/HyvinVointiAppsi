@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/vesiProg"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="@string/vesimaaraohje"
         android:textSize="20sp" />
 
@@ -62,7 +62,7 @@
         android:layout_height="50dp"
         android:layout_below="@id/vesiMaaraOhje"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:inputType="number"
         android:textAlignment="center"
         android:textSize="25sp" />
@@ -72,7 +72,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/vesiMaaraOhje"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="25dp"
         android:layout_toRightOf="@+id/vesiMaara"
         android:text="@string/ml"
         android:textSize="25sp" />
@@ -83,7 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/vesiMaara"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:paddingHorizontal="40dp"
         android:paddingVertical="15dp"
         android:text="@string/tallenna1"
@@ -95,7 +95,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tallennaVesi"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="40dp"
         android:text="@string/vesitavoiteohje"
         android:textSize="20sp" />
 
@@ -105,7 +105,8 @@
         android:layout_height="50dp"
         android:layout_below="@id/vesiTavoiteOhje"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
+        android:inputType="number"
         android:textAlignment="center"
         android:textSize="25sp" />
 
@@ -114,7 +115,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/vesiTavoiteOhje"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="25dp"
         android:layout_toEndOf="@+id/vesiTavoiteMaara"
         android:text="@string/ml"
         android:textSize="25sp" />

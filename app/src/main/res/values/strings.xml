@@ -43,5 +43,7 @@
     <string name="vesitavoiteohje">Päivittäinen tavoite</string>
     <string name="ml">ml</string>
     <string name="uniohje">Kauanko nukuit?</string>
+    <string name="asetuksetohje">Valitse mitä pääsivulla näytetään</string>
+    <string name="logout">Loggaa ulos</string>
 
 </resources>

@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/otsikkoEtusivu"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:text="@string/tunnustext"
         android:textSize="20sp" />
 
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tunnusEdit"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:text="@string/salasanatext"
         android:textSize="20sp" />
 
@@ -52,7 +52,7 @@
         android:layout_height="40dp"
         android:layout_below="@id/salasana"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:hint="@string/salasana"
         android:inputType="textPassword" />
 
@@ -62,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/salasanaEdit"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:paddingHorizontal="40dp"
         android:paddingVertical="10dp"
         android:text="@string/kirjaudu"
@@ -74,7 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/buttonKirjaudu"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="40dp"
         android:paddingHorizontal="30dp"
         android:paddingVertical="20dp"
         android:text="@string/luotunnus"

@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    tools:context=".SettingsActivity">
+    tools:context=".MainAsetukset">
 
     <TextView
-        android:id="@+id/terve4"
+        android:id="@+id/otsikkoAsetukset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -17,89 +17,74 @@
         android:textSize="15sp" />
 
     <TextView
-        android:id="@+id/asetukset2"
+        android:id="@+id/asetuksetOhje"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/terve4"
+        android:layout_below="@id/otsikkoAsetukset"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        android:text="Valitse mitä pääsivulla näytetään"
+        android:text="@string/asetuksetohje"
         android:textSize="20sp" />
 
     <Switch
         android:id="@+id/switch1"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:layout_below="@id/terve4"
+        android:layout_below="@id/asetuksetOhje"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="100dp"
-        android:paddingHorizontal="30dp"
-        android:text="Fiilis:"
-        android:checked="true"
-        android:textSize="20sp"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
-
-    <Switch
-        android:id="@+id/switch2"
-        android:checked="true"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_below="@id/switch1"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="20dp"
-        android:paddingHorizontal="30dp"
+        android:layout_marginTop="50dp"
+        android:paddingHorizontal="50dp"
         android:text="Vesi:"
         android:textSize="20sp"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <Switch
-        android:id="@+id/switch3"
-        android:checked="true"
+        android:id="@+id/switch2"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:layout_below="@id/switch2"
+        android:layout_below="@id/switch1"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="20dp"
-        android:paddingHorizontal="30dp"
+        android:layout_marginTop="30dp"
+        android:paddingHorizontal="50dp"
         android:text="Uni:"
         android:textSize="20sp"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <Switch
-        android:id="@+id/switch4"
-        android:checked="true"
+        android:id="@+id/switch3"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:layout_below="@id/switch3"
+        android:layout_below="@id/switch2"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="20dp"
-        android:paddingHorizontal="30dp"
-        android:text="Neljäs:"
+        android:layout_marginTop="30dp"
+        android:paddingHorizontal="50dp"
+        android:text="Fiilis:"
         android:textSize="20sp"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
-    <Switch
-        android:id="@+id/switch5"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_below="@id/switch4"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="20dp"
-        android:paddingHorizontal="30dp"
-        android:text="Ja vielä yksi asetus:"
-        android:textSize="20sp"
-        android:checked="true"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <Button
         android:id="@+id/tallenna1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/switch5"
+        android:layout_below="@id/switch3"
+        android:textSize="20sp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="30dp"
         android:paddingHorizontal="40dp"
         android:paddingVertical="15dp"
         android:text="@string/tallenna1" />
+
+    <Button
+        android:id="@+id/tallenna2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tallenna1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:textSize="15sp"
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="15dp"
+        android:text="@string/logout" />
 
 </RelativeLayout>

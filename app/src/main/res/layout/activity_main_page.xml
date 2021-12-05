@@ -20,21 +20,12 @@
                 android:id="@+id/otsikkoPaasivu"
                 android:layout_width="360dp"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
                 android:layout_centerHorizontal="false"
+                android:gravity="center_horizontal"
                 android:text="@string/otsikkoPaasivu"
                 android:textSize="15sp"
                 android:translationZ="15dp" />
-            <TextView
-                android:id="@+id/otsikkoPaasivu2"
-                android:layout_width="360dp"
-                android:layout_below="@id/otsikkoPaasivu"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:layout_centerHorizontal="false"
-                android:text=""
-                android:textSize="15sp"
-                android:translationZ="15dp" />
+
             <ImageButton
                 android:id="@+id/asetukset"
                 android:layout_width="30dp"
@@ -51,42 +42,10 @@
                 android:id="@+id/etuLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/otsikkoPaasivu2"
-                android:layout_marginTop="-20dp"
+                android:layout_below="@id/otsikkoPaasivu"
+                android:layout_marginTop="0dp"
                 android:orientation="vertical">
-<!--
-                <TextView
-                    android:id="@+id/view1"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:background="@color/harmaa"
-                    android:gravity="center_vertical"
-                    android:padding="10dp"
-                    android:text="Vettä juotu tänään:\npäivän tavoite:"
-                    android:textColor="@color/white" />
 
-                <TextView
-                    android:id="@+id/view2"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/harmaa"
-                    android:gravity="center_vertical"
-                    android:padding="10dp"
-                    android:text="Fiilis"
-                    android:textColor="@color/white" />
-
-                <TextView
-                    android:id="@+id/view3"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/harmaa"
-                    android:gravity="center_vertical"
-                    android:padding="10dp"
-                    android:text="Uni"
-                    android:textColor="@color/white" />
--->
             </LinearLayout>
         </RelativeLayout>
     </ScrollView>

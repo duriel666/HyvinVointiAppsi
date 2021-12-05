@@ -29,7 +29,7 @@ public class DataBase extends SQLiteOpenHelper {
         MyDB.execSQL("create Table uni(aika datetime primary key, tunnus TEXT, minuutit INT)");
 
         MyDB.execSQL("create Table asetukset(tunnus TEXT primary key,vesi int,uni int,fiilis int)");
-        MyDB.execSQL("create Table vesimuisti(tunnus TEXT primary key, vesitavoite int)");
+        MyDB.execSQL("create Table vesimuisti(tunnus TEXT primary key, vesitavoite int,vesijuodaan int)");
 
         MyDB.execSQL("insert into quotes(quote) values('HyvinVointia paskoihin päiviin!')");
         MyDB.execSQL("insert into quotes(quote) values('Aina voisi mennä huonomminkin')");
@@ -61,28 +61,28 @@ public class DataBase extends SQLiteOpenHelper {
     public Boolean insertData(String tunnus, String salasana) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        int i=1;
-        int i2=2400;
+        int i = 1, i2 = 2400, i3 = 200;
         cv.put("tunnus", tunnus);
         cv.put("salasana", salasana);
         long result = MyDB.insert("users", null, cv);
         cv.clear();
-        cv.put("tunnus",tunnus);
-        cv.put("vesi",i);
-        cv.put("uni",i);
-        cv.put("fiilis",i);
-        MyDB.insert("asetukset",null,cv);
+        cv.put("tunnus", tunnus);
+        cv.put("vesi", i);
+        cv.put("uni", i);
+        cv.put("fiilis", i);
+        MyDB.insert("asetukset", null, cv);
         cv.clear();
-        cv.put("tunnus",tunnus);
-        cv.put("vesitavoite",i2);
-        MyDB.insert("vesimuisti",null,cv);
+        cv.put("tunnus", tunnus);
+        cv.put("vesitavoite", i2);
+        cv.put("vesijuodaan", i3);
+        MyDB.insert("vesimuisti", null, cv);
         return result != -1;
     }
 
     public Boolean checktunnus(String tunnus) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
         Cursor c = MyDB.rawQuery("select * from users where tunnus =?", new String[]{tunnus});
-        boolean count=c.getCount()>0;
+        boolean count = c.getCount() > 0;
         c.close();
         return count;
     }
@@ -90,7 +90,7 @@ public class DataBase extends SQLiteOpenHelper {
     public Boolean checksalasana(String tunnus, String salasana) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
         Cursor c = MyDB.rawQuery("select * from users where tunnus=? and salasana=?", new String[]{tunnus, salasana});
-        boolean count=c.getCount()>0;
+        boolean count = c.getCount() > 0;
         c.close();
         return count;
     }
@@ -101,7 +101,7 @@ public class DataBase extends SQLiteOpenHelper {
         c.moveToFirst();
         ArrayList<String> quotelista = new ArrayList<>();
         while (!c.isAfterLast()) {
-            if (c.getCount() > 0) {
+            if ((c != null) && (c.getCount() > 0)) {
                 quotelista.add(c.getString(c.getColumnIndexOrThrow("quote")));
                 c.moveToNext();
             }
@@ -127,12 +127,12 @@ public class DataBase extends SQLiteOpenHelper {
 
     public ArrayList<String> getFiilisToday(String tunnus) {
         SQLiteDatabase MyDB = this.getReadableDatabase();
-        Cursor c = MyDB.rawQuery("select * from fiilis where tunnus like (tunnus) and datetime(" +
+        Cursor c = MyDB.rawQuery("select * from fiilis where tunnus =" + tunnus + " and datetime(" +
                 "'now', 'start of day')", null);
         c.moveToFirst();
         ArrayList<String> fiilisToday = new ArrayList<>();
         while ((!c.isAfterLast())) {
-            if (c.getCount() > 0) {
+            if ((c != null) && (c.getCount() > 0)) {
                 fiilisToday.add(c.getString(c.getColumnIndexOrThrow("fiilis")));
                 c.moveToNext();
             }
@@ -152,12 +152,12 @@ public class DataBase extends SQLiteOpenHelper {
 
     public ArrayList<String> getVesiToday(String tunnus) {
         SQLiteDatabase MyDB = this.getReadableDatabase();
-        Cursor c = MyDB.rawQuery("select * from vesi where tunnus like (tunnus) and datetime(" +
+        Cursor c = MyDB.rawQuery("select * from vesi where tunnus =" + tunnus + " and datetime(" +
                 "'now', 'start of day')", null);
         c.moveToFirst();
         ArrayList<String> vesiToday = new ArrayList<>();
         while ((!c.isAfterLast())) {
-            if (c.getCount() > 0) {
+            if ((c != null) && (c.getCount() > 0)) {
                 vesiToday.add(c.getString(c.getColumnIndexOrThrow("vesiml")));
                 c.moveToNext();
             }
@@ -178,7 +178,7 @@ public class DataBase extends SQLiteOpenHelper {
 
     public ArrayList<String> getAsetukset(String tunnus) {
         SQLiteDatabase MyDB = this.getReadableDatabase();
-        Cursor c = MyDB.rawQuery("select * from asetukset where tunnus like (tunnus)", null);
+        Cursor c = MyDB.rawQuery("select * from asetukset where tunnus =" + tunnus, null);
         c.moveToFirst();
         ArrayList<String> asetukset = new ArrayList<>();
         asetukset.add(c.getString(c.getColumnIndexOrThrow("vesi")));
@@ -186,5 +186,25 @@ public class DataBase extends SQLiteOpenHelper {
         asetukset.add(c.getString(c.getColumnIndexOrThrow("fiilis")));
         c.close();
         return asetukset;
+    }
+
+    public void setVesiMuisti(String tunnus, int vesitavoite, int vesijuodaan) {
+        SQLiteDatabase MyDB = getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("tunnus", tunnus);
+        cv.put("vesitavoite", vesitavoite);
+        cv.put("vesijuodaan", vesijuodaan);
+        MyDB.replace("vesimuisti", null, cv);
+    }
+
+    public ArrayList<String> getVesiMuisti(String tunnus) {
+        SQLiteDatabase MyDB = this.getReadableDatabase();
+        Cursor c = MyDB.rawQuery("select * from vesimuisti where tunnus =" + tunnus, null);
+                c.moveToFirst();
+        ArrayList<String> vesimuisti = new ArrayList<>();
+        vesimuisti.add(c.getString(c.getColumnIndexOrThrow("vesitavoite")));
+        vesimuisti.add(c.getString(c.getColumnIndexOrThrow("vesijuodaan")));
+        c.close();
+        return vesimuisti;
     }
 }
