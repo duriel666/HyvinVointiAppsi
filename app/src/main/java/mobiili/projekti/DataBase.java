@@ -127,8 +127,8 @@ public class DataBase extends SQLiteOpenHelper {
 
     public ArrayList<String> getFiilisToday(String tunnus) {
         SQLiteDatabase MyDB = this.getReadableDatabase();
-        Cursor c = MyDB.rawQuery("select * from fiilis where tunnus =" + tunnus + " and datetime(" +
-                "'now', 'start of day')", null);
+        Cursor c = MyDB.rawQuery("select * from fiilis where tunnus =? and datetime(" +
+                "'now', 'start of day')", new String[]{tunnus});
         c.moveToFirst();
         ArrayList<String> fiilisToday = new ArrayList<>();
         while ((!c.isAfterLast())) {
@@ -152,8 +152,8 @@ public class DataBase extends SQLiteOpenHelper {
 
     public ArrayList<String> getVesiToday(String tunnus) {
         SQLiteDatabase MyDB = this.getReadableDatabase();
-        Cursor c = MyDB.rawQuery("select * from vesi where tunnus =" + tunnus + " and datetime(" +
-                "'now', 'start of day')", null);
+        Cursor c = MyDB.rawQuery("select * from vesi where tunnus =? and datetime(" +
+                "'now', 'start of day')", new String[]{tunnus});
         c.moveToFirst();
         ArrayList<String> vesiToday = new ArrayList<>();
         while ((!c.isAfterLast())) {
@@ -178,7 +178,7 @@ public class DataBase extends SQLiteOpenHelper {
 
     public ArrayList<String> getAsetukset(String tunnus) {
         SQLiteDatabase MyDB = this.getReadableDatabase();
-        Cursor c = MyDB.rawQuery("select * from asetukset where tunnus =" + tunnus, null);
+        Cursor c = MyDB.rawQuery("select * from asetukset where tunnus =?", new String[]{tunnus});
         c.moveToFirst();
         ArrayList<String> asetukset = new ArrayList<>();
         asetukset.add(c.getString(c.getColumnIndexOrThrow("vesi")));
@@ -199,7 +199,7 @@ public class DataBase extends SQLiteOpenHelper {
 
     public ArrayList<String> getVesiMuisti(String tunnus) {
         SQLiteDatabase MyDB = this.getReadableDatabase();
-        Cursor c = MyDB.rawQuery("select * from vesimuisti where tunnus =" + tunnus, null);
+        Cursor c = MyDB.rawQuery("select * from vesimuisti where tunnus =?", new String[]{tunnus});
                 c.moveToFirst();
         ArrayList<String> vesimuisti = new ArrayList<>();
         vesimuisti.add(c.getString(c.getColumnIndexOrThrow("vesitavoite")));
