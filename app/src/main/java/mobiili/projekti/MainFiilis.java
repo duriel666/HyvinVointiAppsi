@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class MainFiilis extends AppCompatActivity {
 
     Button tallenna;
@@ -25,29 +27,42 @@ public class MainFiilis extends AppCompatActivity {
         String tunnus = siirto.getExtras().getString("tunnus");
 
         final DataBase DB = new DataBase(this);
+        final ArrayList<String> fiilisToday = DB.getFiilisToday(tunnus);
 
-        image = (ImageView)  findViewById(R.id.fiilisKuva);
+        image = (ImageView) findViewById(R.id.fiilisKuva);
         image.setImageResource(R.drawable.ok);
         fiilisAsteikko = (SeekBar) findViewById(R.id.fiilisAsteikko);
         fiilisArvo = (TextView) findViewById(R.id.fiilisArvo);
         fiilisArvo.setText("-  " + fiilisAsteikko.getProgress() + "  -");
 
+        fiilisToday.clear();
+        fiilisToday.addAll(DB.getFiilisToday(tunnus));
+        int index2 = fiilisToday.size(), num2 = 0, num3 = 0;
+        for (int i = 0; i < index2; i++) {
+            int num1 = Integer.parseInt(fiilisToday.get(i));
+            num2 += num1;
+        }
+        if (index2 > 0) {
+            num3 = num2 / index2;
+        }
+        String fiilisT = Integer.toString(num3);
+        if (index2 > 0) {
+            String fiilisNyt = fiilisToday.get(index2 - 1);
+            int kohta = Integer.parseInt(fiilisNyt);
+            fiilisAsteikko.setProgress(kohta);
+            fiilisArvo.setText("-  " + fiilisAsteikko.getProgress() + "  -");
+            naama(kohta);
+        } else {
+            fiilisAsteikko.setProgress(0);
+            fiilisArvo.setText("-  " + fiilisAsteikko.getProgress() + "  -");
+        }
         fiilisAsteikko.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             int arvo = 0;
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 arvo = i;
-
-                if (i < -33) {
-                    image.setImageResource(R.drawable.sad);
-                }
-                if (i >= -33 & i <= 33) {
-                    image.setImageResource(R.drawable.ok);
-                }
-                if (i > 33) {
-                    image.setImageResource(R.drawable.happy);
-                }
+                naama(i);
             }
 
             @Override
@@ -69,5 +84,17 @@ public class MainFiilis extends AppCompatActivity {
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
         });
+    }
+
+    public void naama(int kohta) {
+        if (kohta < -33) {
+            image.setImageResource(R.drawable.sad);
+        }
+        if (kohta >= -33 & kohta <= 33) {
+            image.setImageResource(R.drawable.ok);
+        }
+        if (kohta > 33) {
+            image.setImageResource(R.drawable.happy);
+        }
     }
 }
