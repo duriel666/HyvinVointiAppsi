@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         tunnus = findViewById(R.id.tunnusEdit);
         salasana = findViewById(R.id.salasanaEdit);
@@ -51,5 +54,11 @@ public class MainActivity extends AppCompatActivity {
         reg.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, regPage.class));
         });
+    }
+
+    public int dp(float num) {
+        float num1 = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, num, getResources().getDisplayMetrics());
+        int num2 = Math.round(num1);
+        return num2;
     }
 }

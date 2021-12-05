@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MainFiilis extends AppCompatActivity {
 
@@ -22,7 +24,7 @@ public class MainFiilis extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_fiilis);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
         Intent siirto = getIntent();
         String tunnus = siirto.getExtras().getString("tunnus");
 
@@ -96,5 +98,11 @@ public class MainFiilis extends AppCompatActivity {
         if (kohta > 33) {
             image.setImageResource(R.drawable.happy);
         }
+    }
+
+    public int dp(float num) {
+        float num1 = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, num, getResources().getDisplayMetrics());
+        int num2 = Math.round(num1);
+        return num2;
     }
 }

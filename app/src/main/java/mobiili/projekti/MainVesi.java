@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MainVesi extends AppCompatActivity {
 
@@ -23,7 +25,7 @@ public class MainVesi extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_vesi);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
         Intent siirto = getIntent();
         String tunnus = siirto.getExtras().getString("tunnus");
 
@@ -65,5 +67,11 @@ public class MainVesi extends AppCompatActivity {
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
         });
+    }
+
+    public int dp(float num) {
+        float num1 = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, num, getResources().getDisplayMetrics());
+        int num2 = Math.round(num1);
+        return num2;
     }
 }
