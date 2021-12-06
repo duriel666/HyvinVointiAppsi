@@ -47,5 +47,6 @@
     <string name="logout">Loggaa ulos</string>
     <string name="otsikkoTehtavalista">Tehtävä lista</string>
     <string name="otsikkoPaivakirja">Päiväkirja</string>
+    <string name="uusimerkinta">Uusi merkintä</string>
 
 </resources>

@@ -46,13 +46,13 @@ public class MainTehtavalista extends AppCompatActivity {
             String tehtava = tehtavalista.get(i);
             TextView tl = new TextView(this); // tähän tarvitaan joku map? mihin toisena
             // tietona numero ja toisena merkintä ja checkbox perään
-            //CheckBox
+            // CheckBox
             tl.setLayoutParams(params);
             tl.setPadding(dp(10), 0, dp(10), 10);
             tl.setBackgroundColor(Color.LTGRAY);
             tl.setTextSize((TypedValue.COMPLEX_UNIT_SP), 20);
             tl.setGravity(Gravity.CENTER_VERTICAL);
-            tl.setText("merkinta :"+numero+" / "+index+" - "+tehtava);
+            tl.setText("merkinta :" + numero + " / " + index + " - " + tehtava);
             layouttehtavalista.addView(tl);
         }
 

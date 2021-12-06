@@ -32,11 +32,14 @@ public class MainAsetukset extends AppCompatActivity {
         asetukset.clear();
         asetukset.addAll(DB.getAsetukset(tunnus));
         int vesi = Integer.parseInt(asetukset.get(0)), uni = Integer.parseInt(asetukset.get(1)),
-                fiilis = Integer.parseInt(asetukset.get(2));
+                fiilis = Integer.parseInt(asetukset.get(2)), tehtava = Integer.parseInt(asetukset.get(3)),
+                        paivakirja = Integer.parseInt(asetukset.get(4));
 
         @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switch1 = (Switch) findViewById(R.id.switch1);
         @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switch2 = (Switch) findViewById(R.id.switch2);
         @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switch3 = (Switch) findViewById(R.id.switch3);
+        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switch4 = (Switch) findViewById(R.id.switch4);
+        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switch5 = (Switch) findViewById(R.id.switch5);
 
         if (vesi == 1) {
             switch1.setChecked(true);
@@ -56,13 +59,25 @@ public class MainAsetukset extends AppCompatActivity {
         if (fiilis != 1) {
             switch3.setChecked(false);
         }
+        if (tehtava == 1) {
+            switch4.setChecked(true);
+        }
+        if (tehtava != 1) {
+            switch4.setChecked(false);
+        }
+        if (paivakirja == 1) {
+            switch5.setChecked(true);
+        }
+        if (paivakirja != 1) {
+            switch5.setChecked(false);
+        }
 
         tallenna = (Button) findViewById(R.id.tallenna1);
 
         tallenna.setOnClickListener(v -> {
             Intent intent = new Intent(MainAsetukset.this, MainPage.class);
             intent.putExtra("tunnus", tunnus);
-            int s1, s2, s3;
+            int s1, s2, s3, s4, s5;
             if (switch1.isChecked()) {
                 s1 = 1;
             } else {
@@ -78,7 +93,17 @@ public class MainAsetukset extends AppCompatActivity {
             } else {
                 s3 = 0;
             }
-            DB.setAsetukset(tunnus, s1, s2, s3);
+            if (switch4.isChecked()) {
+                s4 = 1;
+            } else {
+                s4 = 0;
+            }
+            if (switch5.isChecked()) {
+                s5 = 1;
+            } else {
+                s5 = 0;
+            }
+            DB.setAsetukset(tunnus, s1, s2, s3, s4, s5);
             startActivity(intent);
         });
 
