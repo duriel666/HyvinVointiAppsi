@@ -56,7 +56,8 @@ public class MainPage extends AppCompatActivity {
         sivuAsetukset.clear();
         sivuAsetukset.addAll(DB.getAsetukset(tunnus));
         int vesiAsetus = Integer.parseInt(sivuAsetukset.get(0)), uniAsetus = Integer.parseInt(sivuAsetukset.get(1)),
-                fiilisAsetus = Integer.parseInt(sivuAsetukset.get(2));
+                fiilisAsetus = Integer.parseInt(sivuAsetukset.get(2)), tehtavaAsetus = Integer.parseInt(sivuAsetukset.get(3)),
+                paivakirjaAsetus = Integer.parseInt(sivuAsetukset.get(4));
 
         if (vesiAsetus == 1) {
             TextView vesi = new TextView(this);
@@ -138,6 +139,42 @@ public class MainPage extends AppCompatActivity {
 
             fiilis.setOnClickListener(v -> {
                 Intent intent = new Intent(MainPage.this, MainFiilis.class);
+                intent.putExtra("tunnus", tunnus);
+                startActivity(intent);
+            });
+        }
+
+        if (tehtavaAsetus == 1) {
+            TextView tehtava = new TextView(this);
+            tehtava.setLayoutParams(params);
+            tehtava.setPadding(dp(10), 0, dp(10), 0);
+            tehtava.setBackgroundColor(Color.LTGRAY);
+            tehtava.setTextSize((TypedValue.COMPLEX_UNIT_SP), 20);
+            tehtava.setGravity(Gravity.CENTER_VERTICAL);
+            etuSivu.addView(tehtava);
+
+            tehtava.setText("Tehtävälista");
+
+            tehtava.setOnClickListener(v -> {
+                Intent intent = new Intent(MainPage.this, MainTehtavalista.class);
+                intent.putExtra("tunnus", tunnus);
+                startActivity(intent);
+            });
+        }
+
+        if (paivakirjaAsetus == 1) {
+            TextView paivakirja = new TextView(this);
+            paivakirja.setLayoutParams(params);
+            paivakirja.setPadding(dp(10), 0, dp(10), 0);
+            paivakirja.setBackgroundColor(Color.LTGRAY);
+            paivakirja.setTextSize((TypedValue.COMPLEX_UNIT_SP), 20);
+            paivakirja.setGravity(Gravity.CENTER_VERTICAL);
+            etuSivu.addView(paivakirja);
+
+            paivakirja.setText("Päiväkirja");
+
+            paivakirja.setOnClickListener(v -> {
+                Intent intent = new Intent(MainPage.this, MainPaivakirja.class);
                 intent.putExtra("tunnus", tunnus);
                 startActivity(intent);
             });

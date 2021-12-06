@@ -25,12 +25,36 @@
                 android:textSize="15sp"
                 android:translationZ="15dp" />
 
+            <EditText
+                android:id="@+id/paivakirjamerkinta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/otsikkoPaivakirja"
+                android:layout_marginTop="10dp"
+                android:background="#eeeeee"
+                android:hint="@string/uusimerkinta"
+                android:minHeight="60dp"
+                android:padding="5dp"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/tallennaPaivakirja"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/paivakirjamerkinta"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:paddingHorizontal="40dp"
+                android:paddingVertical="15dp"
+                android:textSize="20sp"
+                android:text="@string/tallenna1" />
+
             <LinearLayout
                 android:id="@+id/paivakirjaLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/otsikkoPaivakirja"
-                android:layout_marginTop="0dp"
+                android:layout_below="@id/tallennaPaivakirja"
+                android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
             </LinearLayout>

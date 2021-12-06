@@ -61,13 +61,35 @@
         android:text="Fiilis:"
         android:textSize="20sp"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
+    <Switch
+        android:id="@+id/switch4"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@id/switch3"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="30dp"
+        android:paddingHorizontal="50dp"
+        android:text="Tehtävät:"
+        android:textSize="20sp"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+    <Switch
+        android:id="@+id/switch5"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@id/switch4"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="30dp"
+        android:paddingHorizontal="50dp"
+        android:text="Päiväkirja:"
+        android:textSize="20sp"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
 
 
     <Button
         android:id="@+id/tallenna1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/switch3"
+        android:layout_below="@id/switch5"
         android:textSize="20sp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
