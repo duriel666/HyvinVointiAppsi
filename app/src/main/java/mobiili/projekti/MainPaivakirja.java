@@ -53,12 +53,12 @@ public class MainPaivakirja extends AppCompatActivity {
         TextView pkm = new TextView(this);
         final TextView[] p = new TextView[index];
         if (index > 0) {
-            int pknum = index-3;
+            int pknum = index - 3;
             numero = 1;
             for (int i = 0; i <= index; i++) {
                 p[numero] = new TextView(this);
-                p[numero].setText("Merkintä:  " + paivakirja.get(pknum + 1) + " / " + index / 3 + "        "
-                        + paivakirja.get(pknum) + "\n" + paivakirja.get(pknum + 2));
+                p[numero].setText("Merkintä:  " + paivakirja.get(pknum + 1) + " / " + index / 3 + "\n"
+                        + paivakirja.get(pknum) + "\n\n" + paivakirja.get(pknum + 2));
                 p[numero].setLayoutParams(params);
                 p[numero].setPadding(dp(10), 0, dp(10), 10);
                 p[numero].setBackgroundColor(Color.LTGRAY);
@@ -69,9 +69,6 @@ public class MainPaivakirja extends AppCompatActivity {
                 pknum -= 3;
                 numero += 1;
             }
-        } else {
-            pkm.setText("Ei merkintöjä");
-            pkm.setGravity(Gravity.CENTER_HORIZONTAL);
         }
 
         tallenna = (Button) findViewById(R.id.tallennaPaivakirja);

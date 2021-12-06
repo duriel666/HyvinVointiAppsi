@@ -27,8 +27,8 @@ public class DataBase extends SQLiteOpenHelper {
         MyDB.execSQL("create Table vesi(aika datetime primary key, tunnus TEXT, vesiml INT)");
         MyDB.execSQL("create Table fiilis(aika datetime primary key, tunnus TEXT, fiilis INT)");
         MyDB.execSQL("create Table uni(aika datetime primary key, tunnus TEXT, minuutit INT)");
-        MyDB.execSQL("create Table tehtavalista(numero int primary key,aika datetime, tunnus TEXT, tehtava TEXT, tehty int)");
-        MyDB.execSQL("create Table paivakirja(numero int primary key,aika datetime, tunnus TEXT, merkinta TEXT)");
+        MyDB.execSQL("create Table tehtavalista(numero int ,aika datetime primary key, tunnus TEXT, tehtava TEXT, tehty int)");
+        MyDB.execSQL("create Table paivakirja(numero int ,aika datetime primary key, tunnus TEXT, merkinta TEXT)");
 
         MyDB.execSQL("create Table asetukset(tunnus TEXT primary key,vesi int,uni int,fiilis int,tehtava int,paivakirja int)");
         MyDB.execSQL("create Table vesimuisti(tunnus TEXT primary key, vesitavoite int,vesijuodaan int)");
@@ -234,7 +234,7 @@ public class DataBase extends SQLiteOpenHelper {
         return tehtavalista;
     }
 
-    public void addTehtavalista(String tunnus, int numero, String aika,String tehtava,int tehty) {
+    public void addTehtavalista(String tunnus, int numero, String aika, String tehtava, int tehty) {
         SQLiteDatabase MyDB = getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("tunnus", tunnus);
