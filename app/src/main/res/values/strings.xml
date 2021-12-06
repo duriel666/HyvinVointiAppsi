@@ -45,5 +45,7 @@
     <string name="uniohje">Kauanko nukuit?</string>
     <string name="asetuksetohje">Valitse mitä pääsivulla näytetään</string>
     <string name="logout">Loggaa ulos</string>
+    <string name="otsikkoTehtavalista">Tehtävä lista</string>
+    <string name="otsikkoPaivakirja">Päiväkirja</string>
 
 </resources>

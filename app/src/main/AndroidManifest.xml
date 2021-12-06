@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MobiiliProjekti">
         <activity
+            android:name=".MainPaivakirja"
+            android:exported="false" />
+        <activity
+            android:name=".MainTehtavalista"
+            android:exported="false" />
+        <activity
             android:name=".MainAsetukset"
             android:exported="false" />
         <activity

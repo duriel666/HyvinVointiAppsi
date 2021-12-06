@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.util.Objects;
 
 public class regPage extends AppCompatActivity {
 
@@ -19,7 +22,7 @@ public class regPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reg_page);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         tunnus = findViewById(R.id.tunnusreg);
         salasana1 = findViewById(R.id.salasanareg1);
@@ -53,5 +56,11 @@ public class regPage extends AppCompatActivity {
                 Toast.makeText(regPage.this, "Salasanat eivät täsmää", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public int dp(float num) {
+        float num1 = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, num, getResources().getDisplayMetrics());
+        int num2 = Math.round(num1);
+        return num2;
     }
 }

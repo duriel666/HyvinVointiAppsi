@@ -27,6 +27,7 @@ public class DataBase extends SQLiteOpenHelper {
         MyDB.execSQL("create Table vesi(aika datetime primary key, tunnus TEXT, vesiml INT)");
         MyDB.execSQL("create Table fiilis(aika datetime primary key, tunnus TEXT, fiilis INT)");
         MyDB.execSQL("create Table uni(aika datetime primary key, tunnus TEXT, minuutit INT)");
+        MyDB.execSQL("create Table tehtavalista(aika datetime primary key, tunnus TEXT, tehtava TEXT, tehty int)");
 
         MyDB.execSQL("create Table asetukset(tunnus TEXT primary key,vesi int,uni int,fiilis int)");
         MyDB.execSQL("create Table vesimuisti(tunnus TEXT primary key, vesitavoite int,vesijuodaan int)");
@@ -200,11 +201,45 @@ public class DataBase extends SQLiteOpenHelper {
     public ArrayList<String> getVesiMuisti(String tunnus) {
         SQLiteDatabase MyDB = this.getReadableDatabase();
         Cursor c = MyDB.rawQuery("select * from vesimuisti where tunnus =?", new String[]{tunnus});
-                c.moveToFirst();
+        c.moveToFirst();
         ArrayList<String> vesimuisti = new ArrayList<>();
         vesimuisti.add(c.getString(c.getColumnIndexOrThrow("vesitavoite")));
         vesimuisti.add(c.getString(c.getColumnIndexOrThrow("vesijuodaan")));
         c.close();
         return vesimuisti;
+    }
+
+    public ArrayList<String> getTehtavalista(String tunnus) {
+        SQLiteDatabase MyDB = this.getReadableDatabase();
+        Cursor c = MyDB.rawQuery("select * from tehtavalista where tunnus =?", new String[]{tunnus});
+        c.moveToFirst();
+        ArrayList<String> tehtavalista = new ArrayList<>();
+        while ((!c.isAfterLast())) {
+            if ((c != null) && (c.getCount() > 0)) {
+                tehtavalista.add(c.getString(c.getColumnIndexOrThrow("tehtava")));
+                tehtavalista.add(c.getString(c.getColumnIndexOrThrow("tehty")));
+                c.moveToNext();
+            }
+        }
+
+        c.close();
+        return tehtavalista;
+    }
+
+    public ArrayList<String> getPaivakirja(String tunnus) {
+        SQLiteDatabase MyDB = this.getReadableDatabase();
+        Cursor c = MyDB.rawQuery("select * from paivakirja where tunnus =?", new String[]{tunnus});
+        c.moveToFirst();
+        ArrayList<String> paivakirja = new ArrayList<>();
+        while ((!c.isAfterLast())) {
+            if ((c != null) && (c.getCount() > 0)) {
+                paivakirja.add(c.getString(c.getColumnIndexOrThrow("datetime")));
+                paivakirja.add(c.getString(c.getColumnIndexOrThrow("teksti")));
+                c.moveToNext();
+            }
+        }
+
+        c.close();
+        return paivakirja;
     }
 }
