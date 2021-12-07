@@ -50,14 +50,14 @@ public class MainPaivakirja extends AppCompatActivity {
         paivakirja.addAll(DB.getPaivakirja(tunnus));
         int index = paivakirja.size(), num2 = 0, num3 = 0;
 
-        TextView pkm = new TextView(this);
         final TextView[] p = new TextView[index];
         if (index > 0) {
             int pknum = index - 3;
+            int index2 = index / 3;
             numero = 1;
-            for (int i = 0; i <= index; i++) {
+            for (int i = 1; i <= index2; i++) { // 5, 9 ja 13 poistaa ensimmäisen näkyvistä
                 p[numero] = new TextView(this);
-                p[numero].setText("Merkintä:  " + paivakirja.get(pknum + 1) + " / " + index / 3 + "\n"
+                p[numero].setText("Merkintä:  " + paivakirja.get(pknum + 1) + " / " + index2 + "\n"
                         + paivakirja.get(pknum) + "\n\n" + paivakirja.get(pknum + 2));
                 p[numero].setLayoutParams(params);
                 p[numero].setPadding(dp(10), 0, dp(10), 10);
@@ -65,7 +65,6 @@ public class MainPaivakirja extends AppCompatActivity {
                 p[numero].setTextSize((TypedValue.COMPLEX_UNIT_SP), 20);
                 p[numero].setGravity(Gravity.CENTER_VERTICAL);
                 layoutPaivakirja.addView(p[numero]);
-                i += 3;
                 pknum -= 3;
                 numero += 1;
             }
@@ -81,7 +80,7 @@ public class MainPaivakirja extends AppCompatActivity {
             } else {
                 numero = 1;
             }
-
+            // tarkistus onko tekstiä
             DB.addPaivakirja(tunnus, numero, merkinta.getText().toString());
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);

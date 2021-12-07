@@ -135,7 +135,7 @@ public class MainPage extends AppCompatActivity {
                 String fiilisNyt = fiilisToday.get(index2 - 1);
                 fiilis.setText("Fiilis\n\nFiilis nyt: " + fiilisNyt + "\nPäivän fiilis: " + fiilisT);
             } else
-                fiilis.setText("Fiilis\nFiilis nyt: \nPäivän fiilis: ");
+                fiilis.setText("Fiilis\n\nFiilis nyt: \nPäivän fiilis: ");
 
             fiilis.setOnClickListener(v -> {
                 Intent intent = new Intent(MainPage.this, MainFiilis.class);
