@@ -55,7 +55,7 @@ public class MainPaivakirja extends AppCompatActivity {
             int pknum = index - 3;
             int index2 = index / 3;
             numero = 1;
-            for (int i = 1; i <= index2; i++) { // 5, 9 ja 13 poistaa ensimmäisen näkyvistä
+            for (int i = 1; i <= index2; i++) {
                 p[numero] = new TextView(this);
                 p[numero].setText("Merkintä:  " + paivakirja.get(pknum + 1) + " / " + index2 + "\n"
                         + paivakirja.get(pknum) + "\n\n" + paivakirja.get(pknum + 2));
