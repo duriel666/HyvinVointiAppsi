@@ -26,12 +26,13 @@ public class DataBase extends SQLiteOpenHelper {
         MyDB.execSQL("create Table quotes(quote TEXT primary key)");
         MyDB.execSQL("create Table vesi(aika datetime primary key, tunnus TEXT, vesiml INT)");
         MyDB.execSQL("create Table fiilis(aika datetime primary key, tunnus TEXT, fiilis INT)");
-        MyDB.execSQL("create Table uni(aika datetime primary key, tunnus TEXT, minuutit INT)");
+        MyDB.execSQL("create Table uni(aika datetime primary key, tunnus TEXT,tunnit int, minuutit INT)");
         MyDB.execSQL("create Table tehtavalista(numero int ,aika datetime primary key, tunnus TEXT, tehtava TEXT, tehty int)");
         MyDB.execSQL("create Table paivakirja(numero int ,aika datetime primary key, tunnus TEXT, merkinta TEXT)");
 
         MyDB.execSQL("create Table asetukset(tunnus TEXT primary key,vesi int,uni int,fiilis int,tehtava int,paivakirja int)");
         MyDB.execSQL("create Table vesimuisti(tunnus TEXT primary key, vesitavoite int,vesijuodaan int)");
+        MyDB.execSQL("create Table unimuisti(tunnus TEXT primary key, tavoiteh int,tavoitemin int,nukuttuh int,nukuttumin int)");
 
         MyDB.execSQL("insert into quotes(quote) values('HyvinVointia paskoihin päiviin!')");
         MyDB.execSQL("insert into quotes(quote) values('Aina voisi mennä huonomminkin')");
@@ -63,7 +64,7 @@ public class DataBase extends SQLiteOpenHelper {
     public Boolean insertData(String tunnus, String salasana) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        int i = 1, i2 = 2400, i3 = 200;
+        int i = 1, i2 = 2400, i3 = 200, i4 = 8, i5 = 0;
         cv.put("tunnus", tunnus);
         cv.put("salasana", salasana);
         long result = MyDB.insert("users", null, cv);
@@ -80,6 +81,13 @@ public class DataBase extends SQLiteOpenHelper {
         cv.put("vesitavoite", i2);
         cv.put("vesijuodaan", i3);
         MyDB.insert("vesimuisti", null, cv);
+        cv.clear();
+        cv.put("tunnus", tunnus);
+        cv.put("tavoiteh", i4);
+        cv.put("tavoitemin", i5);
+        cv.put("nukuttuh", i5);
+        cv.put("nukuttumin", i5);
+        MyDB.insert("unimuisti", null, cv);
         return result != -1;
     }
 
@@ -216,6 +224,30 @@ public class DataBase extends SQLiteOpenHelper {
         return vesimuisti;
     }
 
+    public void setUniMuisti(String tunnus, int unitavoiteh, int unitavoitemin, int nukuttuh, int nukuttumin) {
+        SQLiteDatabase MyDB = getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("tunnus", tunnus);
+        cv.put("tavoiteh", unitavoiteh);
+        cv.put("tavoiteh", unitavoitemin);
+        cv.put("nukuttuh", nukuttuh);
+        cv.put("nukuttumin", nukuttumin);
+        MyDB.replace("unimuisti", null, cv);
+    }
+
+    public ArrayList<String> getUniMuisti(String tunnus) {
+        SQLiteDatabase MyDB = this.getReadableDatabase();
+        Cursor c = MyDB.rawQuery("select * from unimuisti where tunnus =?", new String[]{tunnus});
+        c.moveToFirst();
+        ArrayList<String> unimuisti = new ArrayList<>();
+        unimuisti.add(c.getString(c.getColumnIndexOrThrow("tavoiteh")));
+        unimuisti.add(c.getString(c.getColumnIndexOrThrow("tavoitemin")));
+        unimuisti.add(c.getString(c.getColumnIndexOrThrow("nukuttuh")));
+        unimuisti.add(c.getString(c.getColumnIndexOrThrow("nukuttumin")));
+        c.close();
+        return unimuisti;
+    }
+
     public ArrayList<String> getTehtavalista(String tunnus) {
         SQLiteDatabase MyDB = this.getReadableDatabase();
         Cursor c = MyDB.rawQuery("select * from tehtavalista where tunnus =?", new String[]{tunnus});
@@ -267,5 +299,32 @@ public class DataBase extends SQLiteOpenHelper {
         cv.put("numero", numero);
         cv.put("merkinta", merkinta);
         MyDB.insert("paivakirja", null, cv);
+    }
+
+    public void addUni(String tunnus, int tunnit, int minuutit) {
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("tunnus", tunnus);
+        cv.put("tunnit", tunnit);
+        cv.put("minuutit", minuutit);
+        cv.put("aika", getDateTime());
+        MyDB.insert("uni", null, cv);
+    }
+
+    public ArrayList<String> getUni(String tunnus) {
+        SQLiteDatabase MyDB = this.getReadableDatabase();
+        Cursor c = MyDB.rawQuery("select * from uni where tunnus =? and datetime(" +
+                "'now', 'start of day')", new String[]{tunnus});
+        c.moveToFirst();
+        ArrayList<String> uni = new ArrayList<>();
+        while ((!c.isAfterLast())) {
+            if ((c != null) && (c.getCount() > 0)) {
+                uni.add(c.getString(c.getColumnIndexOrThrow("tunnit")));
+                uni.add(c.getString(c.getColumnIndexOrThrow("minuutit")));
+                c.moveToNext();
+            }
+        }
+        c.close();
+        return uni;
     }
 }

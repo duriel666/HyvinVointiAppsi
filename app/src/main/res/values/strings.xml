@@ -48,5 +48,11 @@
     <string name="otsikkoTehtavalista">Tehtävä lista</string>
     <string name="otsikkoPaivakirja">Päiväkirja</string>
     <string name="uusimerkinta">Uusi merkintä</string>
+    <string name="unitavoiteohje">Kauanko haluat nukkua?</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="back">Takaisin</string>
+    <string name="home">Pääsivu</string>
+    <string name="settings">Asetukset</string>
 
 </resources>
