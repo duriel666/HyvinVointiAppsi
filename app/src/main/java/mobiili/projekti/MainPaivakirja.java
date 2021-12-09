@@ -21,7 +21,7 @@ import java.util.Objects;
 
 public class MainPaivakirja extends AppCompatActivity {
 
-    Button tallenna;
+    Button tallenna, muokkaa;
     EditText merkinta;
     int numero = 0;
 
@@ -80,10 +80,14 @@ public class MainPaivakirja extends AppCompatActivity {
             } else {
                 numero = 1;
             }
-            // tarkistus onko tekstiä
-            DB.addPaivakirja(tunnus, numero, merkinta.getText().toString());
-            intent.putExtra("tunnus", tunnus);
-            startActivity(intent);
+            if (merkinta.getText().toString().equals("")) {
+                intent.putExtra("tunnus", tunnus);
+                startActivity(intent);
+            } else {
+                DB.addPaivakirja(tunnus, numero, merkinta.getText().toString());
+                intent.putExtra("tunnus", tunnus);
+                startActivity(intent);
+            }
         });
     }
 

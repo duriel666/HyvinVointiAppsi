@@ -229,7 +229,7 @@ public class DataBase extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put("tunnus", tunnus);
         cv.put("tavoiteh", unitavoiteh);
-        cv.put("tavoiteh", unitavoitemin);
+        cv.put("tavoitemin", unitavoitemin);
         cv.put("nukuttuh", nukuttuh);
         cv.put("nukuttumin", nukuttumin);
         MyDB.replace("unimuisti", null, cv);
