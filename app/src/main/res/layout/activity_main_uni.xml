@@ -72,14 +72,27 @@
         android:layout_below="@id/valikko"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="0dp"
-        android:text=""
+        android:text="0"
         android:textSize="20sp" />
+
+    <ProgressBar
+        android:id="@+id/uniProgress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:max="100"
+        android:min="0"
+        android:layout_marginTop="0dp"
+        android:layout_below="@id/uniNukuttu"
+        android:layout_centerHorizontal="true"
+        android:paddingHorizontal="10dp"
+        android:scaleY="8" />
 
     <TextView
         android:id="@+id/uniOhje"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/uniNukuttu"
+        android:layout_below="@id/uniProgress"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:text="@string/uniohje"
@@ -88,8 +101,8 @@
     <LinearLayout
 
         android:id="@+id/uniNukuttuOhje"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/uniOhje"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
@@ -97,41 +110,41 @@
 
         <EditText
             android:id="@+id/uniAikaH"
-            android:layout_width="97.5dp"
-            android:layout_height="80dp"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
             android:background="@color/vharmaa"
             android:gravity="center"
             android:hint="0"
             android:inputType="number"
             android:textColorHint="@color/harmaa"
-            android:textSize="50sp" />
+            android:textSize="40sp" />
 
         <TextView
             android:id="@+id/uniOhje1"
-            android:layout_width="97.5dp"
-            android:layout_height="80dp"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
             android:gravity="center"
             android:text="h"
-            android:textSize="50sp" />
+            android:textSize="40sp" />
 
         <EditText
             android:id="@+id/uniAikaMin"
-            android:layout_width="97.5dp"
-            android:layout_height="80dp"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
             android:background="@color/vharmaa"
             android:gravity="center"
             android:hint="0"
             android:inputType="number"
             android:textColorHint="@color/harmaa"
-            android:textSize="50sp" />
+            android:textSize="40sp" />
 
         <TextView
             android:id="@+id/uniOhje2"
-            android:layout_width="97.5dp"
-            android:layout_height="80dp"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
             android:gravity="center"
             android:text="min"
-            android:textSize="50sp" />
+            android:textSize="40sp" />
 
     </LinearLayout>
 
@@ -148,8 +161,8 @@
     <LinearLayout
 
         android:id="@+id/uniTavoite"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/uniTavoiteOhje"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
@@ -157,39 +170,39 @@
 
         <EditText
             android:id="@+id/uniAikaHb"
-            android:layout_width="97.5dp"
-            android:layout_height="80dp"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
             android:background="@color/vharmaa"
             android:gravity="center"
             android:inputType="number"
             android:text="8"
-            android:textSize="50sp" />
+            android:textSize="40sp" />
 
         <TextView
             android:id="@+id/uniOhje1b"
-            android:layout_width="97.5dp"
-            android:layout_height="80dp"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
             android:gravity="center"
             android:text="h"
-            android:textSize="50sp" />
+            android:textSize="40sp" />
 
         <EditText
             android:id="@+id/uniAikaMinb"
-            android:layout_width="97.5dp"
-            android:layout_height="80dp"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
             android:background="@color/vharmaa"
             android:gravity="center"
             android:inputType="number"
             android:text="0"
-            android:textSize="50sp" />
+            android:textSize="40sp" />
 
         <TextView
             android:id="@+id/uniOhje2b"
-            android:layout_width="97.5dp"
-            android:layout_height="80dp"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
             android:gravity="center"
             android:text="min"
-            android:textSize="50sp" />
+            android:textSize="40sp" />
 
     </LinearLayout>
 

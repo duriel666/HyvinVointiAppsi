@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MobiiliProjekti">
         <activity
+            android:name=".EditPaivakirja"
+            android:exported="false" />
+        <activity
             android:name=".MainPaivakirja"
             android:exported="false" />
         <activity

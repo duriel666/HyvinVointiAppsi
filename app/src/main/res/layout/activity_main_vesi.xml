@@ -89,12 +89,14 @@
         android:id="@+id/vesiProg"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:scaleY="8"
+        android:layout_height="40dp"
         android:layout_below="@+id/vesiJuotu"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
         android:max="100"
-        android:layout_marginTop="10dp" />
+        android:min="0"
+        android:paddingHorizontal="10dp"
+        android:scaleY="8" />
 
     <TextView
         android:id="@+id/vesiMaaraOhje"
@@ -110,12 +112,12 @@
         android:id="@+id/vesiMaara"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:background="@color/vharmaa"
         android:layout_below="@id/vesiMaaraOhje"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:inputType="number"
+        android:background="@color/vharmaa"
         android:gravity="center"
+        android:inputType="number"
         android:textSize="25sp" />
 
     <TextView
@@ -157,9 +159,9 @@
         android:layout_below="@id/vesiTavoiteOhje"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:inputType="number"
-        android:gravity="center"
         android:background="@color/vharmaa"
+        android:gravity="center"
+        android:inputType="number"
         android:textSize="25sp" />
 
     <TextView

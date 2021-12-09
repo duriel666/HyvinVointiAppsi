@@ -30,9 +30,9 @@ public class DataBase extends SQLiteOpenHelper {
         MyDB.execSQL("create Table tehtavalista(numero int ,aika datetime primary key, tunnus TEXT, tehtava TEXT, tehty int)");
         MyDB.execSQL("create Table paivakirja(numero int ,aika datetime primary key, tunnus TEXT, merkinta TEXT)");
 
-        MyDB.execSQL("create Table asetukset(tunnus TEXT primary key,vesi int,uni int,fiilis int,tehtava int,paivakirja int)");
-        MyDB.execSQL("create Table vesimuisti(tunnus TEXT primary key, vesitavoite int,vesijuodaan int)");
-        MyDB.execSQL("create Table unimuisti(tunnus TEXT primary key, tavoiteh int,tavoitemin int,nukuttuh int,nukuttumin int)");
+        MyDB.execSQL("create Table asetukset(tunnus TEXT primary key, vesi int, uni int, fiilis int, tehtava int, paivakirja int)");
+        MyDB.execSQL("create Table vesimuisti(tunnus TEXT primary key, vesitavoite int, vesijuodaan int)");
+        MyDB.execSQL("create Table unimuisti(tunnus TEXT primary key, tavoiteh int, tavoitemin int, nukuttuh int, nukuttumin int)");
 
         MyDB.execSQL("insert into quotes(quote) values('HyvinVointia paskoihin päiviin!')");
         MyDB.execSQL("insert into quotes(quote) values('Aina voisi mennä huonomminkin')");

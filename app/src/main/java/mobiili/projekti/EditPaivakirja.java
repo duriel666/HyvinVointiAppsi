@@ -9,28 +9,26 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Dictionary;
-import java.util.Hashtable;
-import java.util.List;
 import java.util.Objects;
 
-public class MainPaivakirja extends AppCompatActivity {
+public class EditPaivakirja extends AppCompatActivity {
 
-    Button tallenna, muokkaa;
+    Button tallenna, peruuta;
     EditText merkinta;
     int numero = 0;
-    ImageButton takaisin,koti,asetukset;
+    ImageButton takaisin, koti, asetukset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_paivakirja);
+        setContentView(R.layout.activity_edit_paivakirja);
         Objects.requireNonNull(getSupportActionBar()).hide();
         Intent siirto = getIntent();
         String tunnus = siirto.getExtras().getString("tunnus");
@@ -52,13 +50,13 @@ public class MainPaivakirja extends AppCompatActivity {
         paivakirja.addAll(DB.getPaivakirja(tunnus));
         int index = paivakirja.size(), num2 = 0, num3 = 0;
 
-        final TextView[] p = new TextView[index];
+        final CheckBox[] p = new CheckBox[index];
         if (index > 0) {
             int pknum = index - 3;
             int index2 = index / 3;
             numero = 1;
             for (int i = 1; i <= index2; i++) {
-                p[numero] = new TextView(this);
+                p[numero] = new CheckBox(this);
                 p[numero].setText("Merkintä:  " + paivakirja.get(pknum + 1) + " / " + index2 + "\n"
                         + paivakirja.get(pknum) + "\n\n" + paivakirja.get(pknum + 2));
                 p[numero].setLayoutParams(params);
@@ -75,7 +73,7 @@ public class MainPaivakirja extends AppCompatActivity {
         tallenna = (Button) findViewById(R.id.tallennaPaivakirja);
         tallenna.setOnClickListener(v ->
         {
-            Intent intent = new Intent(MainPaivakirja.this, MainPage.class);
+            Intent intent = new Intent(mobiili.projekti.EditPaivakirja.this, MainPage.class);
             int index2 = paivakirja.size();
             if (index2 > 0) {
                 numero = Integer.parseInt(paivakirja.get(index - 2)) + 1;
@@ -92,8 +90,8 @@ public class MainPaivakirja extends AppCompatActivity {
             }
         });
 
-        muokkaa=(Button)findViewById(R.id.editPaivakirja);
-        muokkaa.setOnClickListener(v->{
+        peruuta = (Button) findViewById(R.id.peruuta1);
+        peruuta.setOnClickListener(v -> {
             Intent intent = new Intent(this, EditPaivakirja.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
@@ -101,7 +99,7 @@ public class MainPaivakirja extends AppCompatActivity {
 
         takaisin = (ImageButton) findViewById(R.id.takaisin);
         takaisin.setOnClickListener(v -> {
-            Intent intent = new Intent(this, MainPage.class);
+            Intent intent = new Intent(this, MainPaivakirja.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
         });

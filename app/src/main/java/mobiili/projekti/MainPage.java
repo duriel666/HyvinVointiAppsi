@@ -46,7 +46,7 @@ public class MainPage extends AppCompatActivity {
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, dp(200));
-        params.topMargin = dp(10);
+        params.bottomMargin = dp(10);
 
         inspiroivaQuote = findViewById(R.id.otsikkoPaasivu);
 
@@ -117,7 +117,7 @@ public class MainPage extends AppCompatActivity {
             int minuutitnukuttu = (h1 * 60) + min1;
             int minuutittavoite = (unitavoiteh * 60) + unitavoitemin;
             if (minuutitnukuttu <= 0 || minuutittavoite <= 0) {
-                uni.setText("Uni\n\nValmiina päivän tavoitteesta: -\nTänään nukuttu: 0 h 0 min");
+                uni.setText("Uni\n\nValmiina päivän tavoitteesta: - %\nTänään nukuttu: 0 h 0 min");
             } else {
                 uni.setText("Uni\n\nValmiina päivän tavoitteesta: " + minuutitnukuttu * 100 / minuutittavoite + " %" +
                         "\nTänään nukuttu: " + minuutitnukuttu + " min");
