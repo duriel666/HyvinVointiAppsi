@@ -8,22 +8,72 @@
     tools:context=".MainUni">
 
     <TextView
-        android:id="@+id/uniOtsikko"
+        android:id="@+id/otsikkoUni"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="@string/otsikkoUni"
         android:textSize="15sp" />
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/valikko"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
-        android:id="@+id/uniNukuttu"
+        android:layout_below="@id/otsikkoUni"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/uniOtsikko"
-        android:layout_marginTop="20dp"
-        android:textSize="20sp"/>
+        android:background="@null"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/takaisin"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:background="@null"
+            android:contentDescription="@string/takaisin"
+            android:scaleType="fitCenter"
+            android:src="@drawable/back"
+            android:translationZ="10dp" />
+
+        <ImageButton
+            android:id="@+id/koti"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="100dp"
+            android:background="@null"
+            android:contentDescription="@string/koti"
+            android:scaleType="fitCenter"
+            android:src="@drawable/home"
+            android:translationZ="10dp" />
+
+        <ImageButton
+            android:id="@+id/asetukset"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:background="@null"
+            android:contentDescription="@string/asetukset"
+            android:scaleType="fitCenter"
+            android:src="@drawable/settings"
+            android:translationZ="10dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/uniNukuttu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/valikko"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
+        android:text=""
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/uniOhje"
@@ -31,121 +81,128 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/uniNukuttu"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:text="@string/uniohje"
-        android:textSize="20sp" />
+        android:textSize="25sp" />
 
     <LinearLayout
 
+        android:id="@+id/uniNukuttuOhje"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_below="@id/uniOhje"
-        android:id="@+id/uniNukuttuOhje"
         android:layout_centerHorizontal="true"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
 
         <EditText
             android:id="@+id/uniAikaH"
+            android:layout_width="97.5dp"
+            android:layout_height="80dp"
+            android:background="@color/vharmaa"
             android:gravity="center"
             android:hint="0"
-            android:textSize="50sp"
             android:inputType="number"
-            android:layout_width="97.5dp"
-            android:layout_height="80dp" />
+            android:textColorHint="@color/harmaa"
+            android:textSize="50sp" />
 
         <TextView
             android:id="@+id/uniOhje1"
-            android:gravity="center"
-            android:textSize="50sp"
-            android:text="h"
             android:layout_width="97.5dp"
-            android:layout_height="80dp"/>
+            android:layout_height="80dp"
+            android:gravity="center"
+            android:text="h"
+            android:textSize="50sp" />
 
         <EditText
             android:id="@+id/uniAikaMin"
+            android:layout_width="97.5dp"
+            android:layout_height="80dp"
+            android:background="@color/vharmaa"
             android:gravity="center"
             android:hint="0"
-            android:textSize="50sp"
             android:inputType="number"
-            android:layout_width="97.5dp"
-            android:layout_height="80dp" />
+            android:textColorHint="@color/harmaa"
+            android:textSize="50sp" />
 
         <TextView
             android:id="@+id/uniOhje2"
-            android:gravity="center"
-            android:textSize="50sp"
-            android:text="min"
             android:layout_width="97.5dp"
-            android:layout_height="80dp"/>
+            android:layout_height="80dp"
+            android:gravity="center"
+            android:text="min"
+            android:textSize="50sp" />
 
     </LinearLayout>
 
     <TextView
+        android:id="@+id/uniTavoiteOhje"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/uniTavoiteOhje"
         android:layout_below="@id/uniNukuttuOhje"
-        android:layout_marginTop="40dp"
-        android:textSize="20sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
         android:text="@string/unitavoiteohje"
-        android:layout_centerHorizontal="true"/>
+        android:textSize="25sp" />
+
     <LinearLayout
 
+        android:id="@+id/uniTavoite"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:id="@+id/uniTavoite"
         android:layout_below="@id/uniTavoiteOhje"
         android:layout_centerHorizontal="true"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
 
         <EditText
             android:id="@+id/uniAikaHb"
-            android:gravity="center"
-            android:textSize="50sp"
-            android:text="8"
-            android:inputType="number"
             android:layout_width="97.5dp"
-            android:layout_height="80dp" />
+            android:layout_height="80dp"
+            android:background="@color/vharmaa"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="8"
+            android:textSize="50sp" />
 
         <TextView
             android:id="@+id/uniOhje1b"
-            android:gravity="center"
-            android:textSize="50sp"
-            android:text="h"
             android:layout_width="97.5dp"
-            android:layout_height="80dp"/>
+            android:layout_height="80dp"
+            android:gravity="center"
+            android:text="h"
+            android:textSize="50sp" />
 
         <EditText
             android:id="@+id/uniAikaMinb"
-            android:gravity="center"
-            android:textSize="50sp"
-            android:text="0"
-            android:inputType="number"
             android:layout_width="97.5dp"
-            android:layout_height="80dp" />
+            android:layout_height="80dp"
+            android:background="@color/vharmaa"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="0"
+            android:textSize="50sp" />
 
         <TextView
             android:id="@+id/uniOhje2b"
-            android:gravity="center"
-            android:textSize="50sp"
-            android:text="min"
             android:layout_width="97.5dp"
-            android:layout_height="80dp"/>
+            android:layout_height="80dp"
+            android:gravity="center"
+            android:text="min"
+            android:textSize="50sp" />
 
     </LinearLayout>
 
     <Button
+        android:id="@+id/tallennaUni"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tallennaUni"
         android:layout_below="@id/uniTavoite"
-        android:text="@string/tallenna1"
-        android:paddingVertical="15dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
         android:paddingHorizontal="40dp"
-        android:textSize="15dp"
-        android:layout_marginTop="30dp"
-        android:layout_centerHorizontal="true"/>
+        android:paddingVertical="15dp"
+        android:text="@string/tallenna1"
+        android:textSize="15sp" />
 
 </RelativeLayout>

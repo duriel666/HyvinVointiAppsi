@@ -8,6 +8,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.util.Objects;
@@ -30,7 +31,6 @@ public class regPage extends AppCompatActivity {
         DB = new DataBase(this);
 
         reg = findViewById(R.id.buttonreg);
-
         reg.setOnClickListener(view -> {
             String t = tunnus.getText().toString();
             String s1 = salasana1.getText().toString();

@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingHorizontal="10dp"
     tools:context=".MainTehtavalista">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="10dp">
+        android:paddingHorizontal="0dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -26,10 +27,60 @@
                 android:translationZ="15dp" />
 
             <LinearLayout
+                android:id="@+id/valikko"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/otsikkoTehtavalista"
+                android:layout_centerHorizontal="true"
+                android:background="@null"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/takaisin"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:background="@null"
+                    android:contentDescription="@string/takaisin"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/back"
+                    android:translationZ="10dp" />
+
+                <ImageButton
+                    android:id="@+id/koti"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="100dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="100dp"
+                    android:background="@null"
+                    android:contentDescription="@string/koti"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/home"
+                    android:translationZ="10dp" />
+
+                <ImageButton
+                    android:id="@+id/asetukset"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:background="@null"
+                    android:contentDescription="@string/asetukset"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/settings"
+                    android:translationZ="10dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/tehtavaLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/otsikkoTehtavalista"
+                android:layout_below="@id/valikko"
                 android:layout_marginTop="0dp"
                 android:orientation="vertical">
 

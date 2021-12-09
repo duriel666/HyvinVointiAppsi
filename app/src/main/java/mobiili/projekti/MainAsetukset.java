@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Switch;
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ import java.util.Objects;
 public class MainAsetukset extends AppCompatActivity {
 
     Button tallenna, logout;
+    ImageButton takaisin,koti,asetukset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +75,6 @@ public class MainAsetukset extends AppCompatActivity {
         }
 
         tallenna = (Button) findViewById(R.id.tallenna1);
-
         tallenna.setOnClickListener(v -> {
             Intent intent = new Intent(MainAsetukset.this, MainPage.class);
             intent.putExtra("tunnus", tunnus);
@@ -112,6 +113,19 @@ public class MainAsetukset extends AppCompatActivity {
             startActivity(new Intent(MainAsetukset.this, MainActivity.class));
         });
 
+        takaisin = (ImageButton) findViewById(R.id.takaisin);
+        takaisin.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainPage.class);
+            intent.putExtra("tunnus", tunnus);
+            startActivity(intent);
+        });
+
+        koti = (ImageButton) findViewById(R.id.koti);
+        koti.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainPage.class);
+            intent.putExtra("tunnus", tunnus);
+            startActivity(intent);
+        });
     }
 
     public int dp(float num) {

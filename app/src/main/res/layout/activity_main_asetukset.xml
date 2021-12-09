@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
+    android:paddingHorizontal="10dp"
     tools:context=".MainAsetukset">
 
     <TextView
@@ -16,13 +16,63 @@
         android:textAlignment="center"
         android:textSize="15sp" />
 
-    <TextView
-        android:id="@+id/asetuksetOhje"
+    <LinearLayout
+        android:id="@+id/valikko"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/otsikkoAsetukset"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:background="@null"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/takaisin"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:background="@null"
+            android:contentDescription="@string/takaisin"
+            android:scaleType="fitCenter"
+            android:src="@drawable/back"
+            android:translationZ="10dp" />
+
+        <ImageButton
+            android:id="@+id/koti"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="100dp"
+            android:background="@null"
+            android:contentDescription="@string/koti"
+            android:scaleType="fitCenter"
+            android:src="@drawable/home"
+            android:translationZ="10dp" />
+
+        <ImageButton
+            android:id="@+id/asetukset"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:background="@null"
+            android:contentDescription="@string/asetukset"
+            android:scaleType="fitCenter"
+            android:src="@drawable/settings"
+            android:translationZ="10dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/asetuksetOhje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/valikko"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
         android:text="@string/asetuksetohje"
         android:textSize="20sp" />
 
@@ -32,7 +82,7 @@
         android:layout_height="30dp"
         android:layout_below="@id/asetuksetOhje"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:paddingHorizontal="50dp"
         android:text="Vesi:"
         android:textSize="20sp"
@@ -44,7 +94,7 @@
         android:layout_height="30dp"
         android:layout_below="@id/switch1"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:paddingHorizontal="50dp"
         android:text="Uni:"
         android:textSize="20sp"
@@ -56,7 +106,7 @@
         android:layout_height="30dp"
         android:layout_below="@id/switch2"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:paddingHorizontal="50dp"
         android:text="Fiilis:"
         android:textSize="20sp"
@@ -67,9 +117,9 @@
         android:layout_height="30dp"
         android:layout_below="@id/switch3"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:paddingHorizontal="50dp"
-        android:text="Tehtävät:"
+        android:text="Tehtävälista:"
         android:textSize="20sp"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
     <Switch
@@ -78,7 +128,7 @@
         android:layout_height="30dp"
         android:layout_below="@id/switch4"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:paddingHorizontal="50dp"
         android:text="Päiväkirja:"
         android:textSize="20sp"
@@ -92,7 +142,7 @@
         android:layout_below="@id/switch5"
         android:textSize="20sp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:paddingHorizontal="40dp"
         android:paddingVertical="15dp"
         android:text="@string/tallenna1" />

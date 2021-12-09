@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
         DB = new DataBase(this);
 
         kirjaudu = findViewById(R.id.buttonKirjaudu);
-
         kirjaudu.setOnClickListener(v -> {
             String t = tunnus.getText().toString();
             String s = salasana.getText().toString();
@@ -52,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         reg = findViewById(R.id.buttonRek);
-
         reg.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, regPage.class));
         });

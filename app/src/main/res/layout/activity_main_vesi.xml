@@ -15,11 +15,61 @@
         android:text="@string/otsikkoVesi"
         android:textSize="15sp" />
 
+    <LinearLayout
+        android:id="@+id/valikko"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/otsikkoVesi"
+        android:layout_centerHorizontal="true"
+        android:background="@null"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/takaisin"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:background="@null"
+            android:contentDescription="@string/takaisin"
+            android:scaleType="fitCenter"
+            android:src="@drawable/back"
+            android:translationZ="10dp" />
+
+        <ImageButton
+            android:id="@+id/koti"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="100dp"
+            android:background="@null"
+            android:contentDescription="@string/koti"
+            android:scaleType="fitCenter"
+            android:src="@drawable/home"
+            android:translationZ="10dp" />
+
+        <ImageButton
+            android:id="@+id/asetukset"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:background="@null"
+            android:contentDescription="@string/asetukset"
+            android:scaleType="fitCenter"
+            android:src="@drawable/settings"
+            android:translationZ="10dp" />
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/progOhje"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/otsikkoVesi"
+        android:layout_below="@id/valikko"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:text="@string/progohje"
@@ -32,7 +82,7 @@
         android:layout_below="@id/progOhje"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:text="0"
+        android:text=""
         android:textSize="20sp" />
 
     <ProgressBar
@@ -60,11 +110,12 @@
         android:id="@+id/vesiMaara"
         android:layout_width="100dp"
         android:layout_height="50dp"
+        android:background="@color/vharmaa"
         android:layout_below="@id/vesiMaaraOhje"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:inputType="number"
-        android:textAlignment="center"
+        android:gravity="center"
         android:textSize="25sp" />
 
     <TextView
@@ -72,10 +123,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/vesiMaaraOhje"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:layout_toRightOf="@+id/vesiMaara"
         android:text="@string/ml"
-        android:textSize="25sp" />
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/tallennaVesi"
@@ -87,7 +138,7 @@
         android:paddingHorizontal="40dp"
         android:paddingVertical="15dp"
         android:text="@string/tallenna1"
-        android:textSize="20sp" />
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/vesiTavoiteOhje"
@@ -95,7 +146,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tallennaVesi"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:text="@string/vesitavoiteohje"
         android:textSize="20sp" />
 
@@ -105,9 +156,10 @@
         android:layout_height="50dp"
         android:layout_below="@id/vesiTavoiteOhje"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:inputType="number"
-        android:textAlignment="center"
+        android:gravity="center"
+        android:background="@color/vharmaa"
         android:textSize="25sp" />
 
     <TextView
@@ -115,7 +167,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/vesiTavoiteOhje"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:layout_toEndOf="@+id/vesiTavoiteMaara"
         android:text="@string/ml"
         android:textSize="25sp" />

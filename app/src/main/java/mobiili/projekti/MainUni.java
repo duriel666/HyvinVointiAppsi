@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.TypedValue;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ public class MainUni extends AppCompatActivity {
     DataBase DB;
     TextView nukuttuToday;
     int unitavoiteh = 8, unitavoitemin = 0, nukuttuH2, nukuttuMin2, tavoiteH2, tavoiteMin2;
+    ImageButton takaisin,koti,asetukset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +56,7 @@ public class MainUni extends AppCompatActivity {
         int index = uni.size();
         int index2 = index / 2;
         int h1 = 0, min1 = 0;
-        for (int i = 1; i <= index2; i++) {
+        for (int i = 1; i < index2; i++) {
             int num1 = Integer.parseInt(uni.get(i));
             h1 += num1;
             int num2 = Integer.parseInt((uni.get(i + 1)));
@@ -64,9 +66,9 @@ public class MainUni extends AppCompatActivity {
         int minuutittavoite = (unitavoiteh * 60) + unitavoitemin;
         nukuttuToday = findViewById(R.id.uniNukuttu);
         if (minuutitnukuttu <= 0 || minuutittavoite <= 0) {
-            nukuttuToday.setText("Päivän tavoitteesta nukuttu: - %");
+            nukuttuToday.setText("Päivän tavoitteesta nukuttu: 0 %");
         } else {
-            nukuttuToday.setText("Päivän tavoitteesta nukuttu: " + minuutitnukuttu / minuutittavoite + " %");
+            nukuttuToday.setText("Päivän tavoitteesta nukuttu: " + minuutitnukuttu * 100 / minuutittavoite + " %");
         }
         tallenna.setOnClickListener(v ->
         {
@@ -97,6 +99,28 @@ public class MainUni extends AppCompatActivity {
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
         });
+
+        takaisin = (ImageButton) findViewById(R.id.takaisin);
+        takaisin.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainPage.class);
+            intent.putExtra("tunnus", tunnus);
+            startActivity(intent);
+        });
+
+        koti = (ImageButton) findViewById(R.id.koti);
+        koti.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainPage.class);
+            intent.putExtra("tunnus", tunnus);
+            startActivity(intent);
+        });
+
+        asetukset = (ImageButton) findViewById(R.id.asetukset);
+        asetukset.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainAsetukset.class);
+            intent.putExtra("tunnus", tunnus);
+            startActivity(intent);
+        });
+
     }
 
     public int dp(float num) {

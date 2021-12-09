@@ -9,6 +9,7 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -16,6 +17,8 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class MainTehtavalista extends AppCompatActivity {
+
+    ImageButton takaisin,koti,asetukset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +59,26 @@ public class MainTehtavalista extends AppCompatActivity {
             layouttehtavalista.addView(tl);
         }
 
+        takaisin = (ImageButton) findViewById(R.id.takaisin);
+        takaisin.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainPage.class);
+            intent.putExtra("tunnus", tunnus);
+            startActivity(intent);
+        });
+
+        koti = (ImageButton) findViewById(R.id.koti);
+        koti.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainPage.class);
+            intent.putExtra("tunnus", tunnus);
+            startActivity(intent);
+        });
+
+        asetukset = (ImageButton) findViewById(R.id.asetukset);
+        asetukset.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainAsetukset.class);
+            intent.putExtra("tunnus", tunnus);
+            startActivity(intent);
+        });
     }
 
     public int dp(float num) {
