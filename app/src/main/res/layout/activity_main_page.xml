@@ -7,10 +7,10 @@
     android:layout_height="match_parent"
     tools:context=".MainPage">
 
-
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:paddingHorizontal="10dp"
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/otsikkoPaasivu"
@@ -74,10 +74,11 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@id/valikko"
+            android:nestedScrollingEnabled="true"
             android:layout_marginTop="0dp"
-            android:paddingHorizontal="10dp">
+            android:paddingHorizontal="0dp">
 
             <LinearLayout
                 android:id="@+id/etuLayout"

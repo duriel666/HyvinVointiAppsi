@@ -7,74 +7,75 @@
     android:paddingHorizontal="10dp"
     tools:context=".MainTehtavalista">
 
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingHorizontal="0dp">
+        android:layout_height="wrap_content">
 
-        <RelativeLayout
+        <TextView
+            android:id="@+id/otsikkoTehtavalista"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:text="@string/otsikkoTehtavalista"
+            android:textSize="15sp"
+            android:translationZ="15dp" />
 
-            <TextView
-                android:id="@+id/otsikkoTehtavalista"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:gravity="center_horizontal"
-                android:text="@string/otsikkoTehtavalista"
-                android:textSize="15sp"
-                android:translationZ="15dp" />
+        <LinearLayout
+            android:id="@+id/valikko"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/otsikkoTehtavalista"
+            android:layout_centerHorizontal="true"
+            android:background="@null"
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:id="@+id/valikko"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/otsikkoTehtavalista"
-                android:layout_centerHorizontal="true"
+            <ImageButton
+                android:id="@+id/takaisin"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="0dp"
                 android:background="@null"
-                android:orientation="horizontal">
+                android:contentDescription="@string/takaisin"
+                android:scaleType="fitCenter"
+                android:src="@drawable/back"
+                android:translationZ="10dp" />
 
-                <ImageButton
-                    android:id="@+id/takaisin"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginEnd="0dp"
-                    android:background="@null"
-                    android:contentDescription="@string/takaisin"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/back"
-                    android:translationZ="10dp" />
+            <ImageButton
+                android:id="@+id/koti"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="100dp"
+                android:background="@null"
+                android:contentDescription="@string/koti"
+                android:scaleType="fitCenter"
+                android:src="@drawable/home"
+                android:translationZ="10dp" />
 
-                <ImageButton
-                    android:id="@+id/koti"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="100dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginEnd="100dp"
-                    android:background="@null"
-                    android:contentDescription="@string/koti"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/home"
-                    android:translationZ="10dp" />
+            <ImageButton
+                android:id="@+id/asetukset"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="0dp"
+                android:background="@null"
+                android:contentDescription="@string/asetukset"
+                android:scaleType="fitCenter"
+                android:src="@drawable/settings"
+                android:translationZ="10dp" />
 
-                <ImageButton
-                    android:id="@+id/asetukset"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginEnd="0dp"
-                    android:background="@null"
-                    android:contentDescription="@string/asetukset"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/settings"
-                    android:translationZ="10dp" />
+        </LinearLayout>
 
-            </LinearLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:nestedScrollingEnabled="true"
+            android:paddingHorizontal="0dp">
 
             <LinearLayout
                 android:id="@+id/tehtavaLayout"
@@ -85,6 +86,6 @@
                 android:orientation="vertical">
 
             </LinearLayout>
-        </RelativeLayout>
-    </ScrollView>
+        </ScrollView>
+    </RelativeLayout>
 </RelativeLayout>

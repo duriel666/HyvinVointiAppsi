@@ -58,5 +58,7 @@
     <string name="koti">Koti</string>
     <string name="takaisin">Takaisin</string>
     <string name="reg">Uusi käyttäjä</string>
+    <string name="otsikkoEditPaivakirja">Muokkaa päiväkirjaa</string>
+    <string name="peruuta1">Peruuta</string>
 
 </resources>

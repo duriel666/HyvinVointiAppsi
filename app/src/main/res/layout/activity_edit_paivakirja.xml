@@ -5,15 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingHorizontal="10dp"
-    tools:context=".MainPaivakirja">
+    tools:context=".EditPaivakirja">
 
     <TextView
-        android:id="@+id/otsikkoPaivakirja"
+        android:id="@+id/otsikkoEditPaivakirja"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:gravity="center_horizontal"
-        android:text="@string/otsikkoPaivakirja"
+        android:text="@string/otsikkoEditPaivakirja"
         android:textSize="15sp"
         android:translationZ="15dp" />
 
@@ -21,7 +21,7 @@
         android:id="@+id/valikko"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/otsikkoPaivakirja"
+        android:layout_below="@id/otsikkoEditPaivakirja"
         android:layout_centerHorizontal="true"
         android:background="@null"
         android:orientation="horizontal">
@@ -67,24 +67,11 @@
 
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/paivakirjamerkinta"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/valikko"
-        android:layout_marginTop="5dp"
-        android:background="#eeeeee"
-        android:hint="@string/uusimerkinta"
-        android:minHeight="60dp"
-        android:padding="5dp"
-        android:textColorHint="@color/harmaa"
-        android:textSize="15sp" />
-
     <LinearLayout
         android:id="@+id/pklinear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/paivakirjamerkinta"
+        android:layout_below="@id/valikko"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal">
 
@@ -98,12 +85,12 @@
             android:textSize="15sp" />
 
         <Button
-            android:id="@+id/editPaivakirja"
+            android:id="@+id/peruuta1"
             android:layout_width="160dp"
             android:layout_height="55dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
-            android:text="@string/edit1"
+            android:text="@string/peruuta1"
             android:textSize="15sp" />
     </LinearLayout>
 
