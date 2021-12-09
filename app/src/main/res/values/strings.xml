@@ -54,5 +54,6 @@
     <string name="back">Takaisin</string>
     <string name="home">Pääsivu</string>
     <string name="settings">Asetukset</string>
+    <string name="edit1">Muokkaa</string>
 
 </resources>
