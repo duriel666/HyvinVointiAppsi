@@ -21,7 +21,7 @@ public class MainPage extends AppCompatActivity {
 
     SwipeRefreshLayout swipeRefresh;
     TextView inspiroivaQuote;
-    ImageButton asetukset;
+    ImageButton takaisin,koti,asetukset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,8 @@ public class MainPage extends AppCompatActivity {
         final ArrayList<String> fiilisToday = DB.getFiilisToday(tunnus);
         final ArrayList<String> sivuAsetukset = DB.getAsetukset(tunnus);
         final ArrayList<String> vesiMuisti = DB.getVesiMuisti(tunnus);
+        final ArrayList<String> uniData = DB.getUni(tunnus);
+        final ArrayList<String> uniMuisti = DB.getUniMuisti(tunnus);
 
         LinearLayout etuSivu = (LinearLayout) findViewById(R.id.etuLayout);
         LinearLayout layout = new LinearLayout(this);
@@ -97,7 +99,29 @@ public class MainPage extends AppCompatActivity {
             uni.setGravity(Gravity.CENTER_VERTICAL);
             etuSivu.addView(uni);
 
-            uni.setText("Uni\n\nValmiina päivän tavoitteesta: \nTänään nukuttu: ");
+            uniData.clear();
+            uniData.addAll(DB.getUni(tunnus));
+            uniMuisti.clear();
+            uniMuisti.addAll((DB.getUniMuisti(tunnus)));
+            int unitavoiteh = Integer.parseInt(uniMuisti.get(0)), unitavoitemin = Integer.parseInt(uniMuisti.get(1)),
+                    nukuttuh = Integer.parseInt(uniMuisti.get(2)), nukuttumin = Integer.parseInt(uniMuisti.get(3));
+            int indexu = uniData.size();
+            int indexu2 = indexu / 2;
+            int h1 = 0, min1 = 0;
+            for (int i = 1; i < indexu2; i++) {
+                int num1 = Integer.parseInt(uniData.get(i));
+                h1 += num1;
+                int num2 = Integer.parseInt((uniData.get(i + 1)));
+                min1 += num2;
+            }
+            int minuutitnukuttu = (h1 * 60) + min1;
+            int minuutittavoite = (unitavoiteh * 60) + unitavoitemin;
+            if (minuutitnukuttu <= 0 || minuutittavoite <= 0) {
+                uni.setText("Uni\n\nValmiina päivän tavoitteesta: -\nTänään nukuttu: 0 h 0 min");
+            } else {
+                uni.setText("Uni\n\nValmiina päivän tavoitteesta: " + minuutitnukuttu * 100 / minuutittavoite + " %" +
+                        "\nTänään nukuttu: " + minuutitnukuttu + " min");
+            }
 
             uni.setOnClickListener(v -> {
                 Intent intent = new Intent(MainPage.this, MainUni.class);
@@ -130,7 +154,7 @@ public class MainPage extends AppCompatActivity {
                 String fiilisNyt = fiilisToday.get(index2 - 1);
                 fiilis.setText("Fiilis\n\nFiilis nyt: " + fiilisNyt + "\nPäivän fiilis: " + fiilisT);
             } else
-                fiilis.setText("Fiilis\n\nFiilis nyt: \nPäivän fiilis: ");
+                fiilis.setText("Fiilis\n\nFiilis nyt: ?\nPäivän fiilis: ?");
 
             fiilis.setOnClickListener(v -> {
                 Intent intent = new Intent(MainPage.this, MainFiilis.class);
@@ -189,10 +213,23 @@ public class MainPage extends AppCompatActivity {
             }
         });
 
-        asetukset = (ImageButton) findViewById(R.id.asetukset);
+        takaisin = (ImageButton) findViewById(R.id.takaisin);
+        takaisin.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainAsetukset.class);
+            intent.putExtra("tunnus", tunnus);
+            startActivity(intent);
+        });
 
+        koti = (ImageButton) findViewById(R.id.koti);
+        koti.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainPage.class);
+            intent.putExtra("tunnus", tunnus);
+            startActivity(intent);
+        });
+
+        asetukset = (ImageButton) findViewById(R.id.asetukset);
         asetukset.setOnClickListener(v -> {
-            Intent intent = new Intent(MainPage.this, MainAsetukset.class);
+            Intent intent = new Intent(this, MainAsetukset.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
         });

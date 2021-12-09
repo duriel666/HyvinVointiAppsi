@@ -10,6 +10,7 @@ import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -24,6 +25,7 @@ public class MainPaivakirja extends AppCompatActivity {
     Button tallenna, muokkaa;
     EditText merkinta;
     int numero = 0;
+    ImageButton takaisin,koti,asetukset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +46,7 @@ public class MainPaivakirja extends AppCompatActivity {
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        params.topMargin = dp(10);
+        params.bottomMargin = dp(10);
 
         paivakirja.clear();
         paivakirja.addAll(DB.getPaivakirja(tunnus));
@@ -89,6 +91,28 @@ public class MainPaivakirja extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        takaisin = (ImageButton) findViewById(R.id.takaisin);
+        takaisin.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainPage.class);
+            intent.putExtra("tunnus", tunnus);
+            startActivity(intent);
+        });
+
+        koti = (ImageButton) findViewById(R.id.koti);
+        koti.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainPage.class);
+            intent.putExtra("tunnus", tunnus);
+            startActivity(intent);
+        });
+
+        asetukset = (ImageButton) findViewById(R.id.asetukset);
+        asetukset.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainAsetukset.class);
+            intent.putExtra("tunnus", tunnus);
+            startActivity(intent);
+        });
+
     }
 
     public int dp(float num) {

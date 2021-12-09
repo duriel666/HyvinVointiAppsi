@@ -17,13 +17,64 @@
         android:textSize="15sp"
         android:translationZ="15dp" />
 
+    <LinearLayout
+        android:id="@+id/valikko"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/otsikkoPaivakirja"
+        android:layout_centerHorizontal="true"
+        android:background="@null"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/takaisin"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:background="@null"
+            android:contentDescription="@string/takaisin"
+            android:scaleType="fitCenter"
+            android:src="@drawable/back"
+            android:translationZ="10dp" />
+
+        <ImageButton
+            android:id="@+id/koti"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="100dp"
+            android:background="@null"
+            android:contentDescription="@string/koti"
+            android:scaleType="fitCenter"
+            android:src="@drawable/home"
+            android:translationZ="10dp" />
+
+        <ImageButton
+            android:id="@+id/asetukset"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:background="@null"
+            android:contentDescription="@string/asetukset"
+            android:scaleType="fitCenter"
+            android:src="@drawable/settings"
+            android:translationZ="10dp" />
+
+    </LinearLayout>
+
     <EditText
         android:id="@+id/paivakirjamerkinta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/otsikkoPaivakirja"
-        android:layout_marginTop="10dp"
+        android:layout_below="@id/valikko"
+        android:layout_marginTop="5dp"
         android:background="#eeeeee"
+        android:textColorHint="@color/harmaa"
         android:hint="@string/uusimerkinta"
         android:minHeight="60dp"
         android:padding="5dp"
@@ -33,6 +84,7 @@
         android:id="@+id/pklinear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_below="@id/paivakirjamerkinta"
         android:layout_centerHorizontal="true">
 
@@ -40,7 +92,7 @@
             android:id="@+id/tallennaPaivakirja"
             android:layout_width="160dp"
             android:layout_height="55dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
             android:text="@string/tallenna1"
             android:textSize="15sp" />
@@ -50,7 +102,7 @@
             android:layout_width="160dp"
             android:layout_height="55dp"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:text="@string/edit1"
             android:textSize="15sp" />
     </LinearLayout>
@@ -59,8 +111,8 @@
         android:id="@+id/vanhatrullaus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/paivakirjamerkinta"
-        android:layout_marginTop="75dp">
+        android:layout_below="@id/pklinear"
+        android:layout_marginTop="5dp">
 
         <LinearLayout
             android:id="@+id/paivakirjaLayout"

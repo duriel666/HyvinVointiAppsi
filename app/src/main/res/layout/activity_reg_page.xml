@@ -4,34 +4,105 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingHorizontal="20dp"
+    android:paddingHorizontal="10dp"
     tools:context=".regPage">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/otsikkoReg"
+        android:text="@string/reg"
+        android:layout_centerHorizontal="true"
+        android:textSize="15sp"/>
+
+    <LinearLayout
+        android:id="@+id/valikko"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/otsikkoReg"
+        android:layout_centerHorizontal="true"
+        android:background="@null"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/takaisin"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:background="@null"
+            android:contentDescription="@string/takaisin"
+            android:scaleType="fitCenter"
+            android:src="@drawable/back"
+            android:translationZ="10dp" />
+
+        <ImageButton
+            android:id="@+id/koti"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="100dp"
+            android:background="@null"
+            android:contentDescription="@string/koti"
+            android:scaleType="fitCenter"
+            android:src="@drawable/home"
+            android:translationZ="10dp" />
+
+        <ImageButton
+            android:id="@+id/asetukset"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:background="@null"
+            android:contentDescription="@string/asetukset"
+            android:scaleType="fitCenter"
+            android:src="@drawable/settings"
+            android:translationZ="10dp" />
+
+    </LinearLayout>
 
     <EditText
         android:id="@+id/tunnusreg"
         android:inputType="textEmailAddress"
         android:layout_width="match_parent"
+        android:layout_below="@id/valikko"
+        android:background="@color/vharmaa"
+        android:textColorHint="@color/harmaa"
         android:layout_height="40dp"
-        android:layout_marginTop="100dp"
-        android:hint="@string/tunnus" />
+        android:paddingHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="@string/tunnus"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/salasanareg1"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:textColorHint="@color/harmaa"
         android:layout_below="@id/tunnusreg"
         android:layout_marginTop="20dp"
+        android:paddingHorizontal="10dp"
+        android:background="@color/vharmaa"
         android:hint="@string/salasana"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/salasanareg2"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:paddingHorizontal="10dp"
+        android:textColorHint="@color/harmaa"
+        android:background="@color/vharmaa"
         android:layout_below="@id/salasanareg1"
         android:layout_marginTop="20dp"
         android:hint="@string/salasana2"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:importantForAutofill="no" />
 
     <Button
         android:id="@+id/buttonreg"
@@ -39,7 +110,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/salasanareg2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:paddingHorizontal="40dp"
         android:paddingVertical="15dp"
         android:text="@string/luotunnus"

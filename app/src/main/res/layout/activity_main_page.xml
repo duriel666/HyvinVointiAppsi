@@ -7,46 +7,86 @@
     android:layout_height="match_parent"
     tools:context=".MainPage">
 
-    <ScrollView
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="10dp">
+        android:layout_height="wrap_content">
 
-        <RelativeLayout
+        <TextView
+            android:id="@+id/otsikkoPaasivu"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:text="@string/otsikkoPaasivu"
+            android:textSize="15sp"
+            android:translationZ="15dp" />
 
-            <TextView
-                android:id="@+id/otsikkoPaasivu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:gravity="center_horizontal"
-                android:text="@string/otsikkoPaasivu"
-                android:textSize="15sp"
-                android:translationZ="15dp" />
+        <LinearLayout
+            android:id="@+id/valikko"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/otsikkoPaasivu"
+            android:layout_centerHorizontal="true"
+            android:background="@null"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/takaisin"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="0dp"
+                android:background="@null"
+                android:contentDescription="@string/takaisin"
+                android:scaleType="fitCenter"
+                android:src="@drawable/back"
+                android:translationZ="10dp" />
+
+            <ImageButton
+                android:id="@+id/koti"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="100dp"
+                android:background="@null"
+                android:contentDescription="@string/koti"
+                android:scaleType="fitCenter"
+                android:src="@drawable/home"
+                android:translationZ="10dp" />
 
             <ImageButton
                 android:id="@+id/asetukset"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_alignParentEnd="true"
+                android:layout_marginStart="0dp"
                 android:layout_marginTop="0dp"
+                android:layout_marginEnd="0dp"
                 android:background="@null"
                 android:contentDescription="@string/asetukset"
                 android:scaleType="fitCenter"
-                android:src="@drawable/gear"
+                android:src="@drawable/settings"
                 android:translationZ="10dp" />
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/valikko"
+            android:layout_marginTop="0dp"
+            android:paddingHorizontal="10dp">
 
             <LinearLayout
                 android:id="@+id/etuLayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@id/otsikkoPaasivu"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
                 android:orientation="vertical">
 
             </LinearLayout>
-        </RelativeLayout>
-    </ScrollView>
+        </ScrollView>
+    </RelativeLayout>
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

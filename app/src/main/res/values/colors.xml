@@ -8,5 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="harmaa">#FF888888</color>
-    <color name="asetukset">#88222222</color>
+    <color name="vharmaa">#FFdddddd</color>
+    <color name="asetukset">#ff222222</color>
 </resources>

@@ -55,5 +55,8 @@
     <string name="home">Pääsivu</string>
     <string name="settings">Asetukset</string>
     <string name="edit1">Muokkaa</string>
+    <string name="koti">Koti</string>
+    <string name="takaisin">Takaisin</string>
+    <string name="reg">Uusi käyttäjä</string>
 
 </resources>

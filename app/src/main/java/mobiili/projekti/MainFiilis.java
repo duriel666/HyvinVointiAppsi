@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -19,6 +20,7 @@ public class MainFiilis extends AppCompatActivity {
     SeekBar fiilisAsteikko;
     TextView fiilisArvo;
     ImageView image;
+    ImageButton takaisin,koti,asetukset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +85,27 @@ public class MainFiilis extends AppCompatActivity {
         {
             Intent intent = new Intent(MainFiilis.this, MainPage.class);
             DB.addFiilis(tunnus, fiilisAsteikko.getProgress());
+            intent.putExtra("tunnus", tunnus);
+            startActivity(intent);
+        });
+
+        takaisin = (ImageButton) findViewById(R.id.takaisin);
+        takaisin.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainPage.class);
+            intent.putExtra("tunnus", tunnus);
+            startActivity(intent);
+        });
+
+        koti = (ImageButton) findViewById(R.id.koti);
+        koti.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainPage.class);
+            intent.putExtra("tunnus", tunnus);
+            startActivity(intent);
+        });
+
+        asetukset = (ImageButton) findViewById(R.id.asetukset);
+        asetukset.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainAsetukset.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
         });

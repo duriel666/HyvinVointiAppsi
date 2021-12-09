@@ -9,6 +9,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class MainVesi extends AppCompatActivity {
     EditText juo, vesimaara, vesitavoitemaara;
     DataBase DB;
     TextView juotu;
+    ImageButton takaisin,koti,asetukset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +54,7 @@ public class MainVesi extends AppCompatActivity {
         }
         juotu = findViewById(R.id.vesiJuotu);
         String num3 = Integer.toString(num2);
-        juotu.setText(num3);
+        juotu.setText(num3 + " ml");
 
         tallenna = findViewById(R.id.tallennaVesi);
         juo = findViewById(R.id.vesiMaara);
@@ -64,6 +66,27 @@ public class MainVesi extends AppCompatActivity {
             int tavoite = Integer.parseInt(vesitavoitemaara.getText().toString());
             DB.addVesi(tunnus, juo2);
             DB.setVesiMuisti(tunnus, tavoite, maara);
+            intent.putExtra("tunnus", tunnus);
+            startActivity(intent);
+        });
+
+        takaisin = (ImageButton) findViewById(R.id.takaisin);
+        takaisin.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainPage.class);
+            intent.putExtra("tunnus", tunnus);
+            startActivity(intent);
+        });
+
+        koti = (ImageButton) findViewById(R.id.koti);
+        koti.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainPage.class);
+            intent.putExtra("tunnus", tunnus);
+            startActivity(intent);
+        });
+
+        asetukset = (ImageButton) findViewById(R.id.asetukset);
+        asetukset.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainAsetukset.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
         });
