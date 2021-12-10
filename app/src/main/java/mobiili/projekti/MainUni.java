@@ -98,7 +98,7 @@ public class MainUni extends AppCompatActivity {
             DB.setUniMuisti(tunnus, tavoiteH2, tavoiteMin2, nukuttuH2, nukuttuMin2);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
-        });
+        }); //TODO tarkista ettei ole nukuttu yli 24tuntia
 
         takaisin = (ImageButton) findViewById(R.id.takaisin);
         takaisin.setOnClickListener(v -> {
