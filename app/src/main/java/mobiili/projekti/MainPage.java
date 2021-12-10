@@ -54,7 +54,8 @@ public class MainPage extends AppCompatActivity {
         sivuAsetukset.addAll(DB.getAsetukset(tunnus));
         int vesiAsetus = Integer.parseInt(sivuAsetukset.get(0)), uniAsetus = Integer.parseInt(sivuAsetukset.get(1)),
                 fiilisAsetus = Integer.parseInt(sivuAsetukset.get(2)), tehtavaAsetus = Integer.parseInt(sivuAsetukset.get(3)),
-                paivakirjaAsetus = Integer.parseInt(sivuAsetukset.get(4));
+                paivakirjaAsetus = Integer.parseInt(sivuAsetukset.get(4)), uusi1Asetus = Integer.parseInt(sivuAsetukset.get(5)),
+                uusi2Asetus = Integer.parseInt(sivuAsetukset.get(6));
 
         if (vesiAsetus == 1) {
             TextView vesi = new TextView(this);
@@ -196,6 +197,40 @@ public class MainPage extends AppCompatActivity {
                 Intent intent = new Intent(MainPage.this, MainPaivakirja.class);
                 intent.putExtra("tunnus", tunnus);
                 startActivity(intent);
+            });
+        }
+        if (uusi1Asetus == 1) {
+            TextView uusi1 = new TextView(this);
+            uusi1.setLayoutParams(params);
+            uusi1.setPadding(dp(10), 0, dp(10), 0);
+            uusi1.setBackgroundColor(Color.LTGRAY);
+            uusi1.setTextSize((TypedValue.COMPLEX_UNIT_SP), 20);
+            uusi1.setGravity(Gravity.CENTER_VERTICAL);
+            etuSivu.addView(uusi1);
+
+            uusi1.setText("UUsi1"); //TODO tuohon tekstiä ja alla olevat intent ja start pois kommenteista
+            //TODO MainUusix.class tilalle .java uudesta
+            uusi1.setOnClickListener(v -> {
+                //TODO Intent intent = new Intent(MainPage.this, MainUusi1.class);
+                //TODO intent.putExtra("tunnus", tunnus);
+                //TODO startActivity(intent);
+            });
+        }
+        if (uusi2Asetus == 1) {
+            TextView uusi2 = new TextView(this);
+            uusi2.setLayoutParams(params);
+            uusi2.setPadding(dp(10), 0, dp(10), 0);
+            uusi2.setBackgroundColor(Color.LTGRAY);
+            uusi2.setTextSize((TypedValue.COMPLEX_UNIT_SP), 20);
+            uusi2.setGravity(Gravity.CENTER_VERTICAL);
+            etuSivu.addView(uusi2);
+
+            uusi2.setText("Uusi2"); //TODO tuohon tekstiä ja alla olevat intent ja start pois kommenteista
+            //TODO MainUusix.class tilalle .java uudesta
+            uusi2.setOnClickListener(v -> {
+                //TODO Intent intent = new Intent(MainPage.this, MainUusi2.class);
+                //TODO intent.putExtra("tunnus", tunnus);
+                //TODO startActivity(intent);
             });
         }
 
