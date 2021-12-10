@@ -301,6 +301,13 @@ public class DataBase extends SQLiteOpenHelper {
         MyDB.insert("paivakirja", null, cv);
     }
 
+    public String deletePaivakirja(String tunnus, int numero) {
+        SQLiteDatabase MyDB = getWritableDatabase();
+        Cursor c = MyDB.rawQuery("select * from paivakirja where tunnus =? and numero ='" + numero + "'", new String[]{tunnus});
+        String kirja=c.getString(c.getColumnIndexOrThrow("numero"));
+        return kirja;
+    }
+
     public void addUni(String tunnus, int tunnit, int minuutit) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
