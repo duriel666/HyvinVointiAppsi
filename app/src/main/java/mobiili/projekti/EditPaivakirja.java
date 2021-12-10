@@ -11,9 +11,11 @@ import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -27,6 +29,9 @@ public class EditPaivakirja extends AppCompatActivity {
     int numero = 0;
     ImageButton takaisin, koti, asetukset;
     TextView testi;
+    CheckBox[] p = new CheckBox[numero];
+    List boxilista = new ArrayList();
+    List boxilista2 = new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,15 +58,11 @@ public class EditPaivakirja extends AppCompatActivity {
         paivakirja.addAll(DB.getPaivakirja(tunnus));
         int index = paivakirja.size(), num2 = 0, num3 = 0;
 
-        final List boxilista = new ArrayList();
-        final List boxilista2 = new ArrayList();
-        final CheckBox[] p = new CheckBox[index];
         if (index > 0) {
             int pknum = index - 3;
             int index2 = index / 3;
-            numero = 1;
+            numero = 0;
             for (int i = 1; i <= index2; i++) {
-                p[numero] = new CheckBox(this);
                 p[numero].setText("Merkintä:  " + numero + " / " + index2 + "\n"
                         + paivakirja.get(pknum) + "\n\n" + paivakirja.get(pknum + 2));
                 p[numero].setLayoutParams(params);
@@ -70,7 +71,8 @@ public class EditPaivakirja extends AppCompatActivity {
                 p[numero].setTextSize((TypedValue.COMPLEX_UNIT_SP), 20);
                 p[numero].setGravity(Gravity.CENTER_VERTICAL);
                 layoutPaivakirja.addView(p[numero]);
-                boxilista.add(pknum + 1);
+                p[numero].setOnCheckedChangeListener(new Chk());
+                boxilista.add(paivakirja.get(pknum + 1));
                 pknum -= 3;
                 numero += 1;
             }
@@ -81,20 +83,15 @@ public class EditPaivakirja extends AppCompatActivity {
         testi = findViewById(R.id.otsikkoEditPaivakirja);
         tallenna = findViewById(R.id.tallennaPaivakirja2);
         tallenna.setOnClickListener(v -> {
-            for (int i = 0; i < numero2; i++) {
-                if (p[numero3].isSelected()) {
-                    boxilista2.add(numero3);
-                    testi.setText("joopasenjoo");
-                }
-            }
             int index2 = boxilista2.size();
             if (index2 > 0) {
                 int y = 0;
                 for (int i = 0; i < index2; i++) {
-                    int poistoNumero = Integer.parseInt(boxilista2.get(y).toString())-1;
+                    int poistoNumero = Integer.parseInt(boxilista2.get(y).toString()) - 1;
+                    testi.setText(boxilista2.size()+" testi");
 
-                   // testi.setText(DB.deletePaivakirja(tunnus, Integer.parseInt(boxilista.get(poistoNumero).toString()))+" ");
-        //TODO ei toimi
+                    // testi.setText(DB.deletePaivakirja(tunnus, Integer.parseInt(boxilista.get(poistoNumero).toString()))+" ");
+                    //TODO ei toimi
                 }
             }
 
@@ -127,7 +124,16 @@ public class EditPaivakirja extends AppCompatActivity {
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
         });
+    }
 
+    class Chk implements  CompoundButton.OnCheckedChangeListener{
+
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            if(p[numero].isChecked()){
+                boxilista2.add(numero);
+            }
+        }
     }
 
     public int dp(float num) {
