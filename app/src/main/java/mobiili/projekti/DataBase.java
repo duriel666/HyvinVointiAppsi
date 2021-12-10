@@ -30,7 +30,7 @@ public class DataBase extends SQLiteOpenHelper {
         MyDB.execSQL("create Table tehtavalista(numero int ,aika datetime primary key, tunnus TEXT, tehtava TEXT, tehty int)");
         MyDB.execSQL("create Table paivakirja(numero int ,aika datetime primary key, tunnus TEXT, merkinta TEXT)");
 
-        MyDB.execSQL("create Table asetukset(tunnus TEXT primary key, vesi int, uni int, fiilis int, tehtava int, paivakirja int)");
+        MyDB.execSQL("create Table asetukset(tunnus TEXT primary key, vesi int, uni int, fiilis int, tehtava int, paivakirja int, uusi1 int, uusi2 int)");
         MyDB.execSQL("create Table vesimuisti(tunnus TEXT primary key, vesitavoite int, vesijuodaan int)");
         MyDB.execSQL("create Table unimuisti(tunnus TEXT primary key, tavoiteh int, tavoitemin int, nukuttuh int, nukuttumin int)");
 
@@ -75,6 +75,8 @@ public class DataBase extends SQLiteOpenHelper {
         cv.put("fiilis", i);
         cv.put("tehtava", i);
         cv.put("paivakirja", i);
+        cv.put("uusi1", i);
+        cv.put("uusi2", i);
         MyDB.insert("asetukset", null, cv);
         cv.clear();
         cv.put("tunnus", tunnus);
@@ -178,7 +180,7 @@ public class DataBase extends SQLiteOpenHelper {
         return vesiToday;
     }
 
-    public void setAsetukset(String tunnus, int vesi, int uni, int fiilis, int tehtava, int paivakirja) {
+    public void setAsetukset(String tunnus, int vesi, int uni, int fiilis, int tehtava, int paivakirja, int uusi1, int uusi2) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("tunnus", tunnus);
@@ -187,6 +189,8 @@ public class DataBase extends SQLiteOpenHelper {
         cv.put("fiilis", fiilis);
         cv.put("tehtava", tehtava);
         cv.put("paivakirja", paivakirja);
+        cv.put("uusi1", uusi1);
+        cv.put("uusi2", uusi2);
         MyDB.replace("asetukset", null, cv);
     }
 
@@ -200,6 +204,8 @@ public class DataBase extends SQLiteOpenHelper {
         asetukset.add(c.getString(c.getColumnIndexOrThrow("fiilis")));
         asetukset.add(c.getString(c.getColumnIndexOrThrow("tehtava")));
         asetukset.add(c.getString(c.getColumnIndexOrThrow("paivakirja")));
+        asetukset.add(c.getString(c.getColumnIndexOrThrow("uusi1")));
+        asetukset.add(c.getString(c.getColumnIndexOrThrow("uusi2")));
         c.close();
         return asetukset;
     }
@@ -304,7 +310,7 @@ public class DataBase extends SQLiteOpenHelper {
     public String deletePaivakirja(String tunnus, int numero) {
         SQLiteDatabase MyDB = getWritableDatabase();
         Cursor c = MyDB.rawQuery("select * from paivakirja where tunnus =? and numero ='" + numero + "'", new String[]{tunnus});
-        String kirja=c.getString(c.getColumnIndexOrThrow("numero"));
+        String kirja = c.getString(c.getColumnIndexOrThrow("numero"));
         return kirja;
     }
 

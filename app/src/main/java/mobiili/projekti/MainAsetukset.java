@@ -18,7 +18,7 @@ import java.util.Objects;
 public class MainAsetukset extends AppCompatActivity {
 
     Button tallenna, logout;
-    ImageButton takaisin,koti,asetukset;
+    ImageButton takaisin, koti, asetukset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,13 +35,16 @@ public class MainAsetukset extends AppCompatActivity {
         asetukset.addAll(DB.getAsetukset(tunnus));
         int vesi = Integer.parseInt(asetukset.get(0)), uni = Integer.parseInt(asetukset.get(1)),
                 fiilis = Integer.parseInt(asetukset.get(2)), tehtava = Integer.parseInt(asetukset.get(3)),
-                        paivakirja = Integer.parseInt(asetukset.get(4));
+                paivakirja = Integer.parseInt(asetukset.get(4)), uusi1 = Integer.parseInt(asetukset.get(5)),
+                uusi2 = Integer.parseInt(asetukset.get(6));
 
         @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switch1 = (Switch) findViewById(R.id.switch1);
         @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switch2 = (Switch) findViewById(R.id.switch2);
         @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switch3 = (Switch) findViewById(R.id.switch3);
         @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switch4 = (Switch) findViewById(R.id.switch4);
         @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switch5 = (Switch) findViewById(R.id.switch5);
+        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switch6 = (Switch) findViewById(R.id.switch6);
+        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switch7 = (Switch) findViewById(R.id.switch7);
 
         if (vesi == 1) {
             switch1.setChecked(true);
@@ -73,12 +76,24 @@ public class MainAsetukset extends AppCompatActivity {
         if (paivakirja != 1) {
             switch5.setChecked(false);
         }
+        if (uusi1 == 1) {
+            switch6.setChecked(true);
+        }
+        if (uusi1 != 1) {
+            switch6.setChecked(false);
+        }
+        if (uusi2 == 1) {
+            switch7.setChecked(true);
+        }
+        if (uusi2 != 1) {
+            switch7.setChecked(false);
+        }
 
         tallenna = (Button) findViewById(R.id.tallenna1);
         tallenna.setOnClickListener(v -> {
             Intent intent = new Intent(MainAsetukset.this, MainPage.class);
             intent.putExtra("tunnus", tunnus);
-            int s1, s2, s3, s4, s5;
+            int s1, s2, s3, s4, s5, s6, s7;
             if (switch1.isChecked()) {
                 s1 = 1;
             } else {
@@ -104,7 +119,17 @@ public class MainAsetukset extends AppCompatActivity {
             } else {
                 s5 = 0;
             }
-            DB.setAsetukset(tunnus, s1, s2, s3, s4, s5);
+            if (switch6.isChecked()) {
+                s6 = 1;
+            } else {
+                s6 = 0;
+            }
+            if (switch7.isChecked()) {
+                s7 = 1;
+            } else {
+                s7 = 0;
+            }
+            DB.setAsetukset(tunnus, s1, s2, s3, s4, s5, s6, s7);
             startActivity(intent);
         });
 

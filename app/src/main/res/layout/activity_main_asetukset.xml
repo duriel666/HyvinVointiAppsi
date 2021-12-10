@@ -134,12 +134,35 @@
         android:textSize="20sp"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
+    <Switch
+        android:id="@+id/switch6"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@id/switch5"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:paddingHorizontal="50dp"
+        android:text="Uusi 1"
+        android:textSize="20sp"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+    <Switch
+        android:id="@+id/switch7"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@id/switch6"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:paddingHorizontal="50dp"
+        android:text="Uusi 2"
+        android:textSize="20sp"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <Button
         android:id="@+id/tallenna1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/switch5"
+        android:layout_below="@id/switch7"
         android:textSize="20sp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
