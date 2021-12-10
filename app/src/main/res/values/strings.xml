@@ -59,6 +59,7 @@
     <string name="reg">Uusi käyttäjä</string>
     <string name="otsikkoEditPaivakirja">Muokkaa päiväkirjaa</string>
     <string name="peruuta1">Peruuta</string>
+    <string name="otsikkoEmpty">Tyhjä pohja</string>
     <string name="otsikkoJumppa">Jumppa</string>
     <string name="jumppateksti1">Jumppa</string>
 

@@ -5,10 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.TypedValue;
+import android.widget.ImageButton;
 
 import java.util.Objects;
 
 public class EmptyTemplate extends AppCompatActivity {
+
+    ImageButton takaisin, koti, asetukset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +22,30 @@ public class EmptyTemplate extends AppCompatActivity {
         Intent siirto = getIntent();
         String tunnus = siirto.getExtras().getString("tunnus");
 
-        //TODO nämä koodit kopioidaan uuteen pohjaan
+
+        //TODO nämä koodit kopiodaan uuteen pohjaan
         //TODO omat koodit tänne
+
+
+        takaisin = (ImageButton) findViewById(R.id.takaisin);
+        takaisin.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        });
+
+        koti = (ImageButton) findViewById(R.id.koti);
+        koti.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainPage.class);
+            intent.putExtra("tunnus", tunnus);
+            startActivity(intent);
+        });
+
+        asetukset = (ImageButton) findViewById(R.id.asetukset);
+        asetukset.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainAsetukset.class);
+            intent.putExtra("tunnus", tunnus);
+            startActivity(intent);
+        });
     }
 
     public int dp(float num) {

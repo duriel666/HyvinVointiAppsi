@@ -13,6 +13,9 @@
             android:name=".MainJumppa"
             android:exported="false" />
         <activity
+            android:name=".EmptyTemplate"
+            android:exported="false" />
+        <activity
             android:name=".EditPaivakirja"
             android:exported="false" />
         <activity

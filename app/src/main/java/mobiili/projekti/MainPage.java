@@ -21,7 +21,7 @@ public class MainPage extends AppCompatActivity {
 
     SwipeRefreshLayout swipeRefresh;
     TextView inspiroivaQuote;
-    ImageButton takaisin,koti,asetukset;
+    ImageButton takaisin, koti, asetukset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -215,8 +215,7 @@ public class MainPage extends AppCompatActivity {
 
         takaisin = (ImageButton) findViewById(R.id.takaisin);
         takaisin.setOnClickListener(v -> {
-            Intent intent = new Intent(this, MainAsetukset.class);
-            intent.putExtra("tunnus", tunnus);
+            Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         });
 
