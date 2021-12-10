@@ -19,7 +19,7 @@ public class EmptyTemplate extends AppCompatActivity {
         Intent siirto = getIntent();
         String tunnus = siirto.getExtras().getString("tunnus");
 
-        //TODO nämä koodit kopiodaan uuteen pohjaan
+        //TODO nämä koodit kopioidaan uuteen pohjaan
         //TODO omat koodit tänne
     }
 

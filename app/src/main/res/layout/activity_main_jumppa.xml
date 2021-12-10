@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="10dp"
+    tools:context=".MainJumppa">
+
+    <TextView
+        android:id="@+id/otsikkoJumppa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:text="@string/otsikkoJumppa"
+        android:textSize="15sp"
+        android:translationZ="15dp" />
+
+    <LinearLayout
+        android:id="@+id/valikko"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/otsikkoJumppa"
+        android:layout_centerHorizontal="true"
+        android:background="@null"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/takaisin"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:background="@null"
+            android:contentDescription="@string/takaisin"
+            android:scaleType="fitCenter"
+            android:src="@drawable/back"
+            android:translationZ="10dp" />
+
+        <ImageButton
+            android:id="@+id/koti"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="100dp"
+            android:background="@null"
+            android:contentDescription="@string/koti"
+            android:scaleType="fitCenter"
+            android:src="@drawable/home"
+            android:translationZ="10dp" />
+
+        <ImageButton
+            android:id="@+id/asetukset"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:background="@null"
+            android:contentDescription="@string/asetukset"
+            android:scaleType="fitCenter"
+            android:src="@drawable/settings"
+            android:translationZ="10dp" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/jumppascroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/valikko"
+        android:layout_marginTop="5dp"
+        android:nestedScrollingEnabled="true">
+
+        <LinearLayout
+            android:id="@+id/jumppalayout"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+            <WebView
+                android:id="@+id/jumppavideo"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp" />
+
+            <TextView
+                android:id="@+id/jumppateksti1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:text="@string/jumppateksti1"
+                android:textSize="20sp" />
+
+
+
+            <!--TODO nämä koodit kopiodaan uuteen pohjaa-->
+            <!--TODO tähän väliin omat koodit-->
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
