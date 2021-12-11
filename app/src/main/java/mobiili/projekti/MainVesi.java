@@ -60,7 +60,7 @@ public class MainVesi extends AppCompatActivity {
 
         tallenna = findViewById(R.id.tallennaVesi);
         juo = findViewById(R.id.vesiMaara);
-        tallenna.setOnClickListener(v ->
+        tallenna.setOnClickListener(v -> //TODO historia mistä voi poistaa?
         {
             int juo2 = Integer.parseInt(juo.getText().toString());
             int maara = Integer.parseInt(vesimaara.getText().toString());
