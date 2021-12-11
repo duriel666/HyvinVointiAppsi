@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class MainVesi extends AppCompatActivity {
     Button tallenna;
     EditText juo, vesimaara, vesitavoitemaara;
     TextView juotu;
-    ImageButton takaisin,koti,asetukset;
+    ImageButton takaisin, koti, asetukset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,19 +53,21 @@ public class MainVesi extends AppCompatActivity {
             num2 += num1;
         }
         juotu = findViewById(R.id.vesiJuotu);
-        String num3 = Integer.toString(num2);
-        juotu.setText(num3 + " ml");
+        int prosentti = (100 * num2) / vesitavoitemaaranum;
+        juotu.setText(num2 + " ml - " + prosentti + " %");
+        ProgressBar pb = findViewById(R.id.vesiProg);
+        pb.setProgress(prosentti);
 
         tallenna = findViewById(R.id.tallennaVesi);
         juo = findViewById(R.id.vesiMaara);
         tallenna.setOnClickListener(v ->
         {
-            Intent intent = new Intent(MainVesi.this, MainPage.class);
             int juo2 = Integer.parseInt(juo.getText().toString());
             int maara = Integer.parseInt(vesimaara.getText().toString());
             int tavoite = Integer.parseInt(vesitavoitemaara.getText().toString());
             DB.addVesi(tunnus, juo2);
             DB.setVesiMuisti(tunnus, tavoite, maara);
+            Intent intent = new Intent(this, MainVesi.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
         });

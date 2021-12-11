@@ -65,13 +65,23 @@
 
     </LinearLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fiilisTanaan"
+        android:text="@string/fiilistanaan"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:textSize="20sp"
+        android:layout_below="@id/valikko"/>
+
     <ImageView
         android:id="@+id/fiilisKuva"
         android:layout_width="220dp"
         android:layout_height="189dp"
-        android:layout_below="@id/valikko"
+        android:layout_below="@id/fiilisTanaan"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="5dp" />
 
     <TextView
         android:id="@+id/fiilisArvo"
