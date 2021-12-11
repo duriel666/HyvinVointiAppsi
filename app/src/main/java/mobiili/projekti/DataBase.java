@@ -309,9 +309,8 @@ public class DataBase extends SQLiteOpenHelper {
 
     public String deletePaivakirja(String tunnus, int numero) {
         SQLiteDatabase MyDB = getWritableDatabase();
-        Cursor c = MyDB.rawQuery("select * from paivakirja where tunnus =? and numero ='" + numero + "'", new String[]{tunnus});
-        String kirja = c.getString(c.getColumnIndexOrThrow("numero"));
-        c.close();
+        MyDB.delete("paivakirja","tunnus =? and numero ='" + numero + "'", new String[]{tunnus});
+        String kirja="poistettu";
         return kirja;
     }
 

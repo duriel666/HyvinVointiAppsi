@@ -63,5 +63,6 @@
     <string name="otsikkoJumppa">Jumppa</string>
     <string name="jumppateksti1">Jumppa</string>
     <string name="poista1">Poista</string>
+    <string name="paluu1">Takaisin</string>
 
 </resources>
