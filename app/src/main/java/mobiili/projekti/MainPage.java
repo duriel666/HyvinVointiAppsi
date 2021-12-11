@@ -22,6 +22,7 @@ public class MainPage extends AppCompatActivity {
     SwipeRefreshLayout swipeRefresh;
     TextView inspiroivaQuote;
     ImageButton takaisin, koti, asetukset;
+    int h1 = 0, minuutittavoite = 0, minuutitnukuttu = 0, min1 = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,19 +105,20 @@ public class MainPage extends AppCompatActivity {
             uniData.addAll(DB.getUni(tunnus));
             uniMuisti.clear();
             uniMuisti.addAll((DB.getUniMuisti(tunnus)));
-            int unitavoiteh = Integer.parseInt(uniMuisti.get(0)), unitavoitemin = Integer.parseInt(uniMuisti.get(1)),
-                    nukuttuh = Integer.parseInt(uniMuisti.get(2)), nukuttumin = Integer.parseInt(uniMuisti.get(3));
+            int unitavoiteh = Integer.parseInt(uniMuisti.get(0)), unitavoitemin = Integer.parseInt(uniMuisti.get(1));
             int indexu = uniData.size(); //TODO nukuttuh ja nukuttumin jotaki käyttöä tänne?
             int indexu2 = indexu / 2;
-            int h1 = 0, min1 = 0;
-            for (int i = 1; i < indexu2; i++) {
+            h1 = 0;
+            min1 = 0;
+            for (int i = 0; i < indexu2; i++) {
                 int num1 = Integer.parseInt(uniData.get(i));
                 h1 += num1;
                 int num2 = Integer.parseInt((uniData.get(i + 1)));
                 min1 += num2;
+                i += 1;
             }
-            int minuutitnukuttu = (h1 * 60) + min1;
-            int minuutittavoite = (unitavoiteh * 60) + unitavoitemin;
+            minuutitnukuttu = (h1 * 60) + min1;
+            minuutittavoite = (unitavoiteh * 60) + unitavoitemin;
             if (minuutitnukuttu <= 0 || minuutittavoite <= 0) {
                 uni.setText("Uni\n\nValmiina päivän tavoitteesta: - %\nTänään nukuttu: 0 h 0 min");
             } else {
@@ -154,8 +156,9 @@ public class MainPage extends AppCompatActivity {
             if (index2 > 0) {
                 String fiilisNyt = fiilisToday.get(index2 - 1);
                 fiilis.setText("Fiilis\n\nFiilis nyt: " + fiilisNyt + "\nPäivän fiilis: " + fiilisT);
-            } else
+            } else {
                 fiilis.setText("Fiilis\n\nFiilis nyt: ?\nPäivän fiilis: ?");
+            }
 
             fiilis.setOnClickListener(v -> {
                 Intent intent = new Intent(MainPage.this, MainFiilis.class);

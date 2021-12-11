@@ -6,6 +6,7 @@ import android.util.TypedValue;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,8 +20,10 @@ public class MainUni extends AppCompatActivity {
     Button tallenna;
     EditText nukuttuH, nukuttuMin, tavoiteH, tavoiteMin;
     TextView nukuttuToday;
-    int unitavoiteh = 8, unitavoitemin = 0, nukuttuH2, nukuttuMin2, tavoiteH2, tavoiteMin2;
-    ImageButton takaisin,koti,asetukset;
+    int unitavoiteh = 8, unitavoitemin = 0, nukuttuH2 = 0, nukuttuMin2 = 0, tavoiteH2 = 0,
+            tavoiteMin2 = 0, min1 = 0, h1 = 0, num1 = 0, num2 = 0;
+    int minuutitnukuttu = 0, minuutittavoite = 0;
+    ImageButton takaisin, koti, asetukset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,20 +57,24 @@ public class MainUni extends AppCompatActivity {
         uni.addAll(DB.getUni(tunnus));
         int index = uni.size();
         int index2 = index / 2;
-        int h1 = 0, min1 = 0;
-        for (int i = 1; i < index2; i++) {
-            int num1 = Integer.parseInt(uni.get(i));
+        h1 = 0;
+        for (int i = 0; i < index2; i++) {
+            num1 = Integer.parseInt(uni.get(i));
             h1 += num1;
-            int num2 = Integer.parseInt((uni.get(i + 1)));
+            num2 = Integer.parseInt((uni.get(i + 1)));
             min1 += num2;
+            i += 1;
         }
-        int minuutitnukuttu = (h1 * 60) + min1;
-        int minuutittavoite = (unitavoiteh * 60) + unitavoitemin;
+        minuutitnukuttu = (h1 * 60) + min1;
+        minuutittavoite = (unitavoiteh * 60) + unitavoitemin;
         nukuttuToday = findViewById(R.id.uniNukuttu);
         if (minuutitnukuttu <= 0 || minuutittavoite <= 0) {
             nukuttuToday.setText("Päivän tavoitteesta nukuttu: 0 %");
         } else {
-            nukuttuToday.setText("Päivän tavoitteesta nukuttu: " + minuutitnukuttu * 100 / minuutittavoite + " %");
+            int prosentti = minuutitnukuttu * 100 / minuutittavoite;
+            nukuttuToday.setText("Päivän tavoitteesta nukuttu: " + prosentti + " %");
+            ProgressBar pb = findViewById(R.id.uniProgress);
+            pb.setProgress(prosentti);
         }
         tallenna.setOnClickListener(v ->
         {
@@ -94,7 +101,10 @@ public class MainUni extends AppCompatActivity {
 
             DB.addUni(tunnus, nukuttuH2, nukuttuMin2);
             DB.setUniMuisti(tunnus, tavoiteH2, tavoiteMin2, nukuttuH2, nukuttuMin2);
-            Toast.makeText(this,"Tallennettu",Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, MainUni.class);
+            intent.putExtra("tunnus", tunnus);
+            startActivity(intent);
+            Toast.makeText(this, "Tallennettu", Toast.LENGTH_SHORT).show();
         }); //TODO tarkista ettei ole nukuttu yli 24tuntia
 
         takaisin = findViewById(R.id.takaisin);

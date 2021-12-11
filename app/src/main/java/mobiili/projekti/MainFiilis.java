@@ -20,8 +20,9 @@ public class MainFiilis extends AppCompatActivity {
     Button tallenna;
     SeekBar fiilisAsteikko;
     TextView fiilisArvo;
+    int num1 = 0, num2 = 0;
     ImageView image;
-    ImageButton takaisin,koti,asetukset;
+    ImageButton takaisin, koti, asetukset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,6 @@ public class MainFiilis extends AppCompatActivity {
         if (index2 > 0) {
             num3 = num2 / index2;
         }
-        String fiilisT = Integer.toString(num3); //TODO tännekkin joku keskiarvo fiiliksestä?
         if (index2 > 0) {
             String fiilisNyt = fiilisToday.get(index2 - 1);
             int kohta = Integer.parseInt(fiilisNyt);
@@ -60,6 +60,14 @@ public class MainFiilis extends AppCompatActivity {
         } else {
             fiilisAsteikko.setProgress(0);
             fiilisArvo.setText("-  " + fiilisAsteikko.getProgress() + "  -");
+        }
+
+        TextView fiilisTanaan = findViewById(R.id.fiilisTanaan);
+        String fiilisT = Integer.toString(num3);
+        if (index2 > 0) {
+            fiilisTanaan.setText("Päivän kokonaisfiilis: " + fiilisT);
+        } else {
+            fiilisTanaan.setText("Päivän kokonaisfiilis: -");
         }
         fiilisAsteikko.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             int arvo = 0;
@@ -85,7 +93,10 @@ public class MainFiilis extends AppCompatActivity {
         tallenna.setOnClickListener(v ->
         {
             DB.addFiilis(tunnus, fiilisAsteikko.getProgress());
-            Toast.makeText(this,"Fiilis tallennettu",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Fiilis tallennettu", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, MainFiilis.class);
+            intent.putExtra("tunnus", tunnus);
+            startActivity(intent);
         });
 
         takaisin = findViewById(R.id.takaisin);
