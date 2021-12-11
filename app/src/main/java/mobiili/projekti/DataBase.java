@@ -140,7 +140,7 @@ public class DataBase extends SQLiteOpenHelper {
 
     public ArrayList<String> getFiilisToday(String tunnus) {
         SQLiteDatabase MyDB = this.getReadableDatabase();
-        Cursor c = MyDB.rawQuery("select * from fiilis where tunnus =? and datetime(" +
+        Cursor c = MyDB.rawQuery("select * from fiilis where tunnus =? and aika > datetime(" +
                 "'now', 'start of day')", new String[]{tunnus});
         c.moveToFirst();
         ArrayList<String> fiilisToday = new ArrayList<>();
@@ -165,7 +165,7 @@ public class DataBase extends SQLiteOpenHelper {
 
     public ArrayList<String> getVesiToday(String tunnus) {
         SQLiteDatabase MyDB = this.getReadableDatabase();
-        Cursor c = MyDB.rawQuery("select * from vesi where tunnus =? and datetime(" +
+        Cursor c = MyDB.rawQuery("select * from vesi where tunnus =? and aika > datetime(" +
                 "'now', 'start of day')", new String[]{tunnus});
         c.moveToFirst();
         ArrayList<String> vesiToday = new ArrayList<>();
@@ -270,6 +270,7 @@ public class DataBase extends SQLiteOpenHelper {
         c.close();
         return tehtavalista;
     }
+
     //TODO
     public void addTehtavalista(String tunnus, int numero, String aika, String tehtava, int tehty) {
         SQLiteDatabase MyDB = getWritableDatabase();
@@ -326,7 +327,7 @@ public class DataBase extends SQLiteOpenHelper {
 
     public ArrayList<String> getUni(String tunnus) {
         SQLiteDatabase MyDB = this.getReadableDatabase();
-        Cursor c = MyDB.rawQuery("select * from uni where tunnus =? and datetime(" +
+        Cursor c = MyDB.rawQuery("select * from uni where tunnus =? and aika > datetime(" +
                 "'now', 'start of day')", new String[]{tunnus});
         c.moveToFirst();
         ArrayList<String> uni = new ArrayList<>();
