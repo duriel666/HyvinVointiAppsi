@@ -1,15 +1,13 @@
 package mobiili.projekti;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.TypedValue;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Objects;
 
@@ -60,7 +58,6 @@ public class regPage extends AppCompatActivity {
 
     public int dp(float num) {
         float num1 = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, num, getResources().getDisplayMetrics());
-        int num2 = Math.round(num1);
-        return num2;
+        return Math.round(num1);
     }
 }

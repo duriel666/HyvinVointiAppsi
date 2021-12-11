@@ -38,13 +38,13 @@ public class MainAsetukset extends AppCompatActivity {
                 paivakirja = Integer.parseInt(asetukset.get(4)), uusi1 = Integer.parseInt(asetukset.get(5)),
                 uusi2 = Integer.parseInt(asetukset.get(6));
 
-        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switch1 = (Switch) findViewById(R.id.switch1);
-        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switch2 = (Switch) findViewById(R.id.switch2);
-        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switch3 = (Switch) findViewById(R.id.switch3);
-        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switch4 = (Switch) findViewById(R.id.switch4);
-        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switch5 = (Switch) findViewById(R.id.switch5);
-        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switch6 = (Switch) findViewById(R.id.switch6);
-        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switch7 = (Switch) findViewById(R.id.switch7);
+        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switch1 = findViewById(R.id.switch1);
+        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switch2 = findViewById(R.id.switch2);
+        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switch3 = findViewById(R.id.switch3);
+        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switch4 = findViewById(R.id.switch4);
+        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switch5 = findViewById(R.id.switch5);
+        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switch6 = findViewById(R.id.switch6);
+        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switch7 = findViewById(R.id.switch7);
 
         if (vesi == 1) {
             switch1.setChecked(true);
@@ -89,7 +89,7 @@ public class MainAsetukset extends AppCompatActivity {
             switch7.setChecked(false);
         }
 
-        tallenna = (Button) findViewById(R.id.tallenna1);
+        tallenna = findViewById(R.id.tallenna1);
         tallenna.setOnClickListener(v -> {
             Intent intent = new Intent(MainAsetukset.this, MainPage.class);
             intent.putExtra("tunnus", tunnus);
@@ -133,19 +133,17 @@ public class MainAsetukset extends AppCompatActivity {
             startActivity(intent);
         });
 
-        logout = (Button) findViewById(R.id.tallenna2);
-        logout.setOnClickListener(v -> {
-            startActivity(new Intent(MainAsetukset.this, MainActivity.class));
-        });
+        logout = findViewById(R.id.tallenna2);
+        logout.setOnClickListener(v -> startActivity(new Intent(MainAsetukset.this, MainActivity.class)));
 
-        takaisin = (ImageButton) findViewById(R.id.takaisin);
+        takaisin = findViewById(R.id.takaisin);
         takaisin.setOnClickListener(v -> {
             Intent intent = new Intent(this, MainPage.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
         });
 
-        koti = (ImageButton) findViewById(R.id.koti);
+        koti = findViewById(R.id.koti);
         koti.setOnClickListener(v -> {
             Intent intent = new Intent(this, MainPage.class);
             intent.putExtra("tunnus", tunnus);
@@ -155,7 +153,6 @@ public class MainAsetukset extends AppCompatActivity {
 
     public int dp(float num) {
         float num1 = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, num, getResources().getDisplayMetrics());
-        int num2 = Math.round(num1);
-        return num2;
+        return Math.round(num1);
     }
 }

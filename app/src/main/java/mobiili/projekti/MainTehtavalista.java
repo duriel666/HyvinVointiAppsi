@@ -31,7 +31,7 @@ public class MainTehtavalista extends AppCompatActivity {
         final DataBase DB = new DataBase(this);
         final ArrayList<String> tehtavalista = DB.getTehtavalista(tunnus);
 
-        LinearLayout layouttehtavalista = (LinearLayout) findViewById(R.id.tehtavaLayout);
+        LinearLayout layouttehtavalista = findViewById(R.id.tehtavaLayout);
         LinearLayout layout = new LinearLayout(this);
         layout.setOrientation(LinearLayout.VERTICAL);
 
@@ -59,21 +59,21 @@ public class MainTehtavalista extends AppCompatActivity {
             layouttehtavalista.addView(tl);
         }
 
-        takaisin = (ImageButton) findViewById(R.id.takaisin);
+        takaisin = findViewById(R.id.takaisin);
         takaisin.setOnClickListener(v -> {
             Intent intent = new Intent(this, MainPage.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
         });
 
-        koti = (ImageButton) findViewById(R.id.koti);
+        koti = findViewById(R.id.koti);
         koti.setOnClickListener(v -> {
             Intent intent = new Intent(this, MainPage.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
         });
 
-        asetukset = (ImageButton) findViewById(R.id.asetukset);
+        asetukset = findViewById(R.id.asetukset);
         asetukset.setOnClickListener(v -> {
             Intent intent = new Intent(this, MainAsetukset.class);
             intent.putExtra("tunnus", tunnus);
@@ -83,7 +83,6 @@ public class MainTehtavalista extends AppCompatActivity {
 
     public int dp(float num) {
         float num1 = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, num, getResources().getDisplayMetrics());
-        int num2 = Math.round(num1);
-        return num2;
+        return Math.round(num1);
     }
 }

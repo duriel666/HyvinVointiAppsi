@@ -51,14 +51,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         reg = findViewById(R.id.buttonRek);
-        reg.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, regPage.class));
-        });
+        reg.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, regPage.class)));
     }
 
     public int dp(float num) {
         float num1 = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, num, getResources().getDisplayMetrics());
-        int num2 = Math.round(num1);
-        return num2;
+        return Math.round(num1);
     }
 }
