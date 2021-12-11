@@ -1,7 +1,5 @@
 package mobiili.projekti;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.TypedValue;
@@ -9,7 +7,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -18,7 +17,6 @@ public class MainUni extends AppCompatActivity {
 
     Button tallenna;
     EditText nukuttuH, nukuttuMin, tavoiteH, tavoiteMin;
-    DataBase DB;
     TextView nukuttuToday;
     int unitavoiteh = 8, unitavoitemin = 0, nukuttuH2, nukuttuMin2, tavoiteH2, tavoiteMin2;
     ImageButton takaisin,koti,asetukset;
@@ -100,21 +98,21 @@ public class MainUni extends AppCompatActivity {
             startActivity(intent);
         }); //TODO tarkista ettei ole nukuttu yli 24tuntia
 
-        takaisin = (ImageButton) findViewById(R.id.takaisin);
+        takaisin = findViewById(R.id.takaisin);
         takaisin.setOnClickListener(v -> {
             Intent intent = new Intent(this, MainPage.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
         });
 
-        koti = (ImageButton) findViewById(R.id.koti);
+        koti = findViewById(R.id.koti);
         koti.setOnClickListener(v -> {
             Intent intent = new Intent(this, MainPage.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
         });
 
-        asetukset = (ImageButton) findViewById(R.id.asetukset);
+        asetukset = findViewById(R.id.asetukset);
         asetukset.setOnClickListener(v -> {
             Intent intent = new Intent(this, MainAsetukset.class);
             intent.putExtra("tunnus", tunnus);
@@ -125,7 +123,6 @@ public class MainUni extends AppCompatActivity {
 
     public int dp(float num) {
         float num1 = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, num, getResources().getDisplayMetrics());
-        int num2 = Math.round(num1);
-        return num2;
+        return Math.round(num1);
     }
 }

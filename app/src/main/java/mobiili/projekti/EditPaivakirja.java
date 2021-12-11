@@ -24,14 +24,9 @@ import java.util.Objects;
 
 public class EditPaivakirja extends AppCompatActivity {
 
-    Button tallenna, peruuta;
-    EditText merkinta;
-    int numero = 0;
+    Button poista, peruuta;
     ImageButton takaisin, koti, asetukset;
     TextView testi;
-    CheckBox[] p = new CheckBox[numero];
-    List boxilista = new ArrayList();
-    List boxilista2 = new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +39,7 @@ public class EditPaivakirja extends AppCompatActivity {
         final DataBase DB = new DataBase(this);
         final ArrayList<String> paivakirja = DB.getPaivakirja(tunnus);
 
-        merkinta = (EditText) findViewById(R.id.paivakirjamerkinta);
-
-        LinearLayout layoutPaivakirja = (LinearLayout) findViewById(R.id.paivakirjaLayout);
+        LinearLayout layoutEP = findViewById(R.id.editPaivakirjaLayout);
         LinearLayout layout = new LinearLayout(this);
         layout.setOrientation(LinearLayout.VERTICAL);
 
@@ -56,84 +49,42 @@ public class EditPaivakirja extends AppCompatActivity {
 
         paivakirja.clear();
         paivakirja.addAll(DB.getPaivakirja(tunnus));
-        int index = paivakirja.size(), num2 = 0, num3 = 0;
 
-        if (index > 0) {
-            int pknum = index - 3;
-            int index2 = index / 3;
-            numero = 0;
-            for (int i = 1; i <= index2; i++) {
-                p[numero].setText("Merkintä:  " + numero + " / " + index2 + "\n"
-                        + paivakirja.get(pknum) + "\n\n" + paivakirja.get(pknum + 2));
-                p[numero].setLayoutParams(params);
-                p[numero].setPadding(dp(10), 0, dp(10), 10);
-                p[numero].setBackgroundColor(Color.LTGRAY);
-                p[numero].setTextSize((TypedValue.COMPLEX_UNIT_SP), 20);
-                p[numero].setGravity(Gravity.CENTER_VERTICAL);
-                layoutPaivakirja.addView(p[numero]);
-                p[numero].setOnCheckedChangeListener(new Chk());
-                boxilista.add(paivakirja.get(pknum + 1));
-                pknum -= 3;
-                numero += 1;
-            }
-        }
+        //TODO checkboxit
 
-        int numero2 = numero - 1;
-        int numero3 = 1;
         testi = findViewById(R.id.otsikkoEditPaivakirja);
-        tallenna = findViewById(R.id.tallennaPaivakirja2);
-        tallenna.setOnClickListener(v -> {
-            int index2 = boxilista2.size();
-            if (index2 > 0) {
-                int y = 0;
-                for (int i = 0; i < index2; i++) {
-                    int poistoNumero = Integer.parseInt(boxilista2.get(y).toString()) - 1;
-                    testi.setText(boxilista2.size()+" testi");
-
-                    // testi.setText(DB.deletePaivakirja(tunnus, Integer.parseInt(boxilista.get(poistoNumero).toString()))+" ");
-                    //TODO ei toimi
-                }
-            }
-
+        poista = findViewById(R.id.poistaPaivakirja);
+        poista.setOnClickListener(v -> {
+            //TODO poista valitut
         });
 
-        peruuta = (Button) findViewById(R.id.peruuta1);
+        peruuta = findViewById(R.id.peruuta1);
         peruuta.setOnClickListener(v -> {
-            Intent intent = new Intent(this, EditPaivakirja.class);
+            Intent intent = new Intent(this, MainPaivakirja.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
         });
 
-        takaisin = (ImageButton) findViewById(R.id.takaisin);
+        takaisin = findViewById(R.id.takaisin);
         takaisin.setOnClickListener(v -> {
             Intent intent = new Intent(this, MainPaivakirja.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
         });
 
-        koti = (ImageButton) findViewById(R.id.koti);
+        koti = findViewById(R.id.koti);
         koti.setOnClickListener(v -> {
             Intent intent = new Intent(this, MainPage.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
         });
 
-        asetukset = (ImageButton) findViewById(R.id.asetukset);
+        asetukset = findViewById(R.id.asetukset);
         asetukset.setOnClickListener(v -> {
             Intent intent = new Intent(this, MainAsetukset.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
         });
-    }
-
-    class Chk implements  CompoundButton.OnCheckedChangeListener{
-
-        @Override
-        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            if(p[numero].isChecked()){
-                boxilista2.add(numero);
-            }
-        }
     }
 
     public int dp(float num) {

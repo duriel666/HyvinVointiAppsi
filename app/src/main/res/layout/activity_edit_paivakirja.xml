@@ -68,7 +68,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/pklinear"
+        android:id="@+id/epklinear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/valikko"
@@ -76,12 +76,12 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/tallennaPaivakirja2"
+            android:id="@+id/poistaPaivakirja"
             android:layout_width="160dp"
             android:layout_height="55dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
-            android:text="@string/tallenna1"
+            android:text="@string/poista1"
             android:textSize="15sp" />
 
         <Button
@@ -98,12 +98,12 @@
         android:id="@+id/vanhatrullaus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/pklinear"
+        android:layout_below="@id/epklinear"
         android:layout_marginTop="5dp"
         android:nestedScrollingEnabled="true">
 
         <LinearLayout
-            android:id="@+id/paivakirjaLayout"
+            android:id="@+id/editPaivakirjaLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"

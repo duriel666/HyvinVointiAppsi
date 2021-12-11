@@ -49,7 +49,7 @@ public class MainFiilis extends AppCompatActivity {
         if (index2 > 0) {
             num3 = num2 / index2;
         }
-        String fiilisT = Integer.toString(num3);
+        String fiilisT = Integer.toString(num3); //TODO tännekkin joku keskiarvo fiiliksestä?
         if (index2 > 0) {
             String fiilisNyt = fiilisToday.get(index2 - 1);
             int kohta = Integer.parseInt(fiilisNyt);
@@ -80,7 +80,7 @@ public class MainFiilis extends AppCompatActivity {
             }
         });
 
-        tallenna = (Button) findViewById(R.id.tallennaFiilis);
+        tallenna = findViewById(R.id.tallennaFiilis);
         tallenna.setOnClickListener(v ->
         {
             Intent intent = new Intent(MainFiilis.this, MainPage.class);
@@ -89,21 +89,21 @@ public class MainFiilis extends AppCompatActivity {
             startActivity(intent);
         });
 
-        takaisin = (ImageButton) findViewById(R.id.takaisin);
+        takaisin = findViewById(R.id.takaisin);
         takaisin.setOnClickListener(v -> {
             Intent intent = new Intent(this, MainPage.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
         });
 
-        koti = (ImageButton) findViewById(R.id.koti);
+        koti = findViewById(R.id.koti);
         koti.setOnClickListener(v -> {
             Intent intent = new Intent(this, MainPage.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
         });
 
-        asetukset = (ImageButton) findViewById(R.id.asetukset);
+        asetukset = findViewById(R.id.asetukset);
         asetukset.setOnClickListener(v -> {
             Intent intent = new Intent(this, MainAsetukset.class);
             intent.putExtra("tunnus", tunnus);
@@ -125,7 +125,6 @@ public class MainFiilis extends AppCompatActivity {
 
     public int dp(float num) {
         float num1 = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, num, getResources().getDisplayMetrics());
-        int num2 = Math.round(num1);
-        return num2;
+        return Math.round(num1);
     }
 }

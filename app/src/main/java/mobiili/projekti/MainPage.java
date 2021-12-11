@@ -40,7 +40,7 @@ public class MainPage extends AppCompatActivity {
         final ArrayList<String> uniData = DB.getUni(tunnus);
         final ArrayList<String> uniMuisti = DB.getUniMuisti(tunnus);
 
-        LinearLayout etuSivu = (LinearLayout) findViewById(R.id.etuLayout);
+        LinearLayout etuSivu = findViewById(R.id.etuLayout);
         LinearLayout layout = new LinearLayout(this);
         layout.setOrientation(LinearLayout.VERTICAL);
 
@@ -106,7 +106,7 @@ public class MainPage extends AppCompatActivity {
             uniMuisti.addAll((DB.getUniMuisti(tunnus)));
             int unitavoiteh = Integer.parseInt(uniMuisti.get(0)), unitavoitemin = Integer.parseInt(uniMuisti.get(1)),
                     nukuttuh = Integer.parseInt(uniMuisti.get(2)), nukuttumin = Integer.parseInt(uniMuisti.get(3));
-            int indexu = uniData.size();
+            int indexu = uniData.size(); //TODO nukuttuh ja nukuttumin jotaki käyttöä tänne?
             int indexu2 = indexu / 2;
             int h1 = 0, min1 = 0;
             for (int i = 1; i < indexu2; i++) {
@@ -208,12 +208,11 @@ public class MainPage extends AppCompatActivity {
             uusi1.setGravity(Gravity.CENTER_VERTICAL);
             etuSivu.addView(uusi1);
 
-            uusi1.setText("UUsi1"); //TODO tuohon tekstiä ja alla olevat intent ja start pois kommenteista
-            //TODO MainUusix.class tilalle .java uudesta
+            uusi1.setText("Jumppa");
             uusi1.setOnClickListener(v -> {
-                //TODO Intent intent = new Intent(MainPage.this, MainUusi1.class);
-                //TODO intent.putExtra("tunnus", tunnus);
-                //TODO startActivity(intent);
+                Intent intent = new Intent(MainPage.this, MainJumppa.class);
+                intent.putExtra("tunnus", tunnus);
+                startActivity(intent);
             });
         }
         if (uusi2Asetus == 1) {
@@ -235,33 +234,30 @@ public class MainPage extends AppCompatActivity {
         }
 
         swipeRefresh = findViewById(R.id.swipeRefresh);
-        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                quotelista.clear();
-                quotelista.addAll(DB.randomquotelista());
-                Random random = new Random();
-                int index = random.nextInt(quotelista.size());
-                String rQuote = quotelista.get(index);
-                inspiroivaQuote.setText(rQuote);
-                swipeRefresh.setRefreshing(false);
-            }
+        swipeRefresh.setOnRefreshListener(() -> {
+            quotelista.clear();
+            quotelista.addAll(DB.randomquotelista());
+            Random random = new Random();
+            int index = random.nextInt(quotelista.size());
+            String rQuote = quotelista.get(index);
+            inspiroivaQuote.setText(rQuote);
+            swipeRefresh.setRefreshing(false);
         });
 
-        takaisin = (ImageButton) findViewById(R.id.takaisin);
+        takaisin = findViewById(R.id.takaisin);
         takaisin.setOnClickListener(v -> {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         });
 
-        koti = (ImageButton) findViewById(R.id.koti);
+        koti = findViewById(R.id.koti);
         koti.setOnClickListener(v -> {
             Intent intent = new Intent(this, MainPage.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
         });
 
-        asetukset = (ImageButton) findViewById(R.id.asetukset);
+        asetukset = findViewById(R.id.asetukset);
         asetukset.setOnClickListener(v -> {
             Intent intent = new Intent(this, MainAsetukset.class);
             intent.putExtra("tunnus", tunnus);
@@ -271,7 +267,6 @@ public class MainPage extends AppCompatActivity {
 
     public int dp(float num) {
         float num1 = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, num, getResources().getDisplayMetrics());
-        int num2 = Math.round(num1);
-        return num2;
+        return Math.round(num1);
     }
 }

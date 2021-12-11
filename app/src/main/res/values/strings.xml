@@ -62,5 +62,6 @@
     <string name="otsikkoEmpty">Tyhjä pohja</string>
     <string name="otsikkoJumppa">Jumppa</string>
     <string name="jumppateksti1">Jumppa</string>
+    <string name="poista1">Poista</string>
 
 </resources>

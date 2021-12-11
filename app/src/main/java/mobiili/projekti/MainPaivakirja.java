@@ -38,9 +38,9 @@ public class MainPaivakirja extends AppCompatActivity {
         final DataBase DB = new DataBase(this);
         final ArrayList<String> paivakirja = DB.getPaivakirja(tunnus);
 
-        merkinta = (EditText) findViewById(R.id.paivakirjamerkinta);
+        merkinta = findViewById(R.id.paivakirjamerkinta);
 
-        LinearLayout layoutPaivakirja = (LinearLayout) findViewById(R.id.paivakirjaLayout);
+        LinearLayout layoutPaivakirja = findViewById(R.id.paivakirjaLayout);
         LinearLayout layout = new LinearLayout(this);
         layout.setOrientation(LinearLayout.VERTICAL);
 
@@ -50,7 +50,7 @@ public class MainPaivakirja extends AppCompatActivity {
 
         paivakirja.clear();
         paivakirja.addAll(DB.getPaivakirja(tunnus));
-        int index = paivakirja.size(), num2 = 0, num3 = 0;
+        int index = paivakirja.size();
 
         final TextView[] p = new TextView[index];
         if (index > 0) {
@@ -72,7 +72,7 @@ public class MainPaivakirja extends AppCompatActivity {
             }
         }
 
-        tallenna = (Button) findViewById(R.id.tallennaPaivakirja);
+        tallenna = findViewById(R.id.tallennaPaivakirja);
         tallenna.setOnClickListener(v ->
         {
             Intent intent = new Intent(MainPaivakirja.this, MainPage.class);
@@ -92,28 +92,28 @@ public class MainPaivakirja extends AppCompatActivity {
             }
         });
 
-        muokkaa=(Button)findViewById(R.id.editPaivakirja);
+        muokkaa= findViewById(R.id.editPaivakirja);
         muokkaa.setOnClickListener(v->{
             Intent intent = new Intent(this, EditPaivakirja.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
         });
 
-        takaisin = (ImageButton) findViewById(R.id.takaisin);
+        takaisin = findViewById(R.id.takaisin);
         takaisin.setOnClickListener(v -> {
             Intent intent = new Intent(this, MainPage.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
         });
 
-        koti = (ImageButton) findViewById(R.id.koti);
+        koti = findViewById(R.id.koti);
         koti.setOnClickListener(v -> {
             Intent intent = new Intent(this, MainPage.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
         });
 
-        asetukset = (ImageButton) findViewById(R.id.asetukset);
+        asetukset = findViewById(R.id.asetukset);
         asetukset.setOnClickListener(v -> {
             Intent intent = new Intent(this, MainAsetukset.class);
             intent.putExtra("tunnus", tunnus);

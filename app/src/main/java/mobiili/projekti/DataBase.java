@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -271,7 +270,7 @@ public class DataBase extends SQLiteOpenHelper {
         c.close();
         return tehtavalista;
     }
-
+    //TODO
     public void addTehtavalista(String tunnus, int numero, String aika, String tehtava, int tehty) {
         SQLiteDatabase MyDB = getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -311,6 +310,7 @@ public class DataBase extends SQLiteOpenHelper {
         SQLiteDatabase MyDB = getWritableDatabase();
         Cursor c = MyDB.rawQuery("select * from paivakirja where tunnus =? and numero ='" + numero + "'", new String[]{tunnus});
         String kirja = c.getString(c.getColumnIndexOrThrow("numero"));
+        c.close();
         return kirja;
     }
 
