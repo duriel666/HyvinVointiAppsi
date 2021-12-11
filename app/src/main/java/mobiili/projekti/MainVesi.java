@@ -47,16 +47,20 @@ public class MainVesi extends AppCompatActivity {
         vesiToday.clear();
         vesiToday.addAll(DB.getVesiToday(tunnus));
         int index2 = vesiToday.size();
-        int num2 = 0;
-        for (int i = 0; i < index2; i++) {
-            int num1 = Integer.parseInt(vesiToday.get(i));
-            num2 += num1;
+        if (index2 > 0) {
+            int num2 = 0;
+            for (int i = 0; i < index2; i++) {
+                int num1 = Integer.parseInt(vesiToday.get(i));
+                num2 += num1;
+            }
+            juotu = findViewById(R.id.vesiJuotu);
+            int prosentti = (100 * num2) / vesitavoitemaaranum;
+            juotu.setText(num2 + " ml - " + prosentti + " %");
+            ProgressBar pb = findViewById(R.id.vesiProg);
+            pb.setProgress(prosentti);
+        } else {
+            juotu.setText("0 ml - 0 %");
         }
-        juotu = findViewById(R.id.vesiJuotu);
-        int prosentti = (100 * num2) / vesitavoitemaaranum;
-        juotu.setText(num2 + " ml - " + prosentti + " %");
-        ProgressBar pb = findViewById(R.id.vesiProg);
-        pb.setProgress(prosentti);
 
         tallenna = findViewById(R.id.tallennaVesi);
         juo = findViewById(R.id.vesiMaara);
