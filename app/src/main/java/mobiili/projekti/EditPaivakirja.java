@@ -26,6 +26,8 @@ public class EditPaivakirja extends AppCompatActivity {
 
     Button poista, peruuta;
     ImageButton takaisin, koti, asetukset;
+    int numero = 0, numero2 = 0, index = 0, index2 = 0, pknum = 0, poisto = 0;
+    List boxilista = new ArrayList();
     TextView testi;
 
     @Override
@@ -49,13 +51,46 @@ public class EditPaivakirja extends AppCompatActivity {
 
         paivakirja.clear();
         paivakirja.addAll(DB.getPaivakirja(tunnus));
+        index = paivakirja.size();
 
-        //TODO checkboxit
+        pknum = index - 3;
+        numero = 1;
+        index2 = (index + 1) / 3;
+        final CheckBox[] p = new CheckBox[index];
+        if (index > 0) {
+            int laskuri = 1;
+            for (int i = 0; i < index2; i++) {
+                numero2 = Integer.parseInt(paivakirja.get(pknum + 1));
+                p[numero] = new CheckBox(this);
+                p[numero].setText("Merkintä:  " + laskuri + " / " + index2 + "\n"
+                        + paivakirja.get(pknum) + "\n\n" + paivakirja.get(pknum + 2));
+                p[numero].setLayoutParams(params);
+                p[numero].setPadding(dp(10), 0, dp(10), 10);
+                p[numero].setBackgroundColor(Color.LTGRAY);
+                p[numero].setTextSize((TypedValue.COMPLEX_UNIT_SP), 20);
+                p[numero].setGravity(Gravity.CENTER_VERTICAL);
+                layoutEP.addView(p[numero]);
+                boxilista.add(numero2);
+                pknum -= 3;
+                numero += 1;
+                laskuri += 1;
+            }
+        }
 
         testi = findViewById(R.id.otsikkoEditPaivakirja);
         poista = findViewById(R.id.poistaPaivakirja);
+        numero = 1;
         poista.setOnClickListener(v -> {
-            //TODO poista valitut
+            for (int i = 0; i < index2; i++) {
+                if (p[numero].isChecked()) {
+                    poisto = (int) boxilista.get(numero - 1);
+                    DB.deletePaivakirja(tunnus, poisto);
+                    Intent intent = new Intent(this, EditPaivakirja.class);
+                    intent.putExtra("tunnus", tunnus);
+                    startActivity(intent);
+                }
+                numero += 1;
+            }
         });
 
         peruuta = findViewById(R.id.peruuta1);
@@ -86,6 +121,10 @@ public class EditPaivakirja extends AppCompatActivity {
             startActivity(intent);
         });
     }
+
+    /*public boolean isSelected() { //TODO jotaki
+        return selected.isSelected();
+    }*/
 
     public int dp(float num) {
         float num1 = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, num, getResources().getDisplayMetrics());

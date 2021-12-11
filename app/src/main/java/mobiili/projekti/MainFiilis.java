@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -83,10 +84,8 @@ public class MainFiilis extends AppCompatActivity {
         tallenna = findViewById(R.id.tallennaFiilis);
         tallenna.setOnClickListener(v ->
         {
-            Intent intent = new Intent(MainFiilis.this, MainPage.class);
             DB.addFiilis(tunnus, fiilisAsteikko.getProgress());
-            intent.putExtra("tunnus", tunnus);
-            startActivity(intent);
+            Toast.makeText(this,"Fiilis tallennettu",Toast.LENGTH_SHORT).show();
         });
 
         takaisin = findViewById(R.id.takaisin);

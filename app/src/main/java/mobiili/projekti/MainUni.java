@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -91,11 +92,9 @@ public class MainUni extends AppCompatActivity {
                 tavoiteMin2 = Integer.parseInt(tavoiteMin.getText().toString());
             }
 
-            Intent intent = new Intent(MainUni.this, MainPage.class);
             DB.addUni(tunnus, nukuttuH2, nukuttuMin2);
             DB.setUniMuisti(tunnus, tavoiteH2, tavoiteMin2, nukuttuH2, nukuttuMin2);
-            intent.putExtra("tunnus", tunnus);
-            startActivity(intent);
+            Toast.makeText(this,"Tallennettu",Toast.LENGTH_SHORT).show();
         }); //TODO tarkista ettei ole nukuttu yli 24tuntia
 
         takaisin = findViewById(R.id.takaisin);
