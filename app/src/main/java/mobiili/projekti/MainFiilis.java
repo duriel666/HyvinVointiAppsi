@@ -3,11 +3,13 @@ package mobiili.projekti;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -87,6 +89,33 @@ public class MainFiilis extends AppCompatActivity {
                 fiilisArvo.setText("-  " + arvo + "  -");
             }
         });
+
+        ProgressBar fiilisEilen = findViewById(R.id.fiilisEilen);
+        ProgressBar fiilisTp = findViewById(R.id.fiilisTp);
+        ArrayList<String> historia = DB.getFiilisHistoria(tunnus);
+        int index = historia.size();
+        if (index > 0) {
+            fiilisEilen.setProgress(Integer.parseInt(historia.get(0)) + 100);
+            if (Integer.parseInt(historia.get(0)) < 100) {
+                fiilisEilen.getProgressDrawable().setColorFilter(Color.RED, android.graphics.PorterDuff.Mode.SRC_IN);
+            }
+            if (Integer.parseInt(historia.get(0)) > 100) {
+                fiilisEilen.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
+            }
+            if (index > 1) {
+                fiilisTp.setProgress(Integer.parseInt(historia.get(1)) + 100);
+                if (Integer.parseInt(historia.get(1)) < 100) {
+                    fiilisTp.getProgressDrawable().setColorFilter(Color.RED, android.graphics.PorterDuff.Mode.SRC_IN);
+                }
+                if (Integer.parseInt(historia.get(1)) > 100) {
+                    fiilisTp.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
+                }
+            } else {
+                fiilisTp.setProgress(0);
+            }
+        } else {
+            fiilisEilen.setProgress(0);
+        }
 
         tallenna = findViewById(R.id.tallennaFiilis);
         tallenna.setOnClickListener(v ->

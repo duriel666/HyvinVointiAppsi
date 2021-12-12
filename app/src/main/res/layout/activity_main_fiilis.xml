@@ -65,14 +65,14 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/fiilisTanaan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/fiilisTanaan"
-        android:text="@string/fiilistanaan"
+        android:layout_below="@id/valikko"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
-        android:textSize="20sp"
-        android:layout_below="@id/valikko"/>
+        android:text="@string/fiilistanaan"
+        android:textSize="20sp" />
 
     <ImageView
         android:id="@+id/fiilisKuva"
@@ -97,7 +97,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/fiilisKuva"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="0dp"
         android:max="100"
         android:min="-100"
         android:progress="0" />
@@ -123,5 +123,49 @@
         android:paddingVertical="15dp"
         android:text="@string/tallenna1"
         android:textSize="15sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fiilisEilenTeksti"
+        android:layout_below="@+id/tallennaFiilis"
+        android:layout_marginTop="55dp"
+        android:text="Eilinen fiilis"
+        android:paddingStart="15dp"
+        android:textSize="20sp" />
+
+    <ProgressBar
+        android:id="@+id/fiilisEilen"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tallennaFiilis"
+        android:layout_marginTop="60dp"
+        android:max="200"
+        android:min="0"
+        android:scaleY="8"
+        android:progress="0" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fiilisTpTeksti"
+        android:layout_below="@+id/fiilisEilen"
+        android:layout_marginTop="35dp"
+        android:text="Toissapäiväinen fiilis"
+        android:paddingStart="15dp"
+        android:textSize="20sp" />
+
+    <ProgressBar
+        android:id="@+id/fiilisTp"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fiilisEilen"
+        android:layout_marginTop="40dp"
+        android:max="200"
+        android:min="0"
+        android:scaleY="8"
+        android:progress="0" />
 
 </RelativeLayout>

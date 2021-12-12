@@ -69,8 +69,8 @@ public class MainPage extends AppCompatActivity {
 
             vesiToday.clear();
             vesiToday.addAll(DB.getVesiToday(tunnus));
-            int index2 = vesiToday.size(), num2 = 0, num3 = 0;
-            for (int i = 0; i < index2; i++) {
+            int index = vesiToday.size(), num2 = 0, num3 = 0;
+            for (int i = 0; i < index; i++) {
                 int num1 = Integer.parseInt(vesiToday.get(i));
                 num2 += num1;
             }
@@ -110,10 +110,9 @@ public class MainPage extends AppCompatActivity {
             uniMuisti.addAll((DB.getUniMuisti(tunnus)));
             int unitavoiteh = Integer.parseInt(uniMuisti.get(0)), unitavoitemin = Integer.parseInt(uniMuisti.get(1));
             int indexu = uniData.size(); //TODO nukuttuh ja nukuttumin jotaki käyttöä tänne?
-            int indexu2 = indexu / 2;
             h1 = 0;
             min1 = 0;
-            for (int i = 0; i < indexu2; i++) {
+            for (int i = 0; i < indexu; i++) {
                 int num1 = Integer.parseInt(uniData.get(i));
                 h1 += num1;
                 int num2 = Integer.parseInt((uniData.get(i + 1)));

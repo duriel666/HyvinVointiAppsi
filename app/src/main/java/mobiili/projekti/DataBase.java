@@ -309,8 +309,8 @@ public class DataBase extends SQLiteOpenHelper {
 
     public String deletePaivakirja(String tunnus, int numero) {
         SQLiteDatabase MyDB = getWritableDatabase();
-        MyDB.delete("paivakirja","tunnus =? and numero ='" + numero + "'", new String[]{tunnus});
-        String kirja="poistettu";
+        MyDB.delete("paivakirja", "tunnus =? and numero ='" + numero + "'", new String[]{tunnus});
+        String kirja = "poistettu";
         return kirja;
     }
 
@@ -339,5 +339,46 @@ public class DataBase extends SQLiteOpenHelper {
         }
         c.close();
         return uni;
+    }
+
+    public ArrayList<String> getFiilisHistoria(String tunnus) {
+        int num = 0;
+        ArrayList<String> fiilisHistoria = new ArrayList<>();
+        SQLiteDatabase MyDB = this.getReadableDatabase();
+        Cursor c = MyDB.rawQuery("select * from uni where tunnus =? and aika > datetime(" +
+                "'now', 'start of day', '-2 days') and aika < datetime('now', 'start of day'," +
+                "'-1 days')", new String[]{tunnus});
+        ArrayList<String> fiiliseilen = new ArrayList<>();
+        while ((!c.isAfterLast())) {
+            if ((c != null) && (c.getCount() > 0)) {
+                fiiliseilen.add(c.getString(c.getColumnIndexOrThrow("fiilis")));
+                c.moveToNext();
+            }
+        }
+        for (int i = 0; i < fiiliseilen.size(); i++) {
+            num += Integer.parseInt(fiiliseilen.get(i));
+        }
+        if (fiiliseilen.size() > 0) {
+            fiilisHistoria.add(Integer.toString(num / fiiliseilen.size()));
+        }
+        c.close();
+        c = MyDB.rawQuery("select * from uni where tunnus =? and aika > datetime(" +
+                "'now', 'start of day', '-3 days') and aika < datetime('now', 'start of day'," +
+                "'-2 days')", new String[]{tunnus});
+        ArrayList<String> fiilistoissapaiva = new ArrayList<>();
+        while ((!c.isAfterLast())) {
+            if ((c != null) && (c.getCount() > 0)) {
+                fiilistoissapaiva.add(c.getString(c.getColumnIndexOrThrow("fiilis")));
+                c.moveToNext();
+            }
+        }
+        for (int i = 0; i < fiiliseilen.size(); i++) {
+            num += Integer.parseInt(fiilistoissapaiva.get(i));
+        }
+        if (fiiliseilen.size() > 0) {
+            fiilisHistoria.add(Integer.toString(num / fiilistoissapaiva.size()));
+        }
+        c.close();
+        return fiilisHistoria;
     }
 }
