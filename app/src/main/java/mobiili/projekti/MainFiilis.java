@@ -20,7 +20,6 @@ public class MainFiilis extends AppCompatActivity {
     Button tallenna;
     SeekBar fiilisAsteikko;
     TextView fiilisArvo;
-    int num1 = 0, num2 = 0;
     ImageView image;
     ImageButton takaisin, koti, asetukset;
 
@@ -35,10 +34,10 @@ public class MainFiilis extends AppCompatActivity {
         final DataBase DB = new DataBase(this);
         final ArrayList<String> fiilisToday = DB.getFiilisToday(tunnus);
 
-        image = (ImageView) findViewById(R.id.fiilisKuva);
+        image = findViewById(R.id.fiilisKuva);
         image.setImageResource(R.drawable.ok);
-        fiilisAsteikko = (SeekBar) findViewById(R.id.fiilisAsteikko);
-        fiilisArvo = (TextView) findViewById(R.id.fiilisArvo);
+        fiilisAsteikko = findViewById(R.id.fiilisAsteikko);
+        fiilisArvo = findViewById(R.id.fiilisArvo);
         fiilisArvo.setText("-  " + fiilisAsteikko.getProgress() + "  -");
 
         fiilisToday.clear();
@@ -97,6 +96,9 @@ public class MainFiilis extends AppCompatActivity {
             Intent intent = new Intent(this, MainFiilis.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
+            overridePendingTransition(
+                    R.anim.f_in, R.anim.f_out
+            );
         });
 
         takaisin = findViewById(R.id.takaisin);
@@ -104,6 +106,9 @@ public class MainFiilis extends AppCompatActivity {
             Intent intent = new Intent(this, MainPage.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
+            overridePendingTransition(
+                    R.anim.l_in, R.anim.r_out
+            );
         });
 
         koti = findViewById(R.id.koti);
@@ -111,6 +116,9 @@ public class MainFiilis extends AppCompatActivity {
             Intent intent = new Intent(this, MainPage.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
+            overridePendingTransition(
+                    R.anim.l_in, R.anim.r_out
+            );
         });
 
         asetukset = findViewById(R.id.asetukset);
@@ -118,6 +126,9 @@ public class MainFiilis extends AppCompatActivity {
             Intent intent = new Intent(this, MainAsetukset.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
+            overridePendingTransition(
+                    R.anim.u_in, R.anim.d_out
+            );
         });
     }
 

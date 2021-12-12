@@ -92,6 +92,9 @@ public class MainPaivakirja extends AppCompatActivity {
                 intent.putExtra("tunnus", tunnus);
                 startActivity(intent);
                 Toast.makeText(this, "Merkintä poistettu!", Toast.LENGTH_SHORT).show();
+                overridePendingTransition(
+                        R.anim.f_in, R.anim.f_out
+                );
             }
         });
 
@@ -100,6 +103,9 @@ public class MainPaivakirja extends AppCompatActivity {
             Intent intent = new Intent(this, EditPaivakirja.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
+            overridePendingTransition(
+                    R.anim.r_in, R.anim.l_out
+            );
         });
 
         takaisin = findViewById(R.id.takaisin);
@@ -107,6 +113,9 @@ public class MainPaivakirja extends AppCompatActivity {
             Intent intent = new Intent(this, MainPage.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
+            overridePendingTransition(
+                    R.anim.d_in, R.anim.u_out
+            );
         });
 
         koti = findViewById(R.id.koti);
@@ -114,6 +123,9 @@ public class MainPaivakirja extends AppCompatActivity {
             Intent intent = new Intent(this, MainPage.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
+            overridePendingTransition(
+                    R.anim.l_in, R.anim.r_out
+            );
         });
 
         asetukset = findViewById(R.id.asetukset);
@@ -121,6 +133,9 @@ public class MainPaivakirja extends AppCompatActivity {
             Intent intent = new Intent(this, MainAsetukset.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
+            overridePendingTransition(
+                    R.anim.u_in, R.anim.d_out
+            );
         });
 
     }

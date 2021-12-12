@@ -46,6 +46,7 @@ public class MainVesi extends AppCompatActivity {
 
         vesiToday.clear();
         vesiToday.addAll(DB.getVesiToday(tunnus));
+        juotu = findViewById(R.id.vesiJuotu);
         int index2 = vesiToday.size();
         if (index2 > 0) {
             int num2 = 0;
@@ -53,7 +54,7 @@ public class MainVesi extends AppCompatActivity {
                 int num1 = Integer.parseInt(vesiToday.get(i));
                 num2 += num1;
             }
-            juotu = findViewById(R.id.vesiJuotu);
+
             int prosentti = (100 * num2) / vesitavoitemaaranum;
             juotu.setText(num2 + " ml - " + prosentti + " %");
             ProgressBar pb = findViewById(R.id.vesiProg);
@@ -74,6 +75,9 @@ public class MainVesi extends AppCompatActivity {
             Intent intent = new Intent(this, MainVesi.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
+            overridePendingTransition(
+                    R.anim.f_in, R.anim.f_out
+            );
         });
 
         takaisin = findViewById(R.id.takaisin);
@@ -81,6 +85,9 @@ public class MainVesi extends AppCompatActivity {
             Intent intent = new Intent(this, MainPage.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
+            overridePendingTransition(
+                    R.anim.l_in, R.anim.r_out
+            );
         });
 
         koti = findViewById(R.id.koti);
@@ -88,6 +95,9 @@ public class MainVesi extends AppCompatActivity {
             Intent intent = new Intent(this, MainPage.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
+            overridePendingTransition(
+                    R.anim.d_in, R.anim.u_out
+            );
         });
 
         asetukset = findViewById(R.id.asetukset);
@@ -95,6 +105,9 @@ public class MainVesi extends AppCompatActivity {
             Intent intent = new Intent(this, MainAsetukset.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
+            overridePendingTransition(
+                    R.anim.u_in, R.anim.d_out
+            );
         });
     }
 

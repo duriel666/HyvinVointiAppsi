@@ -89,6 +89,9 @@ public class MainPage extends AppCompatActivity {
                 Intent intent = new Intent(MainPage.this, MainVesi.class);
                 intent.putExtra("tunnus", tunnus);
                 startActivity(intent);
+                overridePendingTransition(
+                        R.anim.r_in, R.anim.l_out
+                );
             });
         }
 
@@ -130,6 +133,9 @@ public class MainPage extends AppCompatActivity {
                 Intent intent = new Intent(MainPage.this, MainUni.class);
                 intent.putExtra("tunnus", tunnus);
                 startActivity(intent);
+                overridePendingTransition(
+                        R.anim.r_in, R.anim.l_out
+                );
             });
         }
 
@@ -164,6 +170,9 @@ public class MainPage extends AppCompatActivity {
                 Intent intent = new Intent(MainPage.this, MainFiilis.class);
                 intent.putExtra("tunnus", tunnus);
                 startActivity(intent);
+                overridePendingTransition(
+                        R.anim.r_in, R.anim.l_out
+                );
             });
         }
 
@@ -182,6 +191,9 @@ public class MainPage extends AppCompatActivity {
                 Intent intent = new Intent(MainPage.this, MainTehtavalista.class);
                 intent.putExtra("tunnus", tunnus);
                 startActivity(intent);
+                overridePendingTransition(
+                        R.anim.r_in, R.anim.l_out
+                );
             });
         }
 
@@ -200,6 +212,9 @@ public class MainPage extends AppCompatActivity {
                 Intent intent = new Intent(MainPage.this, MainPaivakirja.class);
                 intent.putExtra("tunnus", tunnus);
                 startActivity(intent);
+                overridePendingTransition(
+                        R.anim.r_in, R.anim.l_out
+                );
             });
         }
         if (uusi1Asetus == 1) {
@@ -216,6 +231,9 @@ public class MainPage extends AppCompatActivity {
                 Intent intent = new Intent(MainPage.this, MainJumppa.class);
                 intent.putExtra("tunnus", tunnus);
                 startActivity(intent);
+                overridePendingTransition(
+                        R.anim.r_in, R.anim.l_out
+                );
             });
         }
         if (uusi2Asetus == 1) {
@@ -258,6 +276,9 @@ public class MainPage extends AppCompatActivity {
             Intent intent = new Intent(this, MainPage.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
+            overridePendingTransition(
+                    R.anim.f_in, R.anim.f_out
+            );
         });
 
         asetukset = findViewById(R.id.asetukset);
@@ -265,6 +286,9 @@ public class MainPage extends AppCompatActivity {
             Intent intent = new Intent(this, MainAsetukset.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
+            overridePendingTransition(
+                    R.anim.u_in, R.anim.d_out
+            );
         });
     }
 
