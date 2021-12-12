@@ -1,17 +1,17 @@
 
 package mobiili.projekti;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.TypedValue;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -22,6 +22,7 @@ public class MainVesi extends AppCompatActivity {
     EditText juo, vesimaara, vesitavoitemaara;
     TextView juotu;
     ImageButton takaisin, koti, asetukset;
+    int prosentti = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,7 @@ public class MainVesi extends AppCompatActivity {
         vesiToday.clear();
         vesiToday.addAll(DB.getVesiToday(tunnus));
         juotu = findViewById(R.id.vesiJuotu);
+        ProgressBar pb = findViewById(R.id.vesiProg);
         int index2 = vesiToday.size();
         if (index2 > 0) {
             int num2 = 0;
@@ -55,12 +57,16 @@ public class MainVesi extends AppCompatActivity {
                 num2 += num1;
             }
 
-            int prosentti = (100 * num2) / vesitavoitemaaranum;
+            prosentti = (100 * num2) / vesitavoitemaaranum;
             juotu.setText(num2 + " ml - " + prosentti + " %");
-            ProgressBar pb = findViewById(R.id.vesiProg);
             pb.setProgress(prosentti);
         } else {
             juotu.setText("0 ml - 0 %");
+        }
+        if (prosentti < 50) {
+            pb.getProgressDrawable().setColorFilter(Color.RED, android.graphics.PorterDuff.Mode.SRC_IN);
+        } else {
+            pb.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
         }
 
         tallenna = findViewById(R.id.tallennaVesi);

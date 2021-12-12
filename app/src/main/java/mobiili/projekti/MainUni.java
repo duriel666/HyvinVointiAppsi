@@ -1,6 +1,7 @@
 package mobiili.projekti;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.widget.Button;
@@ -22,7 +23,7 @@ public class MainUni extends AppCompatActivity {
     TextView nukuttuToday;
     int unitavoiteh = 8, unitavoitemin = 0, nukuttuH2 = 0, nukuttuMin2 = 0, tavoiteH2 = 0,
             tavoiteMin2 = 0, min1 = 0, h1 = 0, num1 = 0, num2 = 0;
-    int minuutitnukuttu = 0, minuutittavoite = 0;
+    int minuutitnukuttu = 0, minuutittavoite = 0, prosentti = 0;
     ImageButton takaisin, koti, asetukset;
 
     @Override
@@ -56,25 +57,28 @@ public class MainUni extends AppCompatActivity {
         uni.clear();
         uni.addAll(DB.getUni(tunnus));
         int index = uni.size();
-        int index2 = index / 2;
         h1 = 0;
-        for (int i = 0; i < index2; i++) {
+        for (int i = 0; i < index; i += 2) {
             num1 = Integer.parseInt(uni.get(i));
             h1 += num1;
             num2 = Integer.parseInt((uni.get(i + 1)));
             min1 += num2;
-            i += 1;
         }
         minuutitnukuttu = (h1 * 60) + min1;
         minuutittavoite = (unitavoiteh * 60) + unitavoitemin;
         nukuttuToday = findViewById(R.id.uniNukuttu);
+        ProgressBar pb = findViewById(R.id.uniProgress);
         if (minuutitnukuttu <= 0 || minuutittavoite <= 0) {
             nukuttuToday.setText("Päivän tavoitteesta nukuttu: 0 %");
         } else {
-            int prosentti = minuutitnukuttu * 100 / minuutittavoite;
+            prosentti = minuutitnukuttu * 100 / minuutittavoite;
             nukuttuToday.setText("Päivän tavoitteesta nukuttu: " + prosentti + " %");
-            ProgressBar pb = findViewById(R.id.uniProgress);
             pb.setProgress(prosentti);
+        }
+        if (prosentti < 50) {
+            pb.getProgressDrawable().setColorFilter(Color.RED, android.graphics.PorterDuff.Mode.SRC_IN);
+        } else {
+            pb.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
         }
         tallenna.setOnClickListener(v ->
         {

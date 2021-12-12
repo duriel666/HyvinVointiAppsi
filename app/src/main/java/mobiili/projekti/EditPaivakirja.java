@@ -137,10 +137,6 @@ public class EditPaivakirja extends AppCompatActivity {
         });
     }
 
-    /*public boolean isSelected() { //TODO jotaki
-        return selected.isSelected();
-    }*/
-
     public int dp(float num) {
         float num1 = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, num, getResources().getDisplayMetrics());
         return Math.round(num1);
