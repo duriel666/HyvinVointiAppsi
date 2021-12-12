@@ -78,13 +78,15 @@
             android:id="@+id/jumppalayout"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
 
             <WebView
-                android:id="@+id/jumppavideo"
-                android:layout_width="fill_parent"
+                android:id="@+id/jumppavideo1"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="0dp" />
+                android:layout_marginTop="0dp"
+                />
 
             <TextView
                 android:id="@+id/jumppateksti1"
