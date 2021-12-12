@@ -91,8 +91,6 @@ public class MainAsetukset extends AppCompatActivity {
 
         tallenna = findViewById(R.id.tallenna1);
         tallenna.setOnClickListener(v -> {
-            Intent intent = new Intent(MainAsetukset.this, MainPage.class);
-            intent.putExtra("tunnus", tunnus);
             int s1, s2, s3, s4, s5, s6, s7;
             if (switch1.isChecked()) {
                 s1 = 1;
@@ -130,17 +128,33 @@ public class MainAsetukset extends AppCompatActivity {
                 s7 = 0;
             }
             DB.setAsetukset(tunnus, s1, s2, s3, s4, s5, s6, s7);
+            Intent intent = new Intent(this, MainAsetukset.class);
+            intent.putExtra("tunnus", tunnus);
             startActivity(intent);
+            overridePendingTransition(
+                    R.anim.f_in, R.anim.f_out
+            );
         });
 
-        logout = findViewById(R.id.tallenna2);
-        logout.setOnClickListener(v -> startActivity(new Intent(MainAsetukset.this, MainActivity.class)));
+        logout = findViewById(R.id.logout);
+        logout.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainActivity.class);
+            int exit = 0;
+            intent.putExtra("exit", exit);
+            startActivity(intent);
+            overridePendingTransition(
+                    R.anim.d_in, R.anim.u_out
+            );
+        });
 
         takaisin = findViewById(R.id.takaisin);
         takaisin.setOnClickListener(v -> {
             Intent intent = new Intent(this, MainPage.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
+            overridePendingTransition(
+                    R.anim.d_in, R.anim.u_out
+            );
         });
 
         koti = findViewById(R.id.koti);
@@ -148,6 +162,9 @@ public class MainAsetukset extends AppCompatActivity {
             Intent intent = new Intent(this, MainPage.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
+            overridePendingTransition(
+                    R.anim.d_in, R.anim.u_out
+            );
         });
     }
 

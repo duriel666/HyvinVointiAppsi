@@ -39,6 +39,9 @@ public class MainJumppa extends AppCompatActivity {
             Intent intent = new Intent(this, MainPage.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
+            overridePendingTransition(
+                    R.anim.d_in, R.anim.u_out
+            );
         });
 
         asetukset = findViewById(R.id.asetukset);
@@ -46,6 +49,9 @@ public class MainJumppa extends AppCompatActivity {
             Intent intent = new Intent(this, MainAsetukset.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
+            overridePendingTransition(
+                    R.anim.u_in, R.anim.d_out
+            );
         });
     }
 

@@ -47,9 +47,7 @@ public class MainTehtavalista extends AppCompatActivity {
             int index2 = Integer.parseInt(tehtavalista.get(i));
             i += 1;
             String tehtava = tehtavalista.get(i);
-            TextView tl = new TextView(this); // tähän tarvitaan joku map? mihin toisena
-            // tietona numero ja toisena merkintä ja checkbox perään
-            // CheckBox
+            TextView tl = new TextView(this);
             tl.setLayoutParams(params);
             tl.setPadding(dp(10), 0, dp(10), 10);
             tl.setBackgroundColor(Color.LTGRAY);
@@ -64,6 +62,9 @@ public class MainTehtavalista extends AppCompatActivity {
             Intent intent = new Intent(this, MainPage.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
+            overridePendingTransition(
+                    R.anim.l_in, R.anim.r_out
+            );
         });
 
         koti = findViewById(R.id.koti);
@@ -71,6 +72,9 @@ public class MainTehtavalista extends AppCompatActivity {
             Intent intent = new Intent(this, MainPage.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
+            overridePendingTransition(
+                    R.anim.d_in, R.anim.u_out
+            );
         });
 
         asetukset = findViewById(R.id.asetukset);
@@ -78,6 +82,9 @@ public class MainTehtavalista extends AppCompatActivity {
             Intent intent = new Intent(this, MainAsetukset.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
+            overridePendingTransition(
+                    R.anim.u_in, R.anim.d_out
+            );
         });
     }
 

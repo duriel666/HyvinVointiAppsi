@@ -44,6 +44,9 @@ public class regPage extends AppCompatActivity {
                         Toast.makeText(regPage.this, "Tunnus luotu", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
+                        overridePendingTransition(
+                                R.anim.r_in, R.anim.l_out
+                        );
                     } else {
                         Toast.makeText(regPage.this, "Rekisteröityminen epäonnistui", Toast.LENGTH_SHORT).show();
                     }

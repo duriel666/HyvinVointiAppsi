@@ -1,16 +1,13 @@
 package mobiili.projekti;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.TypedValue;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Objects;
 
@@ -36,22 +33,28 @@ public class MainActivity extends AppCompatActivity {
             String s = salasana.getText().toString();
 
             if (t.equals("") || s.equals(""))
-                Toast.makeText(MainActivity.this, "Kirjoita tunnus ja salasana", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Kirjoita tunnus ja salasana", Toast.LENGTH_SHORT).show();
             else {
                 Boolean checksalasana = DB.checksalasana(t, s);
                 if (checksalasana) {
-                    Toast.makeText(MainActivity.this, "Kirjautuminen onnistui", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(MainActivity.this, MainPage.class);
+                    Toast.makeText(this, "Kirjautuminen onnistui", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(this, MainPage.class);
                     intent.putExtra("tunnus", t);
                     startActivity(intent);
+                    overridePendingTransition(
+                            R.anim.r_in, R.anim.l_out
+                    );
                 } else {
-                    Toast.makeText(MainActivity.this, "Väärä tunnus tai salasana", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Väärä tunnus tai salasana", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
         reg = findViewById(R.id.buttonRek);
-        reg.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, regPage.class)));
+        reg.setOnClickListener(v -> startActivity(new Intent(this, regPage.class)));
+        overridePendingTransition(
+                R.anim.l_in, R.anim.r_out
+        );
     }
 
     public int dp(float num) {
