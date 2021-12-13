@@ -65,42 +65,157 @@
             android:translationZ="10dp" />
 
     </LinearLayout>
+    <TextView
+        android:id="@+id/jumppaOhje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:text="@string/jumppaohje"
+        android:textSize="20sp" />
+    <LinearLayout
+
+        android:id="@+id/liikuttuOhje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/jumppaOhje"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/liikuttuAikaH"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:background="@color/vharmaa"
+            android:gravity="center"
+            android:hint="0"
+            android:inputType="number"
+            android:textColorHint="@color/harmaa"
+            android:textSize="40sp" />
+
+        <TextView
+            android:id="@+id/liikuttuOhje1"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:text="h"
+            android:textSize="40sp" />
+
+        <EditText
+            android:id="@+id/liikuttuAikaMin"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:background="@color/vharmaa"
+            android:gravity="center"
+            android:hint="0"
+            android:inputType="number"
+            android:textColorHint="@color/harmaa"
+            android:textSize="40sp" />
+
+        <TextView
+            android:id="@+id/liikuttuOhje2"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:text="min"
+            android:textSize="40sp" />
+
+    </LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/liikuttuTallenna"
+        android:textSize="15sp"
+        android:text="@string/tallenna1"
+        android:layout_below="@id/liikuttuOhje"
+        android:layout_centerHorizontal="true"
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="15dp"
+        android:layout_marginTop="5dp"
+        />
 
     <ScrollView
         android:id="@+id/jumppascroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/valikko"
-        android:layout_marginTop="5dp"
+        android:layout_below="@id/liikuttuTallenna"
+        android:layout_marginTop="6dp"
         android:nestedScrollingEnabled="true">
 
         <LinearLayout
             android:id="@+id/jumppalayout"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
+            android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:gravity="center_horizontal">
+            android:paddingBottom="50dp">
 
             <WebView
                 android:id="@+id/jumppavideo1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
-                />
+                android:minHeight="250dp"/>
 
             <TextView
                 android:id="@+id/jumppateksti1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
                 android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
                 android:text="@string/jumppateksti1"
                 android:textSize="20sp" />
 
+            <WebView
+                android:id="@+id/jumppavideo2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:minHeight="250dp"/>
 
+            <TextView
+                android:id="@+id/jumppateksti2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
+                android:text="@string/jumppateksti2"
+                android:textSize="20sp" />
 
-            <!--TODO nämä koodit kopiodaan uuteen pohjaa-->
-            <!--TODO tähän väliin omat koodit-->
+            <WebView
+                android:id="@+id/jumppavideo3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:minHeight="250dp"/>
+
+            <TextView
+                android:id="@+id/jumppateksti3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
+                android:text="@string/jumppateksti3"
+                android:textSize="20sp" />
+            <WebView
+                android:id="@+id/jumppavideo4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:minHeight="250dp"/>
+
+            <TextView
+                android:id="@+id/jumppateksti4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
+                android:text="@string/jumppateksti4"
+                android:textSize="20sp" />
+
         </LinearLayout>
+
     </ScrollView>
+
 </RelativeLayout>

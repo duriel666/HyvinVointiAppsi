@@ -61,9 +61,13 @@
     <string name="peruuta1">Peruuta</string>
     <string name="otsikkoEmpty">Tyhjä pohja</string>
     <string name="otsikkoJumppa">Jumppa</string>
-    <string name="jumppateksti1">Jumppa</string>
+    <string name="jumppateksti1">Aamu jumppa 15min</string>
     <string name="poista1">Poista</string>
     <string name="paluu1">Takaisin</string>
     <string name="fiilistanaan">Päivän kokonaisfiilis:</string>
+    <string name="jumppateksti2">Koko kehon venyttely 12min</string>
+    <string name="jumppateksti3">Koko kehon treeni 20min</string>
+    <string name="jumppateksti4">Core treeni 20min</string>
+    <string name="jumppaohje">Liikuttu tänään</string>
 
 </resources>
