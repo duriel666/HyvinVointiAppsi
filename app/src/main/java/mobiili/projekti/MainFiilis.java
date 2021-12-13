@@ -94,6 +94,8 @@ public class MainFiilis extends AppCompatActivity {
         ProgressBar fiilisTp = findViewById(R.id.fiilisTp);
         ArrayList<String> historia = DB.getFiilisHistoria(tunnus);
         int index = historia.size();
+        TextView testi=findViewById(R.id.fiilisArvo2);
+        testi.setText(Integer.toString(historia.size()));
         if (index > 0) {
             fiilisEilen.setProgress(Integer.parseInt(historia.get(0)) + 100);
             if (Integer.parseInt(historia.get(0)) < 100) {

@@ -1,9 +1,5 @@
 package mobiili.projekti;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.preference.PreferenceFragmentCompat;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +7,8 @@ import android.util.TypedValue;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Switch;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.Objects;

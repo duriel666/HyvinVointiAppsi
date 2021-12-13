@@ -21,8 +21,8 @@ public class MainVesi extends AppCompatActivity {
     Button tallenna;
     EditText juo, vesimaara, vesitavoitemaara;
     TextView juotu;
-    ImageButton takaisin, koti, asetukset;
     int prosentti = 0;
+    ImageButton takaisin, koti, asetukset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +49,10 @@ public class MainVesi extends AppCompatActivity {
         vesiToday.addAll(DB.getVesiToday(tunnus));
         juotu = findViewById(R.id.vesiJuotu);
         ProgressBar pb = findViewById(R.id.vesiProg);
-        int index2 = vesiToday.size();
-        if (index2 > 0) {
+        int index = vesiToday.size();
+        if (index > 0) {
             int num2 = 0;
-            for (int i = 0; i < index2; i++) {
+            for (int i = 0; i < index; i++) {
                 int num1 = Integer.parseInt(vesiToday.get(i));
                 num2 += num1;
             }
@@ -69,6 +69,11 @@ public class MainVesi extends AppCompatActivity {
             pb.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
         }
 
+        if (prosentti < 50) {
+            pb.getProgressDrawable().setColorFilter(Color.RED, android.graphics.PorterDuff.Mode.SRC_IN);
+        } else {
+            pb.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
+        }
         tallenna = findViewById(R.id.tallennaVesi);
         juo = findViewById(R.id.vesiMaara);
         tallenna.setOnClickListener(v -> //TODO historia mistä voi poistaa?
