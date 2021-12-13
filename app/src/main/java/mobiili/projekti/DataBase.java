@@ -26,12 +26,14 @@ public class DataBase extends SQLiteOpenHelper {
         MyDB.execSQL("create Table vesi(aika datetime primary key, tunnus TEXT, vesiml INT)");
         MyDB.execSQL("create Table fiilis(aika datetime primary key, tunnus TEXT, fiilis INT)");
         MyDB.execSQL("create Table uni(aika datetime primary key, tunnus TEXT,tunnit int, minuutit INT)");
+        MyDB.execSQL("create Table jumppa(aika datetime primary key, tunnus TEXT,liikuttuh int, liikuttumin INT)");
         MyDB.execSQL("create Table tehtavalista(numero int ,aika datetime primary key, tunnus TEXT, tehtava TEXT, tehty int)");
         MyDB.execSQL("create Table paivakirja(numero int ,aika datetime primary key, tunnus TEXT, merkinta TEXT)");
 
         MyDB.execSQL("create Table asetukset(tunnus TEXT primary key, vesi int, uni int, fiilis int, tehtava int, paivakirja int, uusi1 int, uusi2 int)");
         MyDB.execSQL("create Table vesimuisti(tunnus TEXT primary key, vesitavoite int, vesijuodaan int)");
         MyDB.execSQL("create Table unimuisti(tunnus TEXT primary key, tavoiteh int, tavoitemin int, nukuttuh int, nukuttumin int)");
+        MyDB.execSQL("create Table jumppamuisti(tunnus TEXT primary key, liikuttuh int, liikuttumin int)");
 
         MyDB.execSQL("insert into quotes(quote) values('HyvinVointia paskoihin päiviin!')");
         MyDB.execSQL("insert into quotes(quote) values('Aina voisi mennä huonomminkin')");
@@ -89,6 +91,11 @@ public class DataBase extends SQLiteOpenHelper {
         cv.put("nukuttuh", i5);
         cv.put("nukuttumin", i5);
         MyDB.insert("unimuisti", null, cv);
+        cv.clear();
+        cv.put("tunnus", tunnus);
+        cv.put("liikuttuh", i5);
+        cv.put("liikuttumin", i5);
+        MyDB.insert("jumppamuisti", null, cv);
         return result != -1;
     }
 
@@ -380,5 +387,50 @@ public class DataBase extends SQLiteOpenHelper {
         }
         c.close();
         return fiilisHistoria;
+    }
+    public void addJumppa(String tunnus, int tunnit, int minuutit) {
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("tunnus", tunnus);
+        cv.put("tunnit", tunnit);
+        cv.put("minuutit", minuutit);
+        cv.put("aika", getDateTime());
+        MyDB.insert("jumppa", null, cv);
+    }
+
+    public ArrayList<String> getJumppa(String tunnus) {
+        SQLiteDatabase MyDB = this.getReadableDatabase();
+        Cursor c = MyDB.rawQuery("select * from jumppa where tunnus =? and aika > datetime(" +
+                "'now', 'start of day')", new String[]{tunnus});
+        c.moveToFirst();
+        ArrayList<String> jumppa = new ArrayList<>();
+        while ((!c.isAfterLast())) {
+            if ((c != null) && (c.getCount() > 0)) {
+                jumppa.add(c.getString(c.getColumnIndexOrThrow("tunnit")));
+                jumppa.add(c.getString(c.getColumnIndexOrThrow("minuutit")));
+                c.moveToNext();
+            }
+        }
+        c.close();
+        return jumppa;
+    }
+    public void setJumppaMuisti(String tunnus, int liikuttuh, int liikuttumin) {
+        SQLiteDatabase MyDB = getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("tunnus", tunnus);
+        cv.put("liikuttuh", liikuttuh);
+        cv.put("liikuttumin", liikuttumin);
+        MyDB.replace("jumppamuisti", null, cv);
+    }
+
+    public ArrayList<String> getJumppaMuisti(String tunnus) {
+        SQLiteDatabase MyDB = this.getReadableDatabase();
+        Cursor c = MyDB.rawQuery("select * from jumppamuisti where tunnus =?", new String[]{tunnus});
+        c.moveToFirst();
+        ArrayList<String> jumppamuisti = new ArrayList<>();
+        jumppamuisti.add(c.getString(c.getColumnIndexOrThrow("liikuttuh")));
+        jumppamuisti.add(c.getString(c.getColumnIndexOrThrow("liikuttumin")));
+        c.close();
+        return jumppamuisti;
     }
 }
