@@ -1,1 +1,1 @@
-# AndroidStudio Projekti
+# Mobiilisovellusten kehitysprojekti
