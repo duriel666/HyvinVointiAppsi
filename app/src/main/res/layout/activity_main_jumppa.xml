@@ -146,7 +146,7 @@
         <LinearLayout
             android:id="@+id/jumppalayout"
             android:layout_width="match_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:gravity="center_horizontal"
             android:orientation="vertical"
             android:paddingBottom="50dp">
@@ -156,6 +156,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
+                android:layout_gravity="center_horizontal"
                 android:minHeight="250dp"/>
 
             <TextView

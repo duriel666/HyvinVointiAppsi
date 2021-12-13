@@ -18,7 +18,7 @@ import java.util.Objects;
 
 public class MainJumppa extends AppCompatActivity {
 
-    ImageButton takaisin,koti,asetukset;
+    ImageButton takaisin, koti, asetukset;
     WebView webView1;
     WebView webView2;
     WebView webView3;
@@ -36,42 +36,42 @@ public class MainJumppa extends AppCompatActivity {
         Intent siirto = getIntent();
         String tunnus = siirto.getExtras().getString("tunnus");
 
-        String path1 = "<iframe width=\"320\" height=\"250\" src=\"https://www.youtube.com/embed/h0Sqc90rUY4\"" +
+        String path1 = "<center><iframe width="+ dp(160)+" height="+dp(90)+" src=\"https://www.youtube.com/embed/h0Sqc90rUY4\"" +
                 " title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write;" +
-                " encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>";
-
+                " encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></center>";
         webView1 = findViewById(R.id.jumppavideo1);
         webView1.getSettings().setJavaScriptEnabled(true);
         webView1.setWebViewClient(new WebViewClient());
         webView1.loadData(path1, "text/html", "utf-8");
 
-        String path2 = "<iframe width=\"320\" height=\"250\" src=\"https://www.youtube.com/embed/itJE4neqDJw\"" +
+        String path2 = "<center><iframe width="+ dp(160)+" height="+dp(90)+" src=\"https://www.youtube.com/embed/itJE4neqDJw\"" +
                 " title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write;" +
-                " encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>";
+                " encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></center>";
         webView2 = findViewById(R.id.jumppavideo2);
         webView2.getSettings().setJavaScriptEnabled(true);
         webView2.setWebViewClient(new WebViewClient());
         webView2.loadData(path2, "text/html", "utf-8");
 
-        String path3 = "<iframe width=\"320\" height=\"250\" src=\"https://www.youtube.com/embed/oKfNUOWuZV8\"" +
+        String path3 = "<center><iframe width="+ dp(160)+" height="+dp(90)+" src=\"https://www.youtube.com/embed/oKfNUOWuZV8\"" +
                 " title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write;" +
-                " encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>";
+                " encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></center>";
         webView3 = findViewById(R.id.jumppavideo3);
         webView3.getSettings().setJavaScriptEnabled(true);
         webView3.setWebViewClient(new WebViewClient());
         webView3.loadData(path3, "text/html", "utf-8");
 
-        String path4 = "<iframe width=\"320\" height=\"250\" src=\"https://www.youtube.com/embed/KFcUwNl7eXo\"" +
+        String path4 = "<center><iframe width="+ dp(160)+" height="+dp(90)+" src=\"https://www.youtube.com/embed/KFcUwNl7eXo\"" +
                 " title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write;" +
-                " encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>";
+                " encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></center>";
         webView4 = findViewById(R.id.jumppavideo4);
         webView4.getSettings().setJavaScriptEnabled(true);
         webView4.setWebViewClient(new WebViewClient());
         webView4.loadData(path4, "text/html", "utf-8");
+
         final DataBase DB = new DataBase(this);
         final ArrayList<String> jumppa = DB.getJumppa(tunnus);
         final ArrayList<String> jumppamuisti = DB.getJumppaMuisti(tunnus);
-        
+
         tallenna = findViewById(R.id.liikuttuTallenna);
         liikuttuAikaH = findViewById(R.id.liikuttuAikaH);
         liikuttuAikaMin = findViewById(R.id.liikuttuAikaMin);

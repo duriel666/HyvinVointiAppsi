@@ -161,6 +161,45 @@ public class DataBase extends SQLiteOpenHelper {
         return fiilisToday;
     }
 
+    public ArrayList<String> getFiilisHistoria(String tunnus) {
+        int num = 0;
+        ArrayList<String> fiilisHistoria = new ArrayList<>();
+        ArrayList<String> fiiliseilen = new ArrayList<>();
+        ArrayList<String> fiilistoissapaiva = new ArrayList<>();
+        SQLiteDatabase MyDB = this.getReadableDatabase();
+        Cursor c = MyDB.rawQuery("select * from fiilis where tunnus =? and aika between datetime(" +
+                "'now','start of day','-1 days') and datetime('now','start of day','-2 days')", new String[]{tunnus});
+        while ((!c.isAfterLast())) {
+            if ((c != null) && (c.getCount() > 0)) {
+                fiiliseilen.add(c.getString(c.getColumnIndexOrThrow("fiilis")));
+                c.moveToNext();
+            }
+        }
+        for (int i = 0; i < fiiliseilen.size(); i++) {
+            num += Integer.parseInt(fiiliseilen.get(i));
+        }
+        if (fiiliseilen.size() > 0) {
+            fiilisHistoria.add(Integer.toString(num / fiiliseilen.size()));
+        }
+        c.close();
+        c = MyDB.rawQuery("select * from fiilis where tunnus =? and aika between datetime(" +
+                "'now','start of day','-2 days') and datetime('now','start of day','-3 days')", new String[]{tunnus});
+        while ((!c.isAfterLast())) {
+            if ((c != null) && (c.getCount() > 0)) {
+                fiilistoissapaiva.add(c.getString(c.getColumnIndexOrThrow("fiilis")));
+                c.moveToNext();
+            }
+        }
+        for (int i = 0; i < fiilistoissapaiva.size(); i++) {
+            num += Integer.parseInt(fiilistoissapaiva.get(i));
+        }
+        if (fiiliseilen.size() > 0) {
+            fiilisHistoria.add(Integer.toString(num / fiilistoissapaiva.size()));
+        }
+        c.close();
+        return fiilisHistoria;
+    }
+
     public void addVesi(String tunnus, int vesiml) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -348,46 +387,6 @@ public class DataBase extends SQLiteOpenHelper {
         return uni;
     }
 
-    public ArrayList<String> getFiilisHistoria(String tunnus) {
-        int num = 0;
-        ArrayList<String> fiilisHistoria = new ArrayList<>();
-        SQLiteDatabase MyDB = this.getReadableDatabase();
-        Cursor c = MyDB.rawQuery("select * from uni where tunnus =? and aika > datetime(" +
-                "'now', 'start of day', '-2 days') and aika < datetime('now', 'start of day'," +
-                "'-1 days')", new String[]{tunnus});
-        ArrayList<String> fiiliseilen = new ArrayList<>();
-        while ((!c.isAfterLast())) {
-            if ((c != null) && (c.getCount() > 0)) {
-                fiiliseilen.add(c.getString(c.getColumnIndexOrThrow("fiilis")));
-                c.moveToNext();
-            }
-        }
-        for (int i = 0; i < fiiliseilen.size(); i++) {
-            num += Integer.parseInt(fiiliseilen.get(i));
-        }
-        if (fiiliseilen.size() > 0) {
-            fiilisHistoria.add(Integer.toString(num / fiiliseilen.size()));
-        }
-        c.close();
-        c = MyDB.rawQuery("select * from uni where tunnus =? and aika > datetime(" +
-                "'now', 'start of day', '-3 days') and aika < datetime('now', 'start of day'," +
-                "'-2 days')", new String[]{tunnus});
-        ArrayList<String> fiilistoissapaiva = new ArrayList<>();
-        while ((!c.isAfterLast())) {
-            if ((c != null) && (c.getCount() > 0)) {
-                fiilistoissapaiva.add(c.getString(c.getColumnIndexOrThrow("fiilis")));
-                c.moveToNext();
-            }
-        }
-        for (int i = 0; i < fiiliseilen.size(); i++) {
-            num += Integer.parseInt(fiilistoissapaiva.get(i));
-        }
-        if (fiiliseilen.size() > 0) {
-            fiilisHistoria.add(Integer.toString(num / fiilistoissapaiva.size()));
-        }
-        c.close();
-        return fiilisHistoria;
-    }
     public void addJumppa(String tunnus, int tunnit, int minuutit) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -414,6 +413,7 @@ public class DataBase extends SQLiteOpenHelper {
         c.close();
         return jumppa;
     }
+
     public void setJumppaMuisti(String tunnus, int liikuttuh, int liikuttumin) {
         SQLiteDatabase MyDB = getWritableDatabase();
         ContentValues cv = new ContentValues();
