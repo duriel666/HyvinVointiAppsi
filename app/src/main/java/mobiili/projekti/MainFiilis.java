@@ -94,22 +94,24 @@ public class MainFiilis extends AppCompatActivity {
         ProgressBar fiilisTp = findViewById(R.id.fiilisTp);
         ArrayList<String> historia = DB.getFiilisHistoria(tunnus);
         int index = historia.size();
-        TextView testi=findViewById(R.id.fiilisArvo2);
-        testi.setText(Integer.toString(historia.size()));
+        TextView testi = findViewById(R.id.fiilisArvo2);
         if (index > 0) {
-            fiilisEilen.setProgress(Integer.parseInt(historia.get(0)) + 100);
-            if (Integer.parseInt(historia.get(0)) < 100) {
+            int eilen = (Integer.parseInt(historia.get(0)) + 100) / 2;
+            fiilisEilen.setProgress(eilen);
+            testi.setText(Integer.toString(historia.size()) + " " + historia.get(0) + " " + eilen);
+            if (Integer.parseInt(historia.get(0)) < 50) {
                 fiilisEilen.getProgressDrawable().setColorFilter(Color.RED, android.graphics.PorterDuff.Mode.SRC_IN);
             }
-            if (Integer.parseInt(historia.get(0)) > 100) {
+            if (Integer.parseInt(historia.get(0)) >= 50) {
                 fiilisEilen.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
             }
             if (index > 1) {
-                fiilisTp.setProgress(Integer.parseInt(historia.get(1)) + 100);
-                if (Integer.parseInt(historia.get(1)) < 100) {
+                int tp = (Integer.parseInt(historia.get(1)) + 100) / 2;
+                fiilisTp.setProgress(tp);
+                if (Integer.parseInt(historia.get(1)) < 50) {
                     fiilisTp.getProgressDrawable().setColorFilter(Color.RED, android.graphics.PorterDuff.Mode.SRC_IN);
                 }
-                if (Integer.parseInt(historia.get(1)) > 100) {
+                if (Integer.parseInt(historia.get(1)) >= 50) {
                     fiilisTp.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
                 }
             } else {
