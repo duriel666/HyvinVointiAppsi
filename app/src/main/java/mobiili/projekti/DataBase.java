@@ -167,8 +167,9 @@ public class DataBase extends SQLiteOpenHelper {
         ArrayList<String> fiiliseilen = new ArrayList<>();
         ArrayList<String> fiilistoissapaiva = new ArrayList<>();
         SQLiteDatabase MyDB = this.getReadableDatabase();
-        Cursor c = MyDB.rawQuery("select * from fiilis where tunnus =? and aika between datetime(" +
-                "'now','start of day','-1 days') and datetime('now','start of day','-2 days')", new String[]{tunnus});
+        Cursor c = MyDB.rawQuery("select * from fiilis where tunnus =? and aika > datetime(" +
+                "'now','start of day','-1 days') and aika < datetime('now','start of day')", new String[]{tunnus});
+        c.moveToFirst();
         while ((!c.isAfterLast())) {
             if ((c != null) && (c.getCount() > 0)) {
                 fiiliseilen.add(c.getString(c.getColumnIndexOrThrow("fiilis")));
@@ -182,8 +183,9 @@ public class DataBase extends SQLiteOpenHelper {
             fiilisHistoria.add(Integer.toString(num / fiiliseilen.size()));
         }
         c.close();
-        c = MyDB.rawQuery("select * from fiilis where tunnus =? and aika between datetime(" +
-                "'now','start of day','-2 days') and datetime('now','start of day','-3 days')", new String[]{tunnus});
+        c = MyDB.rawQuery("select * from fiilis where tunnus =? and aika > datetime(" +
+                "'now','start of day','-2 days') and aika < datetime('now','start of day','-1 days')", new String[]{tunnus});
+        c.moveToFirst();
         while ((!c.isAfterLast())) {
             if ((c != null) && (c.getCount() > 0)) {
                 fiilistoissapaiva.add(c.getString(c.getColumnIndexOrThrow("fiilis")));
@@ -193,7 +195,7 @@ public class DataBase extends SQLiteOpenHelper {
         for (int i = 0; i < fiilistoissapaiva.size(); i++) {
             num += Integer.parseInt(fiilistoissapaiva.get(i));
         }
-        if (fiiliseilen.size() > 0) {
+        if (fiilistoissapaiva.size() > 0) {
             fiilisHistoria.add(Integer.toString(num / fiilistoissapaiva.size()));
         }
         c.close();
@@ -386,6 +388,7 @@ public class DataBase extends SQLiteOpenHelper {
         c.close();
         return uni;
     }
+
 
     public void addJumppa(String tunnus, int tunnit, int minuutit) {
         SQLiteDatabase MyDB = this.getWritableDatabase();

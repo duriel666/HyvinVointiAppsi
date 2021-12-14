@@ -124,8 +124,10 @@ public class MainPage extends AppCompatActivity {
             if (minuutitnukuttu <= 0 || minuutittavoite <= 0) {
                 uni.setText("Uni\n\nValmiina päivän tavoitteesta: - %\nTänään nukuttu: 0 h 0 min");
             } else {
+                int aika = minuutitnukuttu / 60;
+                int aika2 = minuutitnukuttu - (aika * 60);
                 uni.setText("Uni\n\nValmiina päivän tavoitteesta: " + minuutitnukuttu * 100 / minuutittavoite + " %" +
-                        "\nTänään nukuttu: " + minuutitnukuttu + " min");
+                        "\nTänään nukuttu: " + aika + " h " + aika2 + " min");
             }
 
             uni.setOnClickListener(v -> {
