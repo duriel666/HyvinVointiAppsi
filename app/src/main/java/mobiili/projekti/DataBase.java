@@ -163,24 +163,24 @@ public class DataBase extends SQLiteOpenHelper {
 
     public ArrayList<String> getFiilisHistoria(String tunnus) {
         int num = 0;
-        ArrayList<String> fiilisHistoria = new ArrayList<>();
-        ArrayList<String> fiiliseilen = new ArrayList<>();
-        ArrayList<String> fiilistoissapaiva = new ArrayList<>();
+        ArrayList<String> historia = new ArrayList<>();
+        ArrayList<String> d1 = new ArrayList<>();
+        ArrayList<String> d2 = new ArrayList<>();
         SQLiteDatabase MyDB = this.getReadableDatabase();
         Cursor c = MyDB.rawQuery("select * from fiilis where tunnus =? and aika > datetime(" +
                 "'now','start of day','-1 days') and aika < datetime('now','start of day')", new String[]{tunnus});
         c.moveToFirst();
         while ((!c.isAfterLast())) {
             if ((c != null) && (c.getCount() > 0)) {
-                fiiliseilen.add(c.getString(c.getColumnIndexOrThrow("fiilis")));
+                d1.add(c.getString(c.getColumnIndexOrThrow("fiilis")));
                 c.moveToNext();
             }
         }
-        for (int i = 0; i < fiiliseilen.size(); i++) {
-            num += Integer.parseInt(fiiliseilen.get(i));
+        for (int i = 0; i < d1.size(); i++) {
+            num += Integer.parseInt(d1.get(i));
         }
-        if (fiiliseilen.size() > 0) {
-            fiilisHistoria.add(Integer.toString(num / fiiliseilen.size()));
+        if (d1.size() > 0) {
+            historia.add(Integer.toString(num / d1.size()));
         }
         c.close();
         c = MyDB.rawQuery("select * from fiilis where tunnus =? and aika > datetime(" +
@@ -188,18 +188,18 @@ public class DataBase extends SQLiteOpenHelper {
         c.moveToFirst();
         while ((!c.isAfterLast())) {
             if ((c != null) && (c.getCount() > 0)) {
-                fiilistoissapaiva.add(c.getString(c.getColumnIndexOrThrow("fiilis")));
+                d2.add(c.getString(c.getColumnIndexOrThrow("fiilis")));
                 c.moveToNext();
             }
         }
-        for (int i = 0; i < fiilistoissapaiva.size(); i++) {
-            num += Integer.parseInt(fiilistoissapaiva.get(i));
+        for (int i = 0; i < d2.size(); i++) {
+            num += Integer.parseInt(d2.get(i));
         }
-        if (fiilistoissapaiva.size() > 0) {
-            fiilisHistoria.add(Integer.toString(num / fiilistoissapaiva.size()));
+        if (d2.size() > 0) {
+            historia.add(Integer.toString(num / d2.size()));
         }
         c.close();
-        return fiilisHistoria;
+        return historia;
     }
 
     public void addVesi(String tunnus, int vesiml) {

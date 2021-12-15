@@ -137,7 +137,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/fiilisEilenTeksti"
+        android:id="@+id/d1Teksti"
         android:layout_below="@+id/tallennaFiilis"
         android:layout_marginTop="55dp"
         android:text="Eilinen fiilis"
@@ -146,7 +146,7 @@
         android:textSize="20sp" />
 
     <ProgressBar
-        android:id="@+id/fiilisEilen"
+        android:id="@+id/d1"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -161,8 +161,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/fiilisTpTeksti"
-        android:layout_below="@+id/fiilisEilen"
+        android:id="@+id/d2Teksti"
+        android:layout_below="@+id/d1"
         android:layout_marginTop="35dp"
         android:text="Toissapäiväinen fiilis"
         android:paddingStart="15dp"
@@ -170,11 +170,11 @@
         android:textSize="20sp" />
 
     <ProgressBar
-        android:id="@+id/fiilisTp"
+        android:id="@+id/d2"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/fiilisEilen"
+        android:layout_below="@+id/d1"
         android:paddingHorizontal="10dp"
         android:layout_marginTop="40dp"
         android:max="100"
