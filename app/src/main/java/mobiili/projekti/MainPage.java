@@ -40,6 +40,7 @@ public class MainPage extends AppCompatActivity {
         final ArrayList<String> vesiMuisti = DB.getVesiMuisti(tunnus);
         final ArrayList<String> uniData = DB.getUni(tunnus);
         final ArrayList<String> uniMuisti = DB.getUniMuisti(tunnus);
+        final ArrayList<String> jumppa = DB.getJumppa(tunnus);
 
         LinearLayout etuSivu = findViewById(R.id.etuLayout);
         LinearLayout layout = new LinearLayout(this);
@@ -227,7 +228,27 @@ public class MainPage extends AppCompatActivity {
             uusi1.setGravity(Gravity.CENTER_VERTICAL);
             etuSivu.addView(uusi1);
 
-            uusi1.setText("Jumppa");
+
+            jumppa.clear();
+            jumppa.addAll(DB.getJumppa(tunnus));
+            int indexj = jumppa.size(), numj1 = 0, numj2 = 0;
+
+            int jh1 = 0;
+            int jmin1 = 0;
+            for (int i = 0; i < indexj; i += 2) {
+                numj1 = Integer.parseInt(jumppa.get(i));
+                jh1 += numj1;
+                numj2 = Integer.parseInt((jumppa.get(i + 1)));
+                jmin1 += numj2;
+            }
+            int minuutitjumpattu = (jh1 * 60) + jmin1;
+            if (minuutitjumpattu <= 0) {
+                uusi1.setText("Jumppa\n\nTänään liikuttu: 0 h 0 min");
+            } else {
+                int aika = minuutitjumpattu / 60;
+                int aika2 = minuutitjumpattu - (aika * 60);
+                uusi1.setText("Jumppa\n\nTänään liikuttu: " + aika + " h " + aika2 + " min");
+            }
             uusi1.setOnClickListener(v -> {
                 Intent intent = new Intent(MainPage.this, MainJumppa.class);
                 intent.putExtra("tunnus", tunnus);

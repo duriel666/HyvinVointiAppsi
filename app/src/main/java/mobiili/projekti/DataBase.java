@@ -394,8 +394,8 @@ public class DataBase extends SQLiteOpenHelper {
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("tunnus", tunnus);
-        cv.put("tunnit", tunnit);
-        cv.put("minuutit", minuutit);
+        cv.put("liikuttuh", tunnit);
+        cv.put("liikuttumin", minuutit);
         cv.put("aika", getDateTime());
         MyDB.insert("jumppa", null, cv);
     }
@@ -408,8 +408,8 @@ public class DataBase extends SQLiteOpenHelper {
         ArrayList<String> jumppa = new ArrayList<>();
         while ((!c.isAfterLast())) {
             if ((c != null) && (c.getCount() > 0)) {
-                jumppa.add(c.getString(c.getColumnIndexOrThrow("tunnit")));
-                jumppa.add(c.getString(c.getColumnIndexOrThrow("minuutit")));
+                jumppa.add(c.getString(c.getColumnIndexOrThrow("liikuttuh")));
+                jumppa.add(c.getString(c.getColumnIndexOrThrow("liikuttumin")));
                 c.moveToNext();
             }
         }
