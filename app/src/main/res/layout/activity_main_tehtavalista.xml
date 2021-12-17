@@ -97,7 +97,7 @@
                 android:layout_height="55dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
-                android:backgroundTint="@color/harmaa"
+                android:backgroundTint="@color/napit"
                 android:text="@string/tallenna1"
                 android:textSize="15sp" />
 
@@ -107,7 +107,7 @@
                 android:layout_height="55dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
-                android:backgroundTint="@color/harmaa"
+                android:backgroundTint="@color/napit"
                 android:text="@string/edit1"
                 android:textSize="15sp" />
         </LinearLayout>

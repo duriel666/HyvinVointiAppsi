@@ -129,7 +129,7 @@
         android:layout_below="@id/fiilisOhje"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:backgroundTint="@color/harmaa"
+        android:backgroundTint="@color/napit"
         android:paddingHorizontal="40dp"
         android:paddingVertical="15dp"
         android:text="@string/tallenna1"
