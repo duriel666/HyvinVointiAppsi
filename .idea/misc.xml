@@ -15,6 +15,8 @@
         <entry key="..\:/Users/Jonzc/OneDrive/KOULU/2021syksy/Mobiiliprojekti/Projektikansio/projekti/app/src/main/res/xml/root_preferences.xml" value="0.13385416666666666" />
         <entry key="..\:/Users/Jonzc/OneDrive/KOULU/2021syksy/Mobiiliprojekti/projektikolmosversio/app/src/main/res/layout/activity_edit_paivakirja.xml" value="0.259375" />
         <entry key="..\:/Users/Jonzc/OneDrive/KOULU/2021syksy/Mobiiliprojekti/projektikolmosversio/app/src/main/res/layout/activity_main_fiilis.xml" value="0.259375" />
+        <entry key="..\:/Users/Jonzc/OneDrive/KOULU/2021syksy/Mobiiliprojekti/projektikolmosversio/app/src/main/res/layout/activity_main_paivakirja.xml" value="0.259375" />
+        <entry key="..\:/Users/Jonzc/OneDrive/KOULU/2021syksy/Mobiiliprojekti/projektikolmosversio/app/src/main/res/layout/activity_main_tehtavalista.xml" value="0.259375" />
         <entry key="..\:/Users/Jonzc/OneDrive/KOULU/2021syksy/Mobiiliprojekti/projektikolmosversio/app/src/main/res/layout/activity_main_uni.xml" value="0.259375" />
         <entry key="..\:/Users/Jonzc/OneDrive/KOULU/2021syksy/Mobiiliprojekti/projektikolmosversio/app/src/main/res/layout/activity_main_vesi.xml" value="0.259375" />
         <entry key="..\:/Users/janne/OneDrive/Koulu/2021-4-mobiiliprojekti/projekti/app/src/main/res/drawable/asetukset_nappi.xml" value="0.40208333333333335" />
@@ -23,8 +25,7 @@
         <entry key="..\:/Users/janne/OneDrive/Koulu/2021-4-mobiiliprojekti/projekti/app/src/main/res/layout/activity_login.xml" value="0.3145833333333333" />
         <entry key="..\:/Users/janne/OneDrive/Koulu/2021-4-mobiiliprojekti/projekti/app/src/main/res/layout/activity_main.xml" value="0.3859375" />
         <entry key="..\:/Users/janne/OneDrive/Koulu/2021-4-mobiiliprojekti/projekti/app/src/main/res/layout/activity_main_asetukset.xml" value="0.30052083333333335" />
-        <entry key="..\:/Users/janne/OneDrive/Koulu/2021-4-mobiiliprojekti/projekti/app/src/main/res/layout/activity_main_fiilis.xml" value="0.33" />
-        <entry key="..\:/Users/janne/OneDrive/Koulu/2021-4-mobiiliprojekti/projekti/app/src/main/res/layout/activity_main_jumppa.xml" value="0.2283553875236295" />
+        <entry key="..\:/Users/janne/OneDrive/Koulu/2021-4-mobiiliprojekti/projekti/app/src/main/res/layout/activity_main_fiilis.xml" value="0.3145833333333333" />
         <entry key="..\:/Users/janne/OneDrive/Koulu/2021-4-mobiiliprojekti/projekti/app/src/main/res/layout/activity_main_page.xml" value="0.3859375" />
         <entry key="..\:/Users/janne/OneDrive/Koulu/2021-4-mobiiliprojekti/projekti/app/src/main/res/layout/activity_main_uni.xml" value="0.3145833333333333" />
         <entry key="..\:/Users/janne/OneDrive/Koulu/2021-4-mobiiliprojekti/projekti/app/src/main/res/layout/activity_main_vesi.xml" value="0.25" />
