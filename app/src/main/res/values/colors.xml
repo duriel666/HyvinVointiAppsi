@@ -12,4 +12,11 @@
     <color name="v2harmaa">#FFbbbbbb</color>
     <color name="asetukset">#ff222222</color>
     <color name="punainen">#ffff0000</color>
+
+    <!-- kaikille napeille väri #ff nuo ekat kaks äffää -->
+    <!-- on läpinäkyvyys ff ei yhtään läpinäkyvä ja 00 täysin läpinäkyvä -->
+    <!-- seuraavat kaksi eli aa on punainen, seuraavat kaksi 44 on vihreä -->
+    <!-- ja viimeiset kaksi 44 on sininen. arvo välillä 00-ff eli 0-255 heksoina -->
+
+    <color name="napit">#ffaa4444</color>
 </resources>
