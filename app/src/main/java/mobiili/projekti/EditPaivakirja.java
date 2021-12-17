@@ -77,7 +77,6 @@ public class EditPaivakirja extends AppCompatActivity {
             }
         }
 
-        testi = findViewById(R.id.otsikkoEditPaivakirja);
         poista = findViewById(R.id.poistaPaivakirja);
         numero = 1;
         poista.setOnClickListener(v -> {

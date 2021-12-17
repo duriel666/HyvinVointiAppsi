@@ -308,8 +308,8 @@ public class DataBase extends SQLiteOpenHelper {
         ArrayList<String> tehtavalista = new ArrayList<>();
         while ((!c.isAfterLast())) {
             if ((c != null) && (c.getCount() > 0)) {
-                tehtavalista.add(c.getString(c.getColumnIndexOrThrow("numero")));
                 tehtavalista.add(c.getString(c.getColumnIndexOrThrow("aika")));
+                tehtavalista.add(c.getString(c.getColumnIndexOrThrow("numero")));
                 tehtavalista.add(c.getString(c.getColumnIndexOrThrow("tehtava")));
                 tehtavalista.add(c.getString(c.getColumnIndexOrThrow("tehty")));
                 c.moveToNext();
@@ -319,12 +319,14 @@ public class DataBase extends SQLiteOpenHelper {
         return tehtavalista;
     }
 
-    //TODO
-    public void addTehtavalista(String tunnus, int numero, String aika, String tehtava, int tehty) {
+    public void addTehtavalista(String tunnus, int numero, String tehtava, int tehty) {
         SQLiteDatabase MyDB = getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("tunnus", tunnus);
-        //cv.put("vesitavoite", vesitavoite);
+        cv.put("numero", numero);
+        cv.put("aika", getDateTime());
+        cv.put("tehtava", tehtava);
+        cv.put("tehty", tehty);
         MyDB.insert("tehtavalista", null, cv);
     }
 

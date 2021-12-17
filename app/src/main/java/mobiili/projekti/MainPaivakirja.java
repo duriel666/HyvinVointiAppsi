@@ -91,7 +91,7 @@ public class MainPaivakirja extends AppCompatActivity {
                 Intent intent = new Intent(this, MainPaivakirja.class);
                 intent.putExtra("tunnus", tunnus);
                 startActivity(intent);
-                Toast.makeText(this, "Merkintä poistettu!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Merkintä lisätty!", Toast.LENGTH_SHORT).show();
                 overridePendingTransition(
                         R.anim.f_in, R.anim.f_out
                 );
