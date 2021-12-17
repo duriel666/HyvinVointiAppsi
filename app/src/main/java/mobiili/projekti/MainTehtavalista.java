@@ -1,6 +1,8 @@
 package mobiili.projekti;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.ViewCompat;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -16,14 +18,18 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.shape.CornerFamily;
+import com.google.android.material.shape.MaterialShapeDrawable;
+import com.google.android.material.shape.ShapeAppearanceModel;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class MainTehtavalista extends AppCompatActivity {
 
-    ImageButton takaisin,koti,asetukset;
-    int tnum=0, numero=0, index2=0, numero2=0, tehty=0;
+    ImageButton takaisin, koti, asetukset;
+    int tnum = 0, numero = 0, index2 = 0, numero2 = 0, tehty = 0;
     List boxilista = new ArrayList();
     Button tallenna;
     EditText tehtava;
@@ -50,7 +56,7 @@ public class MainTehtavalista extends AppCompatActivity {
         tehtavalista.clear();
         tehtavalista.addAll(DB.getTehtavalista(tunnus));
         int index = tehtavalista.size();
-        
+
         tehtava = findViewById(R.id.tehtavalistamerkinta);
 
         tnum = index - 4;
@@ -69,10 +75,10 @@ public class MainTehtavalista extends AppCompatActivity {
                 p[numero].setGravity(Gravity.CENTER_VERTICAL);
                 layouttl.addView(p[numero]);
                 boxilista.add(numero2);
-                if (Integer.parseInt(tehtavalista.get(tnum + 3))==1){
+                if (Integer.parseInt(tehtavalista.get(tnum + 3)) == 1) {
                     p[numero].setBackgroundColor(Color.DKGRAY);
 
-                }else{
+                } else {
                     p[numero].setBackgroundColor(Color.LTGRAY);
                 }
                 tnum -= 4;
