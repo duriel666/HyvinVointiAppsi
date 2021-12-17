@@ -110,6 +110,7 @@
         android:text="Fiilis:"
         android:textSize="20sp"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
+
     <Switch
         android:id="@+id/switch4"
         android:layout_width="match_parent"
@@ -121,6 +122,7 @@
         android:text="Tehtävälista:"
         android:textSize="20sp"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
+
     <Switch
         android:id="@+id/switch5"
         android:layout_width="match_parent"
@@ -162,12 +164,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/switch7"
-        android:textSize="20sp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
+        android:backgroundTint="@color/harmaa"
         android:paddingHorizontal="40dp"
         android:paddingVertical="15dp"
-        android:text="@string/tallenna1" />
+        android:text="@string/tallenna1"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/logout"
@@ -176,9 +179,10 @@
         android:layout_below="@id/tallenna1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        android:textSize="15sp"
+        android:backgroundTint="@color/harmaa"
         android:paddingHorizontal="40dp"
         android:paddingVertical="15dp"
-        android:text="@string/logout" />
+        android:text="@string/logout"
+        android:textSize="15sp" />
 
 </RelativeLayout>

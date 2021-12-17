@@ -36,7 +36,7 @@ public class MainJumppa extends AppCompatActivity {
         String tunnus = siirto.getExtras().getString("tunnus");
 
         String path1 = "<head><meta name=\"viewport\" content=\"width=device-width\">" +
-                "</head><center><iframe width="+ dp(160)+" height="+dp(90)+" src=\"https://www.youtube.com/embed/h0Sqc90rUY4\"" +
+                "</head><center><iframe width=" + dp(160) + " height=" + dp(90) + " src=\"https://www.youtube.com/embed/h0Sqc90rUY4\"" +
                 " title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write;" +
                 " encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></center>";
         webView1 = findViewById(R.id.jumppavideo1);
@@ -46,7 +46,7 @@ public class MainJumppa extends AppCompatActivity {
         webView1.loadData(path1, "text/html", "utf-8");
 
         String path2 = "<head><meta name=\"viewport\" content=\"width=device-width\">" +
-                "</head><center><iframe width="+ dp(160)+" height="+dp(90)+" src=\"https://www.youtube.com/embed/itJE4neqDJw\"" +
+                "</head><center><iframe width=" + dp(160) + " height=" + dp(90) + " src=\"https://www.youtube.com/embed/itJE4neqDJw\"" +
                 " title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write;" +
                 " encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></center>";
         webView2 = findViewById(R.id.jumppavideo2);
@@ -56,7 +56,7 @@ public class MainJumppa extends AppCompatActivity {
         webView2.loadData(path2, "text/html", "utf-8");
 
         String path3 = "<head><meta name=\"viewport\" content=\"width=device-width\">" +
-                "</head><center><iframe width="+ dp(160)+" height="+dp(90)+" src=\"https://www.youtube.com/embed/oKfNUOWuZV8\"" +
+                "</head><center><iframe width=" + dp(160) + " height=" + dp(90) + " src=\"https://www.youtube.com/embed/oKfNUOWuZV8\"" +
                 " title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write;" +
                 " encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></center>";
         webView3 = findViewById(R.id.jumppavideo3);
@@ -66,7 +66,7 @@ public class MainJumppa extends AppCompatActivity {
         webView3.loadData(path3, "text/html", "utf-8");
 
         String path4 = "<head><meta name=\"viewport\" content=\"width=device-width\">" +
-                "</head><center><iframe width="+ dp(160)+" height="+dp(90)+" src=\"https://www.youtube.com/embed/KFcUwNl7eXo\"" +
+                "</head><center><iframe width=" + dp(160) + " height=" + dp(90) + " src=\"https://www.youtube.com/embed/KFcUwNl7eXo\"" +
                 " title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write;" +
                 " encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></center>";
         webView4 = findViewById(R.id.jumppavideo4);
@@ -99,7 +99,7 @@ public class MainJumppa extends AppCompatActivity {
             DB.setJumppaMuisti(tunnus, liikuttuH2, liikuttuMin2);
             Toast.makeText(this, "Tallennettu", Toast.LENGTH_SHORT).show();
 
-        }); //TODO tarkista ettei ole nukuttu yli 24tuntia
+        }); //TODO tarkista ettei ole jumpattu yli 24tuntia
 
         takaisin = findViewById(R.id.takaisin);
         takaisin.setOnClickListener(v -> {

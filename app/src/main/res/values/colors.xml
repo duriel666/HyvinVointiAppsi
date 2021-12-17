@@ -9,5 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="harmaa">#FF888888</color>
     <color name="vharmaa">#FFdddddd</color>
+    <color name="v2harmaa">#FFbbbbbb</color>
     <color name="asetukset">#ff222222</color>
+    <color name="punainen">#ffff0000</color>
 </resources>

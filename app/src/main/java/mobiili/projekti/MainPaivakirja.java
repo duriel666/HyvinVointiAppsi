@@ -1,6 +1,8 @@
 package mobiili.projekti;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.ViewCompat;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -14,6 +16,10 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.shape.CornerFamily;
+import com.google.android.material.shape.MaterialShapeDrawable;
+import com.google.android.material.shape.ShapeAppearanceModel;
 
 import java.util.ArrayList;
 import java.util.Dictionary;
@@ -68,6 +74,16 @@ public class MainPaivakirja extends AppCompatActivity {
                 p[numero].setBackgroundColor(Color.LTGRAY);
                 p[numero].setTextSize((TypedValue.COMPLEX_UNIT_SP), 20);
                 p[numero].setGravity(Gravity.CENTER_VERTICAL);
+
+                ShapeAppearanceModel shapeAppearanceModel = new ShapeAppearanceModel()
+                        .toBuilder()
+                        .setAllCorners(CornerFamily.ROUNDED, dp(10))
+                        .build();
+                MaterialShapeDrawable shapeDrawable = new MaterialShapeDrawable(shapeAppearanceModel);
+                shapeDrawable.setFillColor(ContextCompat.getColorStateList(this, R.color.v2harmaa));
+                shapeDrawable.setStroke(dp(5), ContextCompat.getColor(this, R.color.v2harmaa));
+                ViewCompat.setBackground(p[numero], shapeDrawable);
+
                 layoutPaivakirja.addView(p[numero]);
                 pknum -= 3;
                 numero += 1;

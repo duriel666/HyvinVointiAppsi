@@ -65,6 +65,7 @@
             android:translationZ="10dp" />
 
     </LinearLayout>
+
     <TextView
         android:id="@+id/jumppaOhje"
         android:layout_width="wrap_content"
@@ -73,6 +74,7 @@
         android:layout_marginTop="40dp"
         android:text="@string/jumppaohje"
         android:textSize="20sp" />
+
     <LinearLayout
 
         android:id="@+id/liikuttuOhje"
@@ -87,7 +89,7 @@
             android:id="@+id/liikuttuAikaH"
             android:layout_width="80dp"
             android:layout_height="60dp"
-            android:background="@color/vharmaa"
+            android:background="@drawable/kulmat"
             android:gravity="center"
             android:hint="0"
             android:inputType="number"
@@ -106,7 +108,7 @@
             android:id="@+id/liikuttuAikaMin"
             android:layout_width="80dp"
             android:layout_height="60dp"
-            android:background="@color/vharmaa"
+            android:background="@drawable/kulmat"
             android:gravity="center"
             android:hint="0"
             android:inputType="number"
@@ -124,17 +126,17 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/liikuttuTallenna"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/liikuttuTallenna"
-        android:textSize="15sp"
-        android:text="@string/tallenna1"
         android:layout_below="@id/liikuttuOhje"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@color/harmaa"
         android:paddingHorizontal="40dp"
         android:paddingVertical="15dp"
-        android:layout_marginTop="5dp"
-        />
+        android:text="@string/tallenna1"
+        android:textSize="15sp" />
 
     <ScrollView
         android:id="@+id/jumppascroll"
@@ -147,8 +149,8 @@
         <LinearLayout
             android:id="@+id/jumppalayout"
             android:layout_width="match_parent"
-            android:gravity="center_horizontal"
             android:layout_height="match_parent"
+            android:gravity="center_horizontal"
             android:orientation="vertical"
             android:paddingBottom="50dp">
 
@@ -157,7 +159,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
-                android:minHeight="250dp"/>
+                android:minHeight="250dp" />
 
             <TextView
                 android:id="@+id/jumppateksti1"
@@ -173,7 +175,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
-                android:minHeight="250dp"/>
+                android:minHeight="250dp" />
 
             <TextView
                 android:id="@+id/jumppateksti2"
@@ -189,7 +191,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
-                android:minHeight="250dp"/>
+                android:minHeight="250dp" />
 
             <TextView
                 android:id="@+id/jumppateksti3"
@@ -199,12 +201,13 @@
                 android:gravity="center_horizontal"
                 android:text="@string/jumppateksti3"
                 android:textSize="20sp" />
+
             <WebView
                 android:id="@+id/jumppavideo4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
-                android:minHeight="250dp"/>
+                android:minHeight="250dp" />
 
             <TextView
                 android:id="@+id/jumppateksti4"

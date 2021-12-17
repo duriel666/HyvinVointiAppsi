@@ -8,8 +8,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:paddingHorizontal="10dp"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingHorizontal="10dp">
 
         <TextView
             android:id="@+id/otsikkoPaasivu"
@@ -75,8 +75,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/valikko"
-            android:nestedScrollingEnabled="true"
             android:layout_marginTop="5dp"
+            android:nestedScrollingEnabled="true"
             android:paddingHorizontal="0dp">
 
             <LinearLayout
