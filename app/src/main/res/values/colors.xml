@@ -18,5 +18,9 @@
     <!-- seuraavat kaksi eli aa on punainen, seuraavat kaksi 44 on vihreä -->
     <!-- ja viimeiset kaksi 44 on sininen. arvo välillä 00-ff eli 0-255 heksoina -->
 
-    <color name="napit">#ffaa4444</color>
+    <color name="napit">#ffbb4444</color>
+    <color name="napit2">#ff2222aa</color>
+    <color name="napit_yo">#ff773333</color>
+    <color name="napit2_yo">#ff2222aa</color>
+    <color name="vsininen">#ffddddff</color>
 </resources>

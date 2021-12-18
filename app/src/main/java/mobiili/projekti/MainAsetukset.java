@@ -7,6 +7,7 @@ import android.util.TypedValue;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -129,6 +130,7 @@ public class MainAsetukset extends AppCompatActivity {
             Intent intent = new Intent(this, MainAsetukset.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
+            Toast.makeText(this, "Tallennettu", Toast.LENGTH_SHORT).show();
             overridePendingTransition(
                     R.anim.f_in, R.anim.f_out
             );
