@@ -129,6 +129,7 @@ public class MainFiilis extends AppCompatActivity {
             Intent intent = new Intent(this, MainFiilis.class);
             intent.putExtra("tunnus", tunnus);
             startActivity(intent);
+            Toast.makeText(this, "Tallennettu", Toast.LENGTH_SHORT).show();
             overridePendingTransition(
                     R.anim.f_in, R.anim.f_out
             );

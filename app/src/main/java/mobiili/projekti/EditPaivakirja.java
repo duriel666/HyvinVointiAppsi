@@ -17,6 +17,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,6 +88,7 @@ public class EditPaivakirja extends AppCompatActivity {
                     Intent intent = new Intent(this, EditPaivakirja.class);
                     intent.putExtra("tunnus", tunnus);
                     startActivity(intent);
+                    Toast.makeText(this, "Merkinnät poistettu", Toast.LENGTH_SHORT).show();
                     overridePendingTransition(
                             R.anim.f_in, R.anim.f_out
                     );

@@ -69,7 +69,6 @@ public class MainPage extends AppCompatActivity {
             TextView vesi = new TextView(this);
             vesi.setLayoutParams(params);
             vesi.setPadding(dp(10), 0, dp(10), 0);
-            vesi.setBackgroundColor(Color.LTGRAY);
             vesi.setTextSize((TypedValue.COMPLEX_UNIT_SP), 20);
             vesi.setGravity(Gravity.CENTER_VERTICAL);
 
@@ -78,8 +77,8 @@ public class MainPage extends AppCompatActivity {
                     .setAllCorners(CornerFamily.ROUNDED, dp(10))
                     .build();
             MaterialShapeDrawable shapeDrawable = new MaterialShapeDrawable(shapeAppearanceModel);
-            shapeDrawable.setFillColor(ContextCompat.getColorStateList(this, R.color.vharmaa));
-            shapeDrawable.setStroke(dp(5), ContextCompat.getColor(this, R.color.vharmaa));
+            shapeDrawable.setFillColor(ContextCompat.getColorStateList(this, R.color.vsininen));
+            shapeDrawable.setStroke(dp(5), ContextCompat.getColor(this, R.color.vsininen));
             ViewCompat.setBackground(vesi, shapeDrawable);
 
             etuSivu.addView(vesi);
@@ -116,7 +115,6 @@ public class MainPage extends AppCompatActivity {
             TextView uni = new TextView(this);
             uni.setLayoutParams(params);
             uni.setPadding(dp(10), 0, dp(10), 0);
-            uni.setBackgroundColor(Color.LTGRAY);
             uni.setTextSize((TypedValue.COMPLEX_UNIT_SP), 20);
             uni.setGravity(Gravity.CENTER_VERTICAL);
 
@@ -125,8 +123,8 @@ public class MainPage extends AppCompatActivity {
                     .setAllCorners(CornerFamily.ROUNDED, dp(10))
                     .build();
             MaterialShapeDrawable shapeDrawable = new MaterialShapeDrawable(shapeAppearanceModel);
-            shapeDrawable.setFillColor(ContextCompat.getColorStateList(this, R.color.vharmaa));
-            shapeDrawable.setStroke(dp(5), ContextCompat.getColor(this, R.color.vharmaa));
+            shapeDrawable.setFillColor(ContextCompat.getColorStateList(this, R.color.vsininen));
+            shapeDrawable.setStroke(dp(5), ContextCompat.getColor(this, R.color.vsininen));
             ViewCompat.setBackground(uni, shapeDrawable);
 
             etuSivu.addView(uni);
@@ -171,7 +169,6 @@ public class MainPage extends AppCompatActivity {
             TextView fiilis = new TextView(this);
             fiilis.setLayoutParams(params);
             fiilis.setPadding(dp(10), 0, dp(10), 0);
-            fiilis.setBackgroundColor(Color.LTGRAY);
             fiilis.setTextSize((TypedValue.COMPLEX_UNIT_SP), 20);
             fiilis.setGravity(Gravity.CENTER_VERTICAL);
 
@@ -180,8 +177,8 @@ public class MainPage extends AppCompatActivity {
                     .setAllCorners(CornerFamily.ROUNDED, dp(10))
                     .build();
             MaterialShapeDrawable shapeDrawable = new MaterialShapeDrawable(shapeAppearanceModel);
-            shapeDrawable.setFillColor(ContextCompat.getColorStateList(this, R.color.vharmaa));
-            shapeDrawable.setStroke(dp(5), ContextCompat.getColor(this, R.color.vharmaa));
+            shapeDrawable.setFillColor(ContextCompat.getColorStateList(this, R.color.vsininen));
+            shapeDrawable.setStroke(dp(5), ContextCompat.getColor(this, R.color.vsininen));
             ViewCompat.setBackground(fiilis, shapeDrawable);
 
             etuSivu.addView(fiilis);
@@ -218,7 +215,6 @@ public class MainPage extends AppCompatActivity {
             TextView tehtava = new TextView(this);
             tehtava.setLayoutParams(params);
             tehtava.setPadding(dp(10), 0, dp(10), 0);
-            tehtava.setBackgroundColor(Color.LTGRAY);
             tehtava.setTextSize((TypedValue.COMPLEX_UNIT_SP), 20);
             tehtava.setGravity(Gravity.CENTER_VERTICAL);
 
@@ -227,8 +223,8 @@ public class MainPage extends AppCompatActivity {
                     .setAllCorners(CornerFamily.ROUNDED, dp(10))
                     .build();
             MaterialShapeDrawable shapeDrawable = new MaterialShapeDrawable(shapeAppearanceModel);
-            shapeDrawable.setFillColor(ContextCompat.getColorStateList(this, R.color.vharmaa));
-            shapeDrawable.setStroke(dp(5), ContextCompat.getColor(this, R.color.vharmaa));
+            shapeDrawable.setFillColor(ContextCompat.getColorStateList(this, R.color.vsininen));
+            shapeDrawable.setStroke(dp(5), ContextCompat.getColor(this, R.color.vsininen));
             ViewCompat.setBackground(tehtava, shapeDrawable);
 
             etuSivu.addView(tehtava);
@@ -249,7 +245,6 @@ public class MainPage extends AppCompatActivity {
             TextView paivakirja = new TextView(this);
             paivakirja.setLayoutParams(params);
             paivakirja.setPadding(dp(10), 0, dp(10), 0);
-            paivakirja.setBackgroundColor(Color.LTGRAY);
             paivakirja.setTextSize((TypedValue.COMPLEX_UNIT_SP), 20);
             paivakirja.setGravity(Gravity.CENTER_VERTICAL);
 
@@ -258,8 +253,8 @@ public class MainPage extends AppCompatActivity {
                     .setAllCorners(CornerFamily.ROUNDED, dp(10))
                     .build();
             MaterialShapeDrawable shapeDrawable = new MaterialShapeDrawable(shapeAppearanceModel);
-            shapeDrawable.setFillColor(ContextCompat.getColorStateList(this, R.color.vharmaa));
-            shapeDrawable.setStroke(dp(5), ContextCompat.getColor(this, R.color.vharmaa));
+            shapeDrawable.setFillColor(ContextCompat.getColorStateList(this, R.color.vsininen));
+            shapeDrawable.setStroke(dp(5), ContextCompat.getColor(this, R.color.vsininen));
             ViewCompat.setBackground(paivakirja, shapeDrawable);
 
             etuSivu.addView(paivakirja);
@@ -279,7 +274,6 @@ public class MainPage extends AppCompatActivity {
             TextView uusi1 = new TextView(this);
             uusi1.setLayoutParams(params);
             uusi1.setPadding(dp(10), 0, dp(10), 0);
-            uusi1.setBackgroundColor(Color.LTGRAY);
             uusi1.setTextSize((TypedValue.COMPLEX_UNIT_SP), 20);
             uusi1.setGravity(Gravity.CENTER_VERTICAL);
 
@@ -288,8 +282,8 @@ public class MainPage extends AppCompatActivity {
                     .setAllCorners(CornerFamily.ROUNDED, dp(10))
                     .build();
             MaterialShapeDrawable shapeDrawable = new MaterialShapeDrawable(shapeAppearanceModel);
-            shapeDrawable.setFillColor(ContextCompat.getColorStateList(this, R.color.vharmaa));
-            shapeDrawable.setStroke(dp(5), ContextCompat.getColor(this, R.color.vharmaa));
+            shapeDrawable.setFillColor(ContextCompat.getColorStateList(this, R.color.vsininen));
+            shapeDrawable.setStroke(dp(5), ContextCompat.getColor(this, R.color.vsininen));
             ViewCompat.setBackground(uusi1, shapeDrawable);
 
             etuSivu.addView(uusi1);
@@ -328,7 +322,6 @@ public class MainPage extends AppCompatActivity {
             TextView uusi2 = new TextView(this);
             uusi2.setLayoutParams(params);
             uusi2.setPadding(dp(10), 0, dp(10), 0);
-            uusi2.setBackgroundColor(Color.LTGRAY);
             uusi2.setTextSize((TypedValue.COMPLEX_UNIT_SP), 20);
             uusi2.setGravity(Gravity.CENTER_VERTICAL);
 
@@ -337,8 +330,8 @@ public class MainPage extends AppCompatActivity {
                     .setAllCorners(CornerFamily.ROUNDED, dp(10))
                     .build();
             MaterialShapeDrawable shapeDrawable = new MaterialShapeDrawable(shapeAppearanceModel);
-            shapeDrawable.setFillColor(ContextCompat.getColorStateList(this, R.color.vharmaa));
-            shapeDrawable.setStroke(dp(5), ContextCompat.getColor(this, R.color.vharmaa));
+            shapeDrawable.setFillColor(ContextCompat.getColorStateList(this, R.color.vsininen));
+            shapeDrawable.setStroke(dp(5), ContextCompat.getColor(this, R.color.vsininen));
             ViewCompat.setBackground(uusi2, shapeDrawable);
 
             etuSivu.addView(uusi2);
