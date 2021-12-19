@@ -29,10 +29,11 @@ import java.util.Objects;
 public class MainTehtavalista extends AppCompatActivity {
 
     ImageButton takaisin, koti, asetukset;
-    int tnum = 0, numero = 0, index2 = 0, numero2 = 0, tehty = 0;
+    int tnum = 0, numero = 0, index2 = 0, numero2 = 0, tehty = 0, muokkaa = 0;
     List boxilista = new ArrayList();
     Button tallenna;
     EditText tehtava;
+    String tehtavam, aika;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,56 +78,50 @@ public class MainTehtavalista extends AppCompatActivity {
                 boxilista.add(numero2);
                 if (Integer.parseInt(tehtavalista.get(tnum + 3)) == 1) {
                     p[numero].setBackgroundColor(Color.DKGRAY);
-
+                    p[numero].setChecked(true);
                 } else {
                     p[numero].setBackgroundColor(Color.LTGRAY);
+                    p[numero].setChecked(false);
                 }
                 tnum -= 4;
                 numero += 1;
                 laskuri += 1;
             }
         }
+
         tallenna = findViewById(R.id.tallennaTehtava);
-        tallenna.setOnClickListener(v ->
-        {
-            int index2 = tehtavalista.size();
+        numero = 1;
+        tallenna.setOnClickListener(v -> {
+            for (int i = 0; i < index2; i++) {
+                if (p[numero].isChecked()) {
+                    muokkaa = (int) boxilista.get(numero - 1);
+                    tehty = 1;
+                    DB.muokkaaTehtavalista(tunnus, muokkaa, tehty);
+                } else {
+                    muokkaa = (int) boxilista.get(numero - 1);
+                    tehty = 0;
+                    DB.muokkaaTehtavalista(tunnus, muokkaa, tehty);
+                }
+                numero += 1;
+            }
             if (index2 > 0) {
                 numero = Integer.parseInt(tehtavalista.get(index - 3)) + 1;
             } else {
                 numero = 1;
             }
             if (tehtava.getText().toString().equals("")) {
-                Toast.makeText(this, "Merkintä tyhjä", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Tallennettu", Toast.LENGTH_SHORT).show();
             } else {
                 DB.addTehtavalista(tunnus, numero, tehtava.getText().toString(), tehty);
-                Intent intent = new Intent(this, MainTehtavalista.class);
-                intent.putExtra("tunnus", tunnus);
-                startActivity(intent);
-                Toast.makeText(this, "Tehtävä lisätty!", Toast.LENGTH_SHORT).show();
-                overridePendingTransition(
-                        R.anim.f_in, R.anim.f_out
-                );
             }
+            Intent intent = new Intent(this, MainTehtavalista.class);
+            intent.putExtra("tunnus", tunnus);
+            startActivity(intent);
+            Toast.makeText(this, "Tehtävä lisätty ja tallennettu", Toast.LENGTH_SHORT).show();
+            overridePendingTransition(
+                    R.anim.f_in, R.anim.f_out
+            );
         });
-
-        /*testi = findViewById(R.id.otsikkoEdittehtavalista);
-        poista = findViewById(R.id.poistatehtavalista);
-        numero = 1;
-        poista.setOnClickListener(v -> {
-            for (int i = 0; i < index2; i++) {
-                if (p[numero].isChecked()) {
-                    poisto = (int) boxilista.get(numero - 1);
-                    DB.deletetehtavalista(tunnus, poisto);
-                    Intent intent = new Intent(this, Edittehtavalista.class);
-                    intent.putExtra("tunnus", tunnus);
-                    startActivity(intent);
-                    overridePendingTransition(
-                            R.anim.f_in, R.anim.f_out
-                    );
-                }
-                numero += 1;
-            }
-        });*/
 
         takaisin = findViewById(R.id.takaisin);
         takaisin.setOnClickListener(v -> {
