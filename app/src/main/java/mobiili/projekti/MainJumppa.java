@@ -84,12 +84,12 @@ public class MainJumppa extends AppCompatActivity {
         liikuttuAikaMin = findViewById(R.id.liikuttuAikaMin);
         tallenna.setOnClickListener(v ->
         {
-            if (liikuttuAikaH == null) {
+            if (liikuttuAikaH.getText().toString().equals("")) {
                 liikuttuH2 = 0;
             } else {
                 liikuttuH2 = Integer.parseInt(liikuttuAikaH.getText().toString());
             }
-            if (liikuttuAikaMin == null) {
+            if (liikuttuAikaMin.getText().toString().equals("")) {
                 liikuttuMin2 = 0;
             } else {
                 liikuttuMin2 = Integer.parseInt(liikuttuAikaMin.getText().toString());

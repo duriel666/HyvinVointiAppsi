@@ -82,22 +82,23 @@ public class MainUni extends AppCompatActivity {
         }
         tallenna.setOnClickListener(v ->
         {
-            if (nukuttuH == null) {
+
+            if (nukuttuH.getText().toString().equals("")) {
                 nukuttuH2 = 0;
             } else {
                 nukuttuH2 = Integer.parseInt(nukuttuH.getText().toString());
             }
-            if (nukuttuMin == null) {
+            if (nukuttuMin.getText().toString().equals("")) {
                 nukuttuMin2 = 0;
             } else {
                 nukuttuMin2 = Integer.parseInt(nukuttuMin.getText().toString());
             }
-            if (tavoiteH == null) {
+            if (tavoiteH.getText().toString().equals("")) {
                 tavoiteH2 = 0;
             } else {
                 tavoiteH2 = Integer.parseInt(tavoiteH.getText().toString());
             }
-            if (tavoiteMin == null) {
+            if (tavoiteMin.getText().toString().equals("")) {
                 tavoiteMin2 = 0;
             } else {
                 tavoiteMin2 = Integer.parseInt(tavoiteMin.getText().toString());

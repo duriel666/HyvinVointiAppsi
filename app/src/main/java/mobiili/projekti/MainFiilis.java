@@ -21,7 +21,6 @@ public class MainFiilis extends AppCompatActivity {
 
     Button tallenna;
     SeekBar fiilisAsteikko;
-    TextView fiilisArvo;
     ImageView image;
     ImageButton takaisin, koti, asetukset;
 
@@ -39,8 +38,6 @@ public class MainFiilis extends AppCompatActivity {
         image = findViewById(R.id.fiilisKuva);
         image.setImageResource(R.drawable.ok);
         fiilisAsteikko = findViewById(R.id.fiilisAsteikko);
-        fiilisArvo = findViewById(R.id.fiilisArvo);
-        fiilisArvo.setText("-  " + fiilisAsteikko.getProgress() + "  -");
 
         fiilisToday.clear();
         fiilisToday.addAll(DB.getFiilisToday(tunnus));
@@ -56,11 +53,9 @@ public class MainFiilis extends AppCompatActivity {
             String fiilisNyt = fiilisToday.get(index2 - 1);
             int kohta = Integer.parseInt(fiilisNyt);
             fiilisAsteikko.setProgress(kohta);
-            fiilisArvo.setText("-  " + fiilisAsteikko.getProgress() + "  -");
             naama(kohta);
         } else {
             fiilisAsteikko.setProgress(0);
-            fiilisArvo.setText("-  " + fiilisAsteikko.getProgress() + "  -");
         }
 
         TextView fiilisTanaan = findViewById(R.id.fiilisTanaan);
@@ -81,12 +76,10 @@ public class MainFiilis extends AppCompatActivity {
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-                fiilisArvo.setText("-  " + arvo + "  -");
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                fiilisArvo.setText("-  " + arvo + "  -");
             }
         });
 
@@ -94,11 +87,9 @@ public class MainFiilis extends AppCompatActivity {
         ProgressBar d2 = findViewById(R.id.d2);
         ArrayList<String> historia = DB.getFiilisHistoria(tunnus);
         int index = historia.size();
-        TextView testi = findViewById(R.id.fiilisArvo2);
         if (index > 0) {
             int eilen = (Integer.parseInt(historia.get(0)) + 100) / 2;
             d1.setProgress(eilen);
-            testi.setText(Integer.toString(historia.size()) + " " + historia.get(0) + " " + eilen);
             if (Integer.parseInt(historia.get(0)) < 50) {
                 d1.getProgressDrawable().setColorFilter(Color.RED, android.graphics.PorterDuff.Mode.SRC_IN);
             }

@@ -22,7 +22,7 @@ public class MainVesi extends AppCompatActivity {
     Button tallenna;
     EditText juo, vesimaara, vesitavoitemaara;
     TextView juotu;
-    int prosentti = 0;
+    int prosentti = 0, juo2 = 0, tavoite = 0, maara = 0;
     ImageButton takaisin, koti, asetukset;
 
     @Override
@@ -57,9 +57,12 @@ public class MainVesi extends AppCompatActivity {
                 int num1 = Integer.parseInt(vesiToday.get(i));
                 num2 += num1;
             }
-
-            prosentti = (100 * num2) / vesitavoitemaaranum;
-            juotu.setText(num2 + " ml - " + prosentti + " %");
+            if (vesitavoitemaaranum > 0) {
+                prosentti = (100 * num2) / vesitavoitemaaranum;
+                juotu.setText(num2 + " ml - " + prosentti + " %");
+            } else {
+                juotu.setText(num2 + " ml - 0 %");
+            }
             pb.setProgress(prosentti);
         } else {
             juotu.setText("0 ml - 0 %");
@@ -79,9 +82,21 @@ public class MainVesi extends AppCompatActivity {
         juo = findViewById(R.id.vesiMaara);
         tallenna.setOnClickListener(v -> //TODO historia mistä voi poistaa?
         {
-            int juo2 = Integer.parseInt(juo.getText().toString());
-            int maara = Integer.parseInt(vesimaara.getText().toString());
-            int tavoite = Integer.parseInt(vesitavoitemaara.getText().toString());
+            if (juo.getText().toString().equals("")) {
+                juo2 = 0;
+            } else {
+                juo2 = Integer.parseInt(juo.getText().toString());
+            }
+            if (vesimaara.getText().toString().equals("")) {
+                maara = 0;
+            } else {
+                maara = Integer.parseInt(vesimaara.getText().toString());
+            }
+            if (vesitavoitemaara.getText().toString().equals("")) {
+                tavoite = 0;
+            } else {
+                tavoite = Integer.parseInt(vesitavoitemaara.getText().toString());
+            }
             DB.addVesi(tunnus, juo2);
             DB.setVesiMuisti(tunnus, tavoite, maara);
             Intent intent = new Intent(this, MainVesi.class);
