@@ -71,7 +71,6 @@ public class MainPaivakirja extends AppCompatActivity {
                         + paivakirja.get(pknum) + "\n\n" + paivakirja.get(pknum + 2));
                 p[numero].setLayoutParams(params);
                 p[numero].setPadding(dp(10), 0, dp(10), 10);
-                p[numero].setBackgroundColor(Color.LTGRAY);
                 p[numero].setTextSize((TypedValue.COMPLEX_UNIT_SP), 20);
                 p[numero].setGravity(Gravity.CENTER_VERTICAL);
 
@@ -80,8 +79,9 @@ public class MainPaivakirja extends AppCompatActivity {
                         .setAllCorners(CornerFamily.ROUNDED, dp(10))
                         .build();
                 MaterialShapeDrawable shapeDrawable = new MaterialShapeDrawable(shapeAppearanceModel);
-                shapeDrawable.setFillColor(ContextCompat.getColorStateList(this, R.color.v2harmaa));
-                shapeDrawable.setStroke(dp(5), ContextCompat.getColor(this, R.color.v2harmaa));
+                shapeDrawable.setFillColor(ContextCompat.getColorStateList(this, R.color.vsininen));
+                shapeDrawable.setStroke(dp(5), ContextCompat.getColor(this, R.color.vsininen
+                ));
                 ViewCompat.setBackground(p[numero], shapeDrawable);
 
                 layoutPaivakirja.addView(p[numero]);
