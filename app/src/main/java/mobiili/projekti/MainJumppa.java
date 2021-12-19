@@ -24,7 +24,7 @@ public class MainJumppa extends AppCompatActivity {
     WebView webView3;
     WebView webView4;
     Button tallenna;
-    int liikuttuH, liikuttuMin, liikuttuH2, liikuttuMin2;
+    int liikuttuH = 0, liikuttuMin = 0, liikuttuH2, liikuttuMin2;
     EditText liikuttuAikaH, liikuttuAikaMin;
 
     @Override
@@ -79,9 +79,17 @@ public class MainJumppa extends AppCompatActivity {
         final ArrayList<String> jumppa = DB.getJumppa(tunnus);
         final ArrayList<String> jumppamuisti = DB.getJumppaMuisti(tunnus);
 
+        jumppa.clear();
+        jumppamuisti.clear();
+        jumppamuisti.addAll(DB.getJumppaMuisti(tunnus));
+        liikuttuH = Integer.parseInt(jumppamuisti.get(0));
+        liikuttuMin = Integer.parseInt(jumppamuisti.get(1));
+
         tallenna = findViewById(R.id.liikuttuTallenna);
         liikuttuAikaH = findViewById(R.id.liikuttuAikaH);
+        liikuttuAikaH.setText(Integer.toString(liikuttuH));
         liikuttuAikaMin = findViewById(R.id.liikuttuAikaMin);
+        liikuttuAikaMin.setText(Integer.toString(liikuttuMin));
         tallenna.setOnClickListener(v ->
         {
             if (liikuttuAikaH.getText().toString().equals("")) {
@@ -98,7 +106,6 @@ public class MainJumppa extends AppCompatActivity {
             DB.addJumppa(tunnus, liikuttuH2, liikuttuMin2);
             DB.setJumppaMuisti(tunnus, liikuttuH2, liikuttuMin2);
             Toast.makeText(this, "Tallennettu", Toast.LENGTH_SHORT).show();
-
         }); //TODO tarkista ettei ole jumpattu yli 24tuntia
 
         takaisin = findViewById(R.id.takaisin);
