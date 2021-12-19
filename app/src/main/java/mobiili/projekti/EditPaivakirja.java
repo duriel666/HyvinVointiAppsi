@@ -29,7 +29,6 @@ public class EditPaivakirja extends AppCompatActivity {
     ImageButton takaisin, koti, asetukset;
     int numero = 0, numero2 = 0, index = 0, index2 = 0, pknum = 0, poisto = 0;
     List boxilista = new ArrayList();
-    TextView testi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

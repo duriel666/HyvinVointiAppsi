@@ -330,6 +330,16 @@ public class DataBase extends SQLiteOpenHelper {
         MyDB.insert("tehtavalista", null, cv);
     }
 
+    public String muokkaaTehtavalista(String tunnus, int numero, int tehty) {
+        SQLiteDatabase MyDB = getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("tehty", tehty);
+        MyDB.update("tehtavalista", cv, "tunnus =? and numero='"
+                + numero + "'", new String[]{tunnus});
+        String kirja = "muokattu";
+        return kirja;
+    }
+
     public ArrayList<String> getPaivakirja(String tunnus) {
         SQLiteDatabase MyDB = this.getReadableDatabase();
         Cursor c = MyDB.rawQuery("select * from paivakirja where tunnus =?", new String[]{tunnus});
