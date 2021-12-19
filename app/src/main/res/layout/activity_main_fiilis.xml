@@ -82,26 +82,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp" />
 
-    <TextView
-        android:id="@+id/fiilisArvo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/fiilisAsteikko"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="400dp"
-        android:text="0"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/fiilisArvo2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/fiilisAsteikko"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="300dp"
-        android:text="0"
-        android:textSize="20sp" />
-
     <SeekBar
         android:id="@+id/fiilisAsteikko"
         android:layout_width="match_parent"

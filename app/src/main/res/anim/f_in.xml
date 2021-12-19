@@ -3,7 +3,7 @@
 <set xmlns:android="http://schemas.android.com/apk/res/android">
     android:interpolator="@android:anim/bounce_interpolator" >
     <alpha
-        android:duration="600"
+        android:duration="640"
         android:fromAlpha="0.0"
         android:toAlpha="1.0" />
 </set>
