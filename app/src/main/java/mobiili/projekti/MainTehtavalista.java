@@ -77,10 +77,10 @@ public class MainTehtavalista extends AppCompatActivity {
                 layouttl.addView(p[numero]);
                 boxilista.add(numero2);
                 if (Integer.parseInt(tehtavalista.get(tnum + 3)) == 1) {
-                    p[numero].setBackgroundColor(Color.DKGRAY);
+                    p[numero].setBackgroundColor(getColor(R.color.sininen)); // valittu
                     p[numero].setChecked(true);
                 } else {
-                    p[numero].setBackgroundColor(Color.LTGRAY);
+                    p[numero].setBackgroundColor(getColor(R.color.vsininen));
                     p[numero].setChecked(false);
                 }
                 tnum -= 4;
