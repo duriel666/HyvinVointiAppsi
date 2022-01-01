@@ -83,7 +83,7 @@ public class MainFiilis extends AppCompatActivity {
             }
         });
 
-        ProgressBar d1 = findViewById(R.id.d1);
+        ProgressBar d1 = findViewById(R.id.d1); // TODO tämäkin yhdellä loopilla
         ProgressBar d2 = findViewById(R.id.d2);
         ProgressBar d3 = findViewById(R.id.d3);
         ProgressBar d4 = findViewById(R.id.d4);
@@ -92,6 +92,9 @@ public class MainFiilis extends AppCompatActivity {
         ProgressBar d7 = findViewById(R.id.d7);
         ArrayList<String> historia = DB.getFiilisHistoria(tunnus);
         int index = historia.size();
+        /*for (int i = 0; i <= index; i++) {
+
+        }*/
         if (index > 0) {
             int eilen = (Integer.parseInt(historia.get(0)) + 100) / 2;
             d1.setProgress(eilen);
