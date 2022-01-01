@@ -162,12 +162,35 @@ public class DataBase extends SQLiteOpenHelper {
     }
 
     public ArrayList<String> getFiilisHistoria(String tunnus) {
-        int num = 0;
+        int num = 0, day1 = 0, day2 = 1;
         ArrayList<String> historia = new ArrayList<>();
         ArrayList<String> d1 = new ArrayList<>();
         SQLiteDatabase MyDB = this.getReadableDatabase();
-        Cursor c = MyDB.rawQuery("select * from fiilis where tunnus =? and aika > datetime(" +
-                "'now','start of day','-1 days') and aika < datetime('now','start of day')", new String[]{tunnus});
+        for (int j = 0; j < 7; j++) {
+            Cursor c = MyDB.rawQuery("select * from fiilis where tunnus =? and aika > datetime(" +
+                    "'now','start of day','-" + day2 + " days') and aika < datetime('now','start of day','-" + day1 + " days')", new String[]{tunnus});
+            c.moveToFirst();
+            while ((!c.isAfterLast())) {
+                if ((c != null) && (c.getCount() > 0)) {
+                    d1.add(c.getString(c.getColumnIndexOrThrow("fiilis")));
+                    c.moveToNext(); // TODO ota tietokannasta myös pelkkä päiväys joka progressbarille tekstiksi
+                }
+            }
+            for (int i = 0; i < d1.size(); i++) {
+                num += Integer.parseInt(d1.get(i));
+            }
+            if (d1.size() > 0) {
+                historia.add(Integer.toString(num / d1.size()));
+            } else {
+                historia.add("-100");
+            }
+            d1.clear();
+            c.close();
+            day1++;
+            day2++;
+        }
+        /*Cursor c = MyDB.rawQuery("select * from fiilis where tunnus =? and aika > datetime(" +
+                "'now','start of day','-1 days') and aika < datetime('now','start of day','-0 days')", new String[]{tunnus});
         c.moveToFirst();
         while ((!c.isAfterLast())) {
             if ((c != null) && (c.getCount() > 0)) {
@@ -284,7 +307,7 @@ public class DataBase extends SQLiteOpenHelper {
             historia.add(Integer.toString(num / d1.size()));
         }
         d1.clear();
-        c.close();
+        c.close();*/
         return historia;
     }
 

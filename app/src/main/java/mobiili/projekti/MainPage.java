@@ -165,7 +165,7 @@ public class MainPage extends AppCompatActivity {
             });
         }
 
-        if (fiilisAsetus == 1) {
+        if (fiilisAsetus == 1) { // TODO fiilishistoria muutamalta? päivältä ja kulmat_y.xml mukainen textbox
             TextView fiilis = new TextView(this);
             fiilis.setLayoutParams(params);
             fiilis.setPadding(dp(10), 0, dp(10), 0);
